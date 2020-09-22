@@ -1,3 +1,12 @@
-p {
-	color: blue;
+.header {
+    background-color: #5ac541!important;
+    height: 20vh;
+}
+
+.navbar {
+    background-color: #5ac541!important;
+}
+
+.border-top {
+    border-color: black!important;
 }
