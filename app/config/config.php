@@ -1,13 +1,19 @@
 <?php
+/* 
+ * Configuration file
+ *
+ * (C) 2020 PodaPunde
+ */
 
+ 
 // Database
 define("DBHOST","localhost");
 define("DBUSER","root");
 define("DBPASS","");
-define("DBNAME","mvc");
+define("DBNAME","gameplayparty");
 
 // Sitename
-define ("SITENAME","Base");
+define ("SITENAME","gameplayparty");
 define ("APPVERSION","0.0.1");
 
 // Folderpaths
