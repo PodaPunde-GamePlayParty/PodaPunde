@@ -10,3 +10,9 @@
 .border-top {
     border-color: black!important;
 }
+
+@media screen and (max-width: 800px) {
+  .headerh1 {
+    font-size: 20px!important;
+  }
+}
