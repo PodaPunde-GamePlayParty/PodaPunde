@@ -1,3 +1,24 @@
-p {
-	color: blue;
+/*
+*
+* © 2020 Team PodaPunde
+*
+* CSS Stylesheet
+*
+*/
+
+:root {
+  /* Colors will change, Now there are test colors */
+  --main: blue;
+  --second: red;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width:  100%;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  background: var(--second);
+  color: var(--main);
+}
+
