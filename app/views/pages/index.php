@@ -1,7 +1,7 @@
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
 <div class="header container-fullwidth">
-    <div class="row">
+    <div id="strangeMargin" class="row">
         <div class="col-lg-6 col-12">
             <h1 class="ml-lg-5 ml-3 mt-lg-3 mt-2 headerh1">Welkom bij GamePlayParty!</h1>
         </div>

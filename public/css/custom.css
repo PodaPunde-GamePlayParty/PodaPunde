@@ -30,6 +30,12 @@
 }
 
 
+/* Strange width from row */
+#strangeMargin.row {
+  margin-right: 0px!important;
+}
+
+
 /* Footer part */
 footer {
   position: absolute;
