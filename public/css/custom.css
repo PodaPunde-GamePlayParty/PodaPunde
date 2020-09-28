@@ -8,8 +8,20 @@
 
 :root {
   /* Colors will change, Now there are test colors */
-  --main: blue;
-  --second: red;
+  --main: #5ac541;
+}
+
+.header {
+    background-color: var(--main)!important;
+    height: 20vh;
+}
+
+.navbar {
+    background-color: var(--main)!important;
+}
+
+.border-top {
+    border-color: black!important;
 }
 
 footer {
@@ -18,21 +30,12 @@ footer {
   width:  100%;
   padding-top: 30px;
   padding-bottom: 10px;
-  background: var(--second);
-  color: var(--main);
+  background: var(--main);
+  color: black;
 }
 
-.header {
-    background-color: #5ac541!important;
-    height: 20vh;
-}
-
-.navbar {
-    background-color: #5ac541!important;
-}
-
-.border-top {
-    border-color: black!important;
+.col p.copyright-text {
+  text-align: center;
 }
 
 /* Login */
