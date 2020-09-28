@@ -7,7 +7,6 @@
 */
 
 :root {
-  /* Colors will change, Now there are test colors */
   --main: #5ac541;
 }
 
@@ -30,6 +29,8 @@
   }
 }
 
+
+/* Footer part */
 footer {
   position: absolute;
   bottom: 0;
@@ -40,6 +41,7 @@ footer {
   color: black;
 }
 
+/* footer text */
 .col p.copyright-text {
   text-align: center;
 }
