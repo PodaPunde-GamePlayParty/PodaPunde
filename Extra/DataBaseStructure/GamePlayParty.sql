@@ -1,4 +1,5 @@
 -- phpMyAdmin SQL Dump
+<<<<<<< HEAD
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
@@ -8,6 +9,18 @@
 -- PHP Version: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+=======
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Gegenereerd op: 20 sep 2020 om 15:56
+-- Serverversie: 10.1.38-MariaDB
+-- PHP-versie: 7.3.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+>>>>>>> origin/bob
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,11 +33,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `gameplayparty`
 --
+<<<<<<< HEAD
+=======
+CREATE DATABASE IF NOT EXISTS `gameplayparty` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `gameplayparty`;
+>>>>>>> origin/bob
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `cinemas`
+=======
+-- Tabelstructuur voor tabel `cinemas`
+>>>>>>> origin/bob
 --
 
 CREATE TABLE `cinemas` (
@@ -37,6 +59,7 @@ CREATE TABLE `cinemas` (
   `province` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `cinemas`
 --
@@ -54,6 +77,12 @@ INSERT INTO `cinemas` (`Cinema_ID`, `Hall_ID`, `name`, `adress`, `city`, `zipcod
 
 --
 -- Table structure for table `customers`
+=======
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `customers`
+>>>>>>> origin/bob
 --
 
 CREATE TABLE `customers` (
@@ -68,6 +97,7 @@ CREATE TABLE `customers` (
   `province` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `customers`
 --
@@ -83,6 +113,12 @@ INSERT INTO `customers` (`Customer_ID`, `firstname`, `preposition`, `lastName`, 
 
 --
 -- Table structure for table `facilities`
+=======
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `facilities`
+>>>>>>> origin/bob
 --
 
 CREATE TABLE `facilities` (
@@ -90,6 +126,7 @@ CREATE TABLE `facilities` (
   `facility` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `facilities`
 --
@@ -107,6 +144,12 @@ INSERT INTO `facilities` (`Hall_ID`, `facility`) VALUES
 
 --
 -- Table structure for table `halls`
+=======
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `halls`
+>>>>>>> origin/bob
 --
 
 CREATE TABLE `halls` (
@@ -118,6 +161,7 @@ CREATE TABLE `halls` (
   `version` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `halls`
 --
@@ -135,6 +179,12 @@ INSERT INTO `halls` (`Hall_ID`, `hallNumber`, `quantityChairs`, `wheelchairAcces
 
 --
 -- Table structure for table `prices`
+=======
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `prices`
+>>>>>>> origin/bob
 --
 
 CREATE TABLE `prices` (
@@ -145,6 +195,7 @@ CREATE TABLE `prices` (
   `surcharges` decimal(2,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `prices`
 --
@@ -158,6 +209,12 @@ INSERT INTO `prices` (`Service_ID`, `service`, `servicePrice`, `regularPrice`, `
 
 --
 -- Table structure for table `reservations`
+=======
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `reservations`
+>>>>>>> origin/bob
 --
 
 CREATE TABLE `reservations` (
@@ -166,6 +223,7 @@ CREATE TABLE `reservations` (
   `Service_ID` int(11) NOT NULL,
   `Cinema_ID` int(11) NOT NULL,
   `reservationDate` date NOT NULL,
+<<<<<<< HEAD
   `reservationTime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -176,35 +234,64 @@ CREATE TABLE `reservations` (
 
 --
 -- Indexes for table `cinemas`
+=======
+  `reservationTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexen voor geëxporteerde tabellen
+--
+
+--
+-- Indexen voor tabel `cinemas`
+>>>>>>> origin/bob
 --
 ALTER TABLE `cinemas`
   ADD PRIMARY KEY (`Cinema_ID`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `customers`
+=======
+-- Indexen voor tabel `customers`
+>>>>>>> origin/bob
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`Customer_ID`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `halls`
+=======
+-- Indexen voor tabel `halls`
+>>>>>>> origin/bob
 --
 ALTER TABLE `halls`
   ADD PRIMARY KEY (`Hall_ID`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `prices`
+=======
+-- Indexen voor tabel `prices`
+>>>>>>> origin/bob
 --
 ALTER TABLE `prices`
   ADD PRIMARY KEY (`Service_ID`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `reservations`
+=======
+-- Indexen voor tabel `reservations`
+>>>>>>> origin/bob
 --
 ALTER TABLE `reservations`
   ADD PRIMARY KEY (`Reservation_ID`);
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -234,6 +321,37 @@ ALTER TABLE `prices`
 
 --
 -- AUTO_INCREMENT for table `reservations`
+=======
+-- AUTO_INCREMENT voor geëxporteerde tabellen
+--
+
+--
+-- AUTO_INCREMENT voor een tabel `cinemas`
+--
+ALTER TABLE `cinemas`
+  MODIFY `Cinema_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `halls`
+--
+ALTER TABLE `halls`
+  MODIFY `Hall_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `prices`
+--
+ALTER TABLE `prices`
+  MODIFY `Service_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `reservations`
+>>>>>>> origin/bob
 --
 ALTER TABLE `reservations`
   MODIFY `Reservation_ID` int(11) NOT NULL AUTO_INCREMENT;
