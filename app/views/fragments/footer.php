@@ -16,14 +16,14 @@
 
 
 <footer class="footer">
-  <div class="container">
-    
-    <div class="row">
-      <div class="col">
-        <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by <a href="#">PodaPunde</a></p>
-      </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by <a href="#">PodaPunde</a></p>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
 
 </body>
