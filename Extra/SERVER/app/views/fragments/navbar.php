@@ -12,7 +12,7 @@
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/index">Home</a>
             </li>
             <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reserveren">Reserveren</a>
+                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reservation">Reserveren</a>
             </li>
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/bioscoop">Bioscoop</a>

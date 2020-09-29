@@ -12,7 +12,7 @@
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/index">Home</a>
             </li>
             <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reserveren">Reserveren</a>
+                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reservation">Reserveren</a>
             </li>
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/bioscoop">Bioscoop</a>
@@ -24,6 +24,7 @@
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/contact">Contact</a>
             </li>
         </ul>
+        <!--
         <form class="form-inline my-2 my-lg-0 pr-5">
             <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>#">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -33,5 +34,6 @@
                 </svg>
             </a>
         </form>
+        -->
     </div>
 </nav>
