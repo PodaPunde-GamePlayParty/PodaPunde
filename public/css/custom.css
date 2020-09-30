@@ -52,7 +52,12 @@ footer {
   text-align: center;
 }
 
-/* Login */
+/* Contact Form */
+#contactForm {
+  margin-bottom: 30px;
+}
+
+/* LoginForm */
 .form-rows {
 	background: white;
 	border-radius: 30px;
