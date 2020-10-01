@@ -19,7 +19,7 @@ class Controller {
             require_once $modelName;
 
             // Instantiate the model
-            return new $model();
+            return $model;
             
         } else {
             // No model exists
