@@ -1,11 +1,11 @@
 <?php
-/* 
+/*
  * Configuration file
  *
  * (C) 2020 PodaPunde
  */
 
- 
+
 // Database
 define("DBHOST","localhost");
 define("DBUSER","root");
@@ -13,11 +13,7 @@ define("DBPASS","");
 define("DBNAME","gameplayparty");
 
 // Sitename
-<<<<<<< Updated upstream
-define ("SITENAME","gameplayparty");
-=======
 define ("SITENAME","GamePlayParty");
->>>>>>> Stashed changes
 define ("APPVERSION","0.0.1");
 
 // Folderpaths
