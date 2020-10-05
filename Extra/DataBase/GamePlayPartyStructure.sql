@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 01 okt 2020 om 20:15
+-- Gegenereerd op: 05 okt 2020 om 10:37
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -21,6 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `gameplayparty`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `authorities`
+--
+
+CREATE TABLE `authorities` (
+  `id` int(11) NOT NULL,
+  `name` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -143,9 +154,34 @@ CREATE TABLE `reservations` (
   `Date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `email` text NOT NULL,
+  `firstname` varchar(40) NOT NULL,
+  `lastname` varchar(40) NOT NULL,
+  `authority_level` int(11) NOT NULL,
+  `validation_code` text NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexen voor geëxporteerde tabellen
 --
+
+--
+-- Indexen voor tabel `authorities`
+--
+ALTER TABLE `authorities`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `cinemas`
@@ -206,8 +242,20 @@ ALTER TABLE `reservations`
   ADD PRIMARY KEY (`Reservation_ID`);
 
 --
+-- Indexen voor tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
+
+--
+-- AUTO_INCREMENT voor een tabel `authorities`
+--
+ALTER TABLE `authorities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `cinemas`
@@ -238,6 +286,12 @@ ALTER TABLE `prices`
 --
 ALTER TABLE `reservations`
   MODIFY `Reservation_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
