@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 05 okt 2020 om 11:52
+-- Gegenereerd op: 05 okt 2020 om 10:37
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -19,8 +19,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `GamePlayParty`
+-- Database: `gameplayparty`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `authorities`
+--
+
+CREATE TABLE `authorities` (
+  `id` int(11) NOT NULL,
+  `name` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -30,12 +41,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cinemas` (
   `Cinema_ID` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `adress` varchar(60) NOT NULL,
-  `city` varchar(40) NOT NULL,
-  `zipcode` varchar(6) NOT NULL,
-  `province` varchar(20) NOT NULL,
-  `images` text
+  `name` varchar(20) DEFAULT NULL,
+  `adress` varchar(80) DEFAULT NULL,
+  `city` varchar(40) DEFAULT NULL,
+  `zipcode` varchar(6) DEFAULT NULL,
+  `province` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -57,14 +67,14 @@ CREATE TABLE `customerreservations` (
 
 CREATE TABLE `customers` (
   `Customer_ID` int(11) NOT NULL,
-  `firstName` varchar(40) NOT NULL,
+  `firstName` varchar(40) DEFAULT NULL,
   `preposition` varchar(10) DEFAULT NULL,
-  `lastName` varchar(40) NOT NULL,
+  `lastName` varchar(40) DEFAULT NULL,
   `phoneNumber` int(11) DEFAULT NULL,
-  `adress` varchar(80) NOT NULL,
-  `city` varchar(40) NOT NULL,
-  `zipcode` varchar(6) NOT NULL,
-  `province` varchar(20) NOT NULL
+  `adress` varchar(80) DEFAULT NULL,
+  `city` varchar(40) DEFAULT NULL,
+  `zipcode` varchar(6) DEFAULT NULL,
+  `province` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,7 +85,7 @@ CREATE TABLE `customers` (
 
 CREATE TABLE `facilities` (
   `Hall_ID` int(11) DEFAULT NULL,
-  `facility` varchar(20) NOT NULL
+  `facility` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -87,11 +97,11 @@ CREATE TABLE `facilities` (
 CREATE TABLE `halls` (
   `Hall_ID` int(11) NOT NULL,
   `Cinema_ID` int(11) DEFAULT NULL,
-  `hallNumber` int(11) NOT NULL,
-  `quantityChairs` int(11) NOT NULL,
-  `wheelchairAccessible` varchar(5) NOT NULL,
-  `screenSize` varchar(20) NOT NULL,
-  `version` varchar(20) NOT NULL
+  `hallNumber` int(11) DEFAULT NULL,
+  `quantityChairs` int(11) DEFAULT NULL,
+  `wheelchairAccessible` varchar(5) DEFAULT NULL,
+  `screenSize` varchar(20) DEFAULT NULL,
+  `version` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -102,10 +112,10 @@ CREATE TABLE `halls` (
 
 CREATE TABLE `prices` (
   `Service_ID` int(11) NOT NULL,
-  `service` varchar(30) NOT NULL,
-  `servicePrice` decimal(4,2) NOT NULL,
-  `regularPrice` decimal(2,2) NOT NULL,
-  `surcharges` decimal(2,2) NOT NULL
+  `service` varchar(30) DEFAULT NULL,
+  `servicePrice` decimal(4,2) DEFAULT NULL,
+  `regularPrice` decimal(2,2) DEFAULT NULL,
+  `surcharges` decimal(2,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -138,9 +148,10 @@ CREATE TABLE `reservationprices` (
 
 CREATE TABLE `reservations` (
   `Reservation_ID` int(11) NOT NULL,
-  `ReservationDate` date NOT NULL,
-  `ReservationTime` time NOT NULL,
-  `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Cinema_ID` int(11) DEFAULT NULL,
+  `ReservationDate` date DEFAULT NULL,
+  `ReservationTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -150,20 +161,27 @@ CREATE TABLE `reservations` (
 --
 
 CREATE TABLE `users` (
-  `User_ID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email` varchar(80) NOT NULL,
-  `firstName` varchar(40) NOT NULL,
-  `preposition` varchar(10) DEFAULT NULL,
-  `lastName` varchar(40) NOT NULL,
+  `email` text NOT NULL,
+  `firstname` varchar(40) NOT NULL,
+  `lastname` varchar(40) NOT NULL,
   `authority_level` int(11) NOT NULL,
+  `validation_code` text NOT NULL,
+  `validated` tinyint(1) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
+
+--
+-- Indexen voor tabel `authorities`
+--
+ALTER TABLE `authorities`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `cinemas`
@@ -227,11 +245,17 @@ ALTER TABLE `reservations`
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`User_ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
+
+--
+-- AUTO_INCREMENT voor een tabel `authorities`
+--
+ALTER TABLE `authorities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `cinemas`
@@ -267,7 +291,7 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
