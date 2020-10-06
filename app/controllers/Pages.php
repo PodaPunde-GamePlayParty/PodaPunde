@@ -45,7 +45,7 @@ class Pages extends Controller {
 
 		$data = [
 			"title" => "Over Ons",
-			"text" => "Paragraph 1"
+			"text" => "Over GamePlayParty"
 		];
 				
 		$this->view("pages/aboutUs", $data);
