@@ -6,3 +6,4 @@ spl_autoload_register(function ($class) {
 
 // Load config
 require_once "config/config.php";
+require_once "include/functions.php";

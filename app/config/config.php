@@ -20,4 +20,6 @@ define ("APPVERSION","0.0.1");
 define("APPROOT", dirname(dirname(__FILE__)));
 define("URLROOT", "http://localhost/projecten/gameplayparty/PodaPunde");
 
-// check .htaccess RewriteBase in public folder
+//  Salt
+define ("SALTHEADER", "PLOP23B453J");
+define ("SALTTRAILER", "FDSFS9434VH");

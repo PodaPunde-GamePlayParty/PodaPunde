@@ -34,37 +34,11 @@ footer {
   color: black;
 }
 
+.row {
+    margin-right: 0!important;
+}
 .col p.copyright-text {
   text-align: center;
-}
-
-/* Login */
-.form-rows {
-	background: white;
-	border-radius: 30px;
-	box-shadow: 12px 12px 22px grey;
-}
-
-.login-logo {
-	border-top-left-radius: 30px;
-	border-bottom-left-radius: 30px;
-}
-
-.btn-login {
-	border: none;
-	outline: none;
-	height: 50px;
-	width: 100%;
-	background-color: black;
-	color: white;
-	border-radius: 4px;
-	font-weight: bold;
-}
-
-.btn-login:hover {
-	background: white;
-	border: 1px solid;
-	color: black;
 }
 
 @media screen and (max-width: 800px) {

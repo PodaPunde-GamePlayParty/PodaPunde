@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 05 okt 2020 om 10:37
+-- Gegenereerd op: 06 okt 2020 om 09:27
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -25,28 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `authorities`
---
-
-CREATE TABLE `authorities` (
-  `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Tabelstructuur voor tabel `cinemas`
 --
 
 CREATE TABLE `cinemas` (
   `Cinema_ID` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `adress` varchar(80) DEFAULT NULL,
-  `city` varchar(40) DEFAULT NULL,
-  `zipcode` varchar(6) DEFAULT NULL,
-  `province` varchar(20) DEFAULT NULL
+  `name` varchar(20) NOT NULL,
+  `adress` varchar(60) NOT NULL,
+  `city` varchar(40) NOT NULL,
+  `zipcode` varchar(6) NOT NULL,
+  `province` varchar(20) NOT NULL,
+  `images` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `cinemas`
+--
+
+INSERT INTO `cinemas` (`Cinema_ID`, `name`, `adress`, `city`, `zipcode`, `province`, `images`) VALUES
+(1, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', ''),
+(2, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', ''),
+(3, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', ''),
+(4, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', '');
 
 -- --------------------------------------------------------
 
@@ -59,6 +59,13 @@ CREATE TABLE `customerreservations` (
   `Customer_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `customerreservations`
+--
+
+INSERT INTO `customerreservations` (`Reservation_ID`, `Customer_ID`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -67,15 +74,30 @@ CREATE TABLE `customerreservations` (
 
 CREATE TABLE `customers` (
   `Customer_ID` int(11) NOT NULL,
-  `firstName` varchar(40) DEFAULT NULL,
+  `firstName` varchar(40) NOT NULL,
   `preposition` varchar(10) DEFAULT NULL,
-  `lastName` varchar(40) DEFAULT NULL,
+  `lastName` varchar(40) NOT NULL,
   `phoneNumber` int(11) DEFAULT NULL,
-  `adress` varchar(80) DEFAULT NULL,
-  `city` varchar(40) DEFAULT NULL,
-  `zipcode` varchar(6) DEFAULT NULL,
-  `province` varchar(20) DEFAULT NULL
+  `adress` varchar(80) NOT NULL,
+  `city` varchar(40) NOT NULL,
+  `zipcode` varchar(6) NOT NULL,
+  `province` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `customers`
+--
+
+INSERT INTO `customers` (`Customer_ID`, `firstName`, `preposition`, `lastName`, `phoneNumber`, `adress`, `city`, `zipcode`, `province`) VALUES
+(1, 'Bob', NULL, 'Nab', NULL, 'Voorbeeld 1', 'VB1', '1234AB', 'Voorbeeld 1'),
+(2, 'Dyon', 'van', 'Raaij', NULL, 'Voorbeeld 2', 'VB2', '4321ZY', 'Voorbeeld 2'),
+(3, 'Harisan', NULL, 'Nades', NULL, 'Voorbeeld 3', 'VB3', '0000AA', 'Voorbeeld 3'),
+(4, 'Haitam', NULL, 'Bacha', NULL, 'Voorbeeld 4', 'VB4', '9999ZZ', 'Voorbeeld 4'),
+(5, 'Falco', NULL, 'Koop', NULL, 'Voorbeeld 5', 'VB5', '0109AZ', 'Voorbeeld 5'),
+(6, 'Max', NULL, 'Verstappen', NULL, 'Spa-Francochamps', 'Spa', '0123AA', 'Limburg'),
+(7, 'Lewis', NULL, 'Hamilton', NULL, 'Silverstone', 'Oxford', '8520MN', 'Engenland'),
+(8, 'Buurman', 'en', 'Buurman', NULL, 'Bij de Buurman', 'Bij de Buurman', '7899OP', 'Bij de Buurman'),
+(9, 'Ernst', 'en de rest', 'Bobbie', NULL, 'Bij boer Harm', 'NPO3', '7899OP', 'Zappelin');
 
 -- --------------------------------------------------------
 
@@ -85,8 +107,17 @@ CREATE TABLE `customers` (
 
 CREATE TABLE `facilities` (
   `Hall_ID` int(11) DEFAULT NULL,
-  `facility` varchar(20) DEFAULT NULL
+  `facility` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `facilities`
+--
+
+INSERT INTO `facilities` (`Hall_ID`, `facility`) VALUES
+(1, 'Snacks'),
+(NULL, 'Frisdrank'),
+(1, 'Film');
 
 -- --------------------------------------------------------
 
@@ -97,12 +128,21 @@ CREATE TABLE `facilities` (
 CREATE TABLE `halls` (
   `Hall_ID` int(11) NOT NULL,
   `Cinema_ID` int(11) DEFAULT NULL,
-  `hallNumber` int(11) DEFAULT NULL,
-  `quantityChairs` int(11) DEFAULT NULL,
-  `wheelchairAccessible` varchar(5) DEFAULT NULL,
-  `screenSize` varchar(20) DEFAULT NULL,
-  `version` varchar(20) DEFAULT NULL
+  `hallNumber` int(11) NOT NULL,
+  `quantityChairs` int(11) NOT NULL,
+  `wheelchairAccessible` varchar(5) NOT NULL,
+  `screenSize` varchar(20) NOT NULL,
+  `version` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `halls`
+--
+
+INSERT INTO `halls` (`Hall_ID`, `Cinema_ID`, `hallNumber`, `quantityChairs`, `wheelchairAccessible`, `screenSize`, `version`) VALUES
+(1, 1, 15, 100, '5', '1900x1080', '1'),
+(2, 1, 1, 100, '2', '1900x1080', '1'),
+(3, 1, 2, 108, '8', '1900x1080', '2');
 
 -- --------------------------------------------------------
 
@@ -112,11 +152,23 @@ CREATE TABLE `halls` (
 
 CREATE TABLE `prices` (
   `Service_ID` int(11) NOT NULL,
-  `service` varchar(30) DEFAULT NULL,
-  `servicePrice` decimal(4,2) DEFAULT NULL,
-  `regularPrice` decimal(2,2) DEFAULT NULL,
-  `surcharges` decimal(2,2) DEFAULT NULL
+  `service` varchar(30) NOT NULL,
+  `servicePrice` decimal(6,2) NOT NULL,
+  `regularPrice` decimal(4,2) NOT NULL,
+  `surcharges` decimal(4,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `prices`
+--
+
+INSERT INTO `prices` (`Service_ID`, `service`, `servicePrice`, `regularPrice`, `surcharges`) VALUES
+(1, 'Toeslag film 135 min en langer', '0.50', '0.50', '0.50'),
+(2, '3D excl. bril', '1.50', '1.50', '1.50'),
+(3, '3D incl. Bril', '2.60', '2.60', '2.60'),
+(4, 'Dolby Atmos', '1.50', '1.50', '1.50'),
+(5, 'Laser Ultra', '2.50', '2.50', '2.50'),
+(6, 'Cosy', '2.50', '2.50', '2.50');
 
 -- --------------------------------------------------------
 
@@ -128,6 +180,13 @@ CREATE TABLE `reservationcinemas` (
   `Reservation_ID` int(11) DEFAULT NULL,
   `Cinema_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `reservationcinemas`
+--
+
+INSERT INTO `reservationcinemas` (`Reservation_ID`, `Cinema_ID`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -148,11 +207,22 @@ CREATE TABLE `reservationprices` (
 
 CREATE TABLE `reservations` (
   `Reservation_ID` int(11) NOT NULL,
-  `Cinema_ID` int(11) DEFAULT NULL,
-  `ReservationDate` date DEFAULT NULL,
-  `ReservationTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `Date` datetime DEFAULT NULL
+  `ReservationDate` date NOT NULL,
+  `ReservationTime` time NOT NULL,
+  `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `reservations`
+--
+
+INSERT INTO `reservations` (`Reservation_ID`, `ReservationDate`, `ReservationTime`, `Date`) VALUES
+(1, '2020-10-05', '11:47:00', '2020-10-05 11:46:28'),
+(2, '2020-10-12', '18:16:17', '2020-10-06 09:11:11'),
+(3, '2020-12-12', '21:08:00', '2020-10-06 09:11:35'),
+(4, '2021-06-10', '14:02:00', '2020-10-06 09:12:03'),
+(5, '2019-06-10', '09:30:15', '2020-10-06 09:12:21'),
+(6, '2018-11-12', '12:45:00', '2020-10-06 09:12:59');
 
 -- --------------------------------------------------------
 
@@ -161,27 +231,27 @@ CREATE TABLE `reservations` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL,
   `username` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email` text NOT NULL,
-  `firstname` varchar(40) NOT NULL,
-  `lastname` varchar(40) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `firstName` varchar(40) NOT NULL,
+  `preposition` varchar(10) DEFAULT NULL,
+  `lastName` varchar(40) NOT NULL,
   `authority_level` int(11) NOT NULL,
-  `validation_code` text NOT NULL,
-  `validated` tinyint(1) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
+INSERT INTO `users` (`User_ID`, `username`, `password`, `email`, `firstName`, `preposition`, `lastName`, `authority_level`, `creation_date`) VALUES
+(1, 'bobnab', '1234', 'boskaboutertje@outlook.com', 'Bob', NULL, 'Nab', 3, '2020-10-05 11:45:38');
+
 --
--- Indexen voor tabel `authorities`
+-- Indexen voor geëxporteerde tabellen
 --
-ALTER TABLE `authorities`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `cinemas`
@@ -245,53 +315,47 @@ ALTER TABLE `reservations`
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`User_ID`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT voor een tabel `authorities`
---
-ALTER TABLE `authorities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT voor een tabel `cinemas`
 --
 ALTER TABLE `cinemas`
-  MODIFY `Cinema_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Cinema_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT voor een tabel `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT voor een tabel `halls`
 --
 ALTER TABLE `halls`
-  MODIFY `Hall_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Hall_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `prices`
 --
 ALTER TABLE `prices`
-  MODIFY `Service_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Service_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `Reservation_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Reservation_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
