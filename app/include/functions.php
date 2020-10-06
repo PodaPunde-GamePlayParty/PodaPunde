@@ -1,19 +1,24 @@
 <?php
+/*
+ * Functions
+ *
+ * (C) 2020 Dyon van Raaij
+ */
 
-// Password encrypt
+// encrypt password function
 function encrypt($password) {
-   $salted = SALTHEADER . $password . SALTTRAILER;
-   return hash('ripemd160', $salted);
+    $salted = SALTHEADER . $password . SALTTRAILER;
+    return hash('ripemd160', $salted);
 }
 
-// Simple page redirect
 function redirect($page) {
-	header('location: ' . URLROOT . "/" . $page);
+    header('location: ' .URLROOT. "/" . $page);
 }
+
 
 // Flash message
 // Example: flash("register_success","U bent succesvol geregistreerd", "alert alert-danger");
-// In view: echo flash("register_success"); 
+// In view: echo flash("register_success");
 function flash($name, $message = "", $class="alert alert-success") {
 
 	if (!empty($message)) {

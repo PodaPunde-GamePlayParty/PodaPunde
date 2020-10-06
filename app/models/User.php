@@ -1,6 +1,6 @@
 <?php
-/* 
- * Database management for the User 
+/*
+ * Database management for the User
  *
  * (C) 2020 Pentasol
  */
@@ -32,5 +32,30 @@ class User {
 		$this->database->prepare($query);
 		$this->database->bind(":id", $id);
 		return $this->database->getRow(); // Object
+	}
+
+	// Return users
+	public function login($email, $password) {
+
+		$query  = "SELECT * ";
+        $query .= "FROM users ";
+        $query .= "WHERE email = :email ";
+		$query .= "AND password = :password ";
+
+		echo $email . $password;
+
+        $this->database->prepare($query);
+        $this->database->bind(":email", $email);
+		$this->database->bind(":password", $password);
+        return $this->database->getRow();
+	}
+
+	public function logOut() {
+
+		unset($_SESSION['userid']);
+		unset($_SESSION['authority_level']);
+		unset($_SESSION['firstname']);
+		session_destroy();
+
 	}
 }
