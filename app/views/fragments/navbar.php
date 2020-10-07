@@ -9,13 +9,13 @@
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/index">Home</a>
+                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reservation">Reserveren</a>
             </li>
             <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/bioscoop">Bioscoop</a>
+                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/bioscoop/overzicht">Bioscoop</a>
             </li>
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/aboutUs">Over Ons</a>
