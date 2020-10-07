@@ -8,12 +8,12 @@
 
 :root {
   /* Colors will change, Now there are test colors */
-  --main: #5ac541;
+  --main: #8cfaa9;
 }
 
 .header {
     background-color: var(--main)!important;
-    height: 20vh;
+    height: 3vh;
 }
 
 .navbar {
