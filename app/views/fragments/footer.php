@@ -15,15 +15,17 @@
 <script src="js/bootstrap.min.js"></script>
 
 
-<footer class="mt-lg-5 mt-3">
+<footer class="footer">
     <div class="container">
+
         <div class="row">
             <div class="col">
-                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by <a href="<?php echo URLROOT; ?>/pages/aboutUs">GamePlayParty</a></p>
+                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by <a href="<?php echo URLROOT; ?>">PodaPunde</a></p>
             </div>
         </div>
     </div>
 </footer>
+
 </body>
 
 </html>

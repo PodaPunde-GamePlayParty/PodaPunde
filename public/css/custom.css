@@ -6,7 +6,6 @@
 *
 */
 
-/* put all using color codes in a variable */
 :root {
   --main: #5ac541;
 }
@@ -31,11 +30,6 @@
 }
 
 
-/* headertitles (h1) alignment */
-#headerAlignment {
-  text-align: center;
-}
-
 /* Strange width from row */
 #strangeMargin.row {
   margin-right: 0px!important;
@@ -44,8 +38,9 @@
 
 /* Footer part */
 footer {
-  position: relative;
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  width:  100%;
   padding-top: 30px;
   padding-bottom: 10px;
   background: var(--main);
