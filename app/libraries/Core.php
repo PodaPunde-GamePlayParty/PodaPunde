@@ -3,7 +3,7 @@ class Core
 {
     // Core properties
     // Url parameters will be stored here if none given then use default properties
-    protected $currentController = "Homepage";
+    protected $currentController = "Pages";
     protected $currentMethod = "index";
     protected $params = [];
 
