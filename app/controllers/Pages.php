@@ -41,7 +41,14 @@ class Pages extends Controller {
 		$this->view("pages/info", $data);
 	}
 
-		$this->view("index", $data);
+	public function aboutUs() {
+
+		$data = [
+			"title" => "Over Ons",
+			"text" => "Over GamePlayParty"
+		];
+				
+		$this->view("pages/aboutUs", $data);
 	}
 
 	public function contact() {
