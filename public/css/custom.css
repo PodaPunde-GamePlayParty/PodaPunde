@@ -24,10 +24,10 @@
     border-color: black!important;
 }
 
+/* Footer part */
 footer {
-  position: absolute;
-  bottom: 0;
-  width:  100%;
+  position: relative;
+  width: 100%;
   padding-top: 30px;
   padding-bottom: 10px;
   background: var(--main);
