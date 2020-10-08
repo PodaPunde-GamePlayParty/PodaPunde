@@ -18,6 +18,3 @@
     <div class="container-fullwidth">
         <?php require_once APPROOT . "/views/fragments/navbar.php"; ?>
     </div>
-
-    
-

@@ -2,7 +2,7 @@
 /*
 Title: MVC Template
 Discription: MVC
-Author: Harisan Nades
+Author: Dyon van Raaij
 Date: 10-09-2020
 Copyright ©2020
 */

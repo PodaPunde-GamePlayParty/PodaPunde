@@ -8,15 +8,12 @@
 
 /* put all using color codes in a variable */
 :root {
-  /* 
-  OLD Color:
-  --main: #5ac541; */
-  --main: #8cfaa9;
+  --main: #5ac541;
 }
 
 .header {
     background-color: var(--main)!important;
-    height: 3vh;
+    height: 20vh;
 }
 
 .navbar {
