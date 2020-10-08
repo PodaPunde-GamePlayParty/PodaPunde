@@ -17,7 +17,7 @@ class Bioscopen extends Controller {
             "bioscopen" => $bioscopen
         ];
 
-        $this->view("bioscopen/overzicht", $data);
+        $this->view("bioscopen", $data);
     }
 
 }

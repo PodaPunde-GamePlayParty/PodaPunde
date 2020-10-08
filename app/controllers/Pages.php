@@ -8,7 +8,7 @@ class Pages extends Controller {
 			"text" => "Paragraph 1"
 		];
 
-		$this->view("pages/index", $data);
+		$this->view("index", $data);
 	}
 
 	// contact page
