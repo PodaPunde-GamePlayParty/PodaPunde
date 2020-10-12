@@ -12,7 +12,7 @@ class Bioscoop {
 		$this->database = new Database;
 	}
 
-	// Return users
+	// Return bioscopen
 	public function getBioscopen() {
 
 		$query  = "SELECT cinema_id, name, adress, city, zipcode, province ";
