@@ -7,12 +7,13 @@
 */
 
 :root {
-  --main: #5ac541;
+  /* Colors will change, Now there are test colors */
+  --main: #8cfaa9;
 }
 
 .header {
     background-color: var(--main)!important;
-    height: 20vh;
+    height: 3vh;
 }
 
 .navbar {
@@ -23,24 +24,10 @@
     border-color: black!important;
 }
 
-@media screen and (max-width: 800px) {
-  .headerh1 {
-    font-size: 20px!important;
-  }
-}
-
-
-/* Strange width from row */
-#strangeMargin.row {
-  margin-right: 0px!important;
-}
-
-
 /* Footer part */
 footer {
-  position: absolute;
-  bottom: 0;
-  width:  100%;
+  position: relative;
+  width: 100%;
   padding-top: 30px;
   padding-bottom: 10px;
   background: var(--main);
