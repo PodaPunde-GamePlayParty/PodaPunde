@@ -15,7 +15,7 @@ class Bioscoop {
 	// Return users
 	public function getBioscopen() {
 
-		$query  = "SELECT cinema_id, name, adress, city, zipcode, province ";
+		$query  = "SELECT * ";
 		$query .= "FROM cinemas ";
 
 		$this->database->prepare($query);

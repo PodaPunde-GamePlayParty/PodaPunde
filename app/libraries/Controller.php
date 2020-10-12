@@ -20,7 +20,7 @@ class Controller {
 
             // Instantiate the model
             return new $model();
-            
+
         } else {
             // No model exists
             die("Model " . $modelName . " does not exists");
@@ -45,8 +45,5 @@ class Controller {
         }
     }
 }
-
-
-
 
 ?>
