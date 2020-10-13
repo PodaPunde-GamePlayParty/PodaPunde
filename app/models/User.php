@@ -41,16 +41,14 @@ class User {
 	public function login($email, $password) {
 
 		$query  = "SELECT * ";
-        $query .= "FROM users ";
-        $query .= "WHERE email = :email ";
+		$query .= "FROM users ";
+    $query .= "WHERE email = :email ";
 		$query .= "AND password = :password ";
 
-		echo $email . $password;
-
-        $this->database->prepare($query);
-        $this->database->bind(":email", $email);
+    $this->database->prepare($query);
+    $this->database->bind(":email", $email);
 		$this->database->bind(":password", $password);
-        return $this->database->getRow();
+    return $this->database->getRow();
 	}
 
 	public function logOut() {
