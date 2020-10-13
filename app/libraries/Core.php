@@ -1,6 +1,14 @@
 <?php
-class Core
-{
+/*
+ * Core Controller
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+
+// Create class Core
+class Core {
+
     // Core properties
     // Url parameters will be stored here if none given then use default properties
     protected $currentController = "Pages";

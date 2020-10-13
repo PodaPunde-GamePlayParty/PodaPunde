@@ -1,9 +1,12 @@
 <?php
 /*
- * PDO Database Class
+ * Database Controller
+ *
+ * © 2020 Team PodaPunde
  * 
- * (C) 2020 Pentasol
  */
+
+// Create class Database
 class Database {
 
 	private $dbaseHandler;

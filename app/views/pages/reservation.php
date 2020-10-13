@@ -1,3 +1,12 @@
+<?php
+/*
+ * Reservation Page (Content)
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
 <div class="container mt-3">

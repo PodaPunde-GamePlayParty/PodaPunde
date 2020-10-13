@@ -1,4 +1,10 @@
 <?php
+/*
+ * Bioscopen Controller
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
 
 // Create bioscopen class
 class Bioscopen extends Controller {

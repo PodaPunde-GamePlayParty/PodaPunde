@@ -2,8 +2,11 @@
 /*
  * Database management for the User
  *
- * (C) 2020 Pentasol
+ * © 2020 Team PodaPunde
+ * 
  */
+
+// Create class User
 class User {
 
 	private $database;

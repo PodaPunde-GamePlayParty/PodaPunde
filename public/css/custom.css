@@ -1,19 +1,19 @@
 /*
 *
-* © 2020 Team PodaPunde
-*
 * CSS Stylesheet
+*
+* © 2020 Team PodaPunde
 *
 */
 
 :root {
-  /* Colors will change, Now there are test colors */
   --main: #8cfaa9;
+  --oldMain: #5ac541;
 }
 
 .header {
     background-color: var(--main)!important;
-    height: 3vh;
+    height: 20vh;
 }
 
 .navbar {
@@ -22,6 +22,22 @@
 
 .border-top {
     border-color: black!important;
+}
+
+@media screen and (max-width: 800px) {
+  .headerh1 {
+    font-size: 20px!important;
+  }
+}
+
+/* headertitles (h1) alignment */
+#headerAlignment {
+  text-align: center;
+}
+
+/* Strange width from row */
+#strangeMargin.row {
+  margin-right: 0px!important;
 }
 
 /* Footer part */
@@ -39,10 +55,4 @@ footer {
 }
 .col p.copyright-text {
   text-align: center;
-}
-
-@media screen and (max-width: 800px) {
-  .headerh1 {
-    font-size: 20px!important;
-  }
 }

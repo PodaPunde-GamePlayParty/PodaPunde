@@ -1,3 +1,12 @@
+<?php
+/*
+ * Navbar Fragment
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
         aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">

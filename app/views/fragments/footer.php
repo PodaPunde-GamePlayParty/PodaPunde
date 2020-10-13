@@ -1,3 +1,12 @@
+<?php
+/*
+ * Footer Fragment
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
@@ -15,12 +24,12 @@
 <script src="js/bootstrap.min.js"></script>
 
 
-<footer class="footer">
+<footer class="mt-lg-5 mt-3">
     <div class="container">
 
         <div class="row">
             <div class="col">
-                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by <a href="<?php echo URLROOT; ?>">PodaPunde</a></p>
+                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by <a href="<?php echo URLROOT; ?>/pages/aboutUs">GamePlayParty</a></p>
             </div>
         </div>
     </div>

@@ -1,3 +1,12 @@
+<?php
+/*
+ * Login form
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
     <div class="container mt-lg-5 mt-2">

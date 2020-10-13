@@ -2,7 +2,8 @@
 /*
  * Functions
  *
- * (C) 2020 Dyon van Raaij
+ * © 2020 Team PodaPunde
+ * 
  */
 
 // encrypt password function

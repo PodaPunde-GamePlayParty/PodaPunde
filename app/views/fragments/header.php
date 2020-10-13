@@ -1,3 +1,12 @@
+<?php
+/*
+ * Header Fragment
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +27,3 @@
     <div class="container-fullwidth">
         <?php require_once APPROOT . "/views/fragments/navbar.php"; ?>
     </div>
-
-    
-

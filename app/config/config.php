@@ -2,7 +2,8 @@
 /*
  * Configuration file
  *
- * (C) 2020 PodaPunde
+ * © 2020 Team PodaPunde
+ * 
  */
 
 

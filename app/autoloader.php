@@ -1,14 +1,14 @@
 <?php
 /*
-* Autoloader
-*
-* (C) 2020 Dyon van Raaij
-*
-*/
+ * Autoloader
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
 
 // Autoload core libraries
-spl_autoload_register(function($class){
-	require_once "libraries/" . $class . ".php";
+spl_autoload_register(function ($class) {
+    require_once "libraries/" . $class . ".php";
 });
 
 // Load config

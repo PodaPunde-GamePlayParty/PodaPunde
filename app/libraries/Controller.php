@@ -1,9 +1,12 @@
 <?php
-
 /*
- * Base controller
- * Loads the models and views
+ * Base Controller Load Models and Views
+ *
+ * © 2020 Team PodaPunde
+ * 
  */
+
+// Create class Controller
 class Controller {
 
     // Load model
@@ -19,8 +22,8 @@ class Controller {
             require_once $modelName;
 
             // Instantiate the model
-            return $model;
-            
+            return new $model();
+
         } else {
             // No model exists
             die("Model " . $modelName . " does not exists");
@@ -45,8 +48,5 @@ class Controller {
         }
     }
 }
-
-
-
 
 ?>

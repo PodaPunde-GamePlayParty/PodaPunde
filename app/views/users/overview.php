@@ -1,3 +1,12 @@
+<?php
+/*
+ * Overview-User Page (Content)
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
 <h1><?php echo $data["title"]; ?></h1>
