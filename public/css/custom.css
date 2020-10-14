@@ -24,6 +24,19 @@
     border-color: black!important;
 }
 
+#cardSize {
+  height: 380px;
+}
+
+#cardImage {
+  height: 166px;
+  width: auto!important;
+}
+
+#noMarginBottom {
+  margin-bottom: 0!important;
+}
+
 @media screen and (max-width: 800px) {
   .headerh1 {
     font-size: 20px!important;
@@ -31,7 +44,7 @@
 }
 
 /* headertitles (h1) alignment */
-#headerAlignment {
+#alignmentCenter {
   text-align: center;
 }
 

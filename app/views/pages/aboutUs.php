@@ -11,7 +11,7 @@
 
 
 <div class="container pb-lg-3">
-    <h1 id="headerAlignment" class="ml-lg-5 ml-3 mt-lg-3 mt-2"><?php echo $data["title"]; ?></h1>
+    <h1 id="alignmentCenter" class="ml-lg-5 ml-3 mt-lg-3 mt-2"><?php echo $data["title"]; ?></h1>
 </div>
 
 <div class="container mt-3">
