@@ -1,6 +1,0 @@
--	Normalisatie Reservering:
--	https://docs.google.com/spreadsheets/d/1FMwenk3kd6TMVE4hzMTZq7A2GXNV23z3zo5h0z6GhTw/edit?pli=1#gid=1831116786
-
--	ERD:
--	https://dbdiagram.io/embed/5f6746817da1ea736e2e8dbb
--	Password: GamePlayParty
