@@ -1,0 +1,71 @@
+/*
+*
+* CSS Stylesheet
+*
+* © 2020 Team PodaPunde
+*
+*/
+
+:root {
+  --main: #8cfaa9;
+  --oldMain: #5ac541;
+}
+
+.header {
+    background-color: var(--main)!important;
+    height: 20vh;
+}
+
+.navbar {
+    background-color: var(--main)!important;
+}
+
+.border-top {
+    border-color: black!important;
+}
+
+#cardSize {
+  height: 380px;
+}
+
+#cardImage {
+  height: 166px;
+  width: auto!important;
+}
+
+#noMarginBottom {
+  margin-bottom: 0!important;
+}
+
+@media screen and (max-width: 800px) {
+  .headerh1 {
+    font-size: 20px!important;
+  }
+}
+
+/* headertitles (h1) alignment */
+#alignmentCenter {
+  text-align: center;
+}
+
+/* Strange width from row */
+#strangeMargin.row {
+  margin-right: 0px!important;
+}
+
+/* Footer part */
+footer {
+  position: relative;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  background: var(--main);
+  color: black;
+}
+
+.row {
+    margin-right: 0!important;
+}
+.col p.copyright-text {
+  text-align: center;
+}
