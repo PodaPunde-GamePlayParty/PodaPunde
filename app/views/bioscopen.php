@@ -9,13 +9,13 @@
 
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
-<div class="container mt-lg-5 mt-1">
+<div class="container mt-lg-5">
   <h1 class="text-center"><?php echo $data["title"]; ?></h1>
 
   <?php
-    echo "<div class='row mt-lg-5 mt-1'>";
+    echo "<div class='row mt-lg-5'>";
     foreach($data["bioscopen"] as $bioscopen) {
-      echo "<div class='col-3' style='width: 18rem;'>"; ?>
+      echo "<div class='col-lg-3 col-md-6 col-12 mb-lg-5 mb-md-3 mb-2' style='width: 18rem;'>"; ?>
 
       <div id="cardSize" class="card">
         <img src="<?php echo IMAGEROOT . $bioscopen->images; ?>" id="cardImage" class="card-img-top" alt="<?php echo $bioscopen->name; ?>">
