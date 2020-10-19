@@ -1,6 +1,6 @@
 <?php
 /*
- * Overview Page (Cinama account)
+ * Overview Page (Cinema account)
  *
  * © 2020 Team PodaPunde
  * 

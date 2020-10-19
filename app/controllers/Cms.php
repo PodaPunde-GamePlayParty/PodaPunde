@@ -6,14 +6,14 @@
  * 
  */
 
-// Create bioscopen class
+// Create CMS class
 class Cms extends Controller {
 
     public function __construct() {
         $this->cmsModel = $this->model("Cmsmodel");
     }
 
-    // Bioscopen page
+    // CMS page
     public function dashboard() {
 
         $user_id = $_SESSION["userid"];
