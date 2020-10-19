@@ -32,9 +32,29 @@
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/contact">Contact</a>
             </li>
+            <?php
+                if(!empty($_SESSION['authority'])) {
+                    $authority = $_SESSION['authority'];
+                                        
+                    switch ($authority) {
+                        case "1":
+                            break;
+                        
+                        case "2":
+                            echo "<li class='nav-item'>";
+                            echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms/dashboard'>Dashboard</a>";
+                            echo "</li>";
+                            break;
+                        
+                        default:
+                            
+                            break;
+                    }
+            } ?>
         </ul>
-        <form class="form-inline my-2 my-lg-0 pr-5">
 
+
+        <div class="form-inline my-2 my-lg-0 pr-5">
             <?php if (!empty($_SESSION['userid'])) { ?>
                 <a class="nav-item text-dark nav-link" href="<?php echo URLROOT; ?>/authentication/logout">Log out</a>
             <?php } else { ?>
@@ -49,6 +69,6 @@
                     </svg> -->
                 </a>
             <?php } ?>
-        </form>
+            </div>
     </div>
 </nav>

@@ -54,7 +54,7 @@ class User {
 	public function logOut() {
 
 		unset($_SESSION['userid']);
-		unset($_SESSION['authority_level']);
+		unset($_SESSION['authority']);
 		unset($_SESSION['firstname']);
 		session_destroy();
 

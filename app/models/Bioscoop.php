@@ -15,7 +15,7 @@ class Bioscoop {
 		$this->database = new Database;
 	}
 
-	// Return users
+	// Return cinemas
 	public function getBioscopen() {
 
 		$query  = "SELECT * ";
