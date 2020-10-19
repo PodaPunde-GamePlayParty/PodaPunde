@@ -76,15 +76,15 @@ class Cmsmodel {
 		$cinema_id = $cinema->cinema_id;
 		$cinema_halls = $this->getHalls($cinema_id); 
 		
-		// foreach($cinema_halls as $id) {
-		// 	$hall_id = $id->hall_id;
-		// 	$hall_facilities[$hall_id] = $this->getFacilities($hall_id);
-		// }
+		foreach($cinema_halls as $id) {
+			$hall_id = $id->hall_id;
+			$hall_facilities[$hall_id] = $this->getFacilities($hall_id);
+		}
 
 		return [
 			"cinema" => $cinema,
 			"cinema_halls" => $cinema_halls,
-			// "hall_facilities" => $hall_facilities
+			"hall_facilities" => $hall_facilities
 			// krijg error in mijn hoofd werk later bij
 		];
 	}

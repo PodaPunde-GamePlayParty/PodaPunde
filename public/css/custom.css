@@ -6,63 +6,70 @@
 *
 */
 
+/* GENERAL */ /*
+What is GENERAL?
+General is:
+- Style elements/values that are multifunctional
+- Constants
+*/
+
+/* PART OF GENERAL */
+/* Root Colors */
 :root {
   --main: #8cfaa9;
   --oldMain: #5ac541;
 }
 
-.header {
-    background-color: var(--main)!important;
-    height: 20vh;
+/* PART OF GENERAL */
+/* Multifunctional Id's and Classes */
+#BoldStyle {
+  font-weight: bold;
 }
 
-.navbar {
-    background-color: var(--main)!important;
-}
-
-.border-top {
-    border-color: black!important;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-html::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-html {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-#cardSize {
-  height: 380px;
-}
-
-#cardImage {
-  height: 166px;
-  width: auto!important;
+#alignmentCenter {
+  text-align: center;
 }
 
 #noMarginBottom {
   margin-bottom: 0!important;
 }
 
-@media screen and (max-width: 800px) {
-  .headerh1 {
-    font-size: 20px!important;
-  }
+/* Hiding Scrollbar (work at almost al Bowsers) */
+html::-webkit-scrollbar {
+  display: none!important; /* Chrome, Safari and Opera */
 }
 
-/* headertitles (h1) alignment */
-#alignmentCenter {
-  text-align: center;
+html {
+  -ms-overflow-style: none!important;  /* IE and Edge */
+  scrollbar-width: none!important;  /* Firefox */
 }
 
-/* Strange width from row */
-#strangeMargin.row {
-  margin-right: 0px!important;
+
+
+/* Header Part */
+.header {
+    background-color: var(--main)!important;
+    height: 20vh;
 }
+
+/* Nav-bar Part */
+.navbar {
+    background-color: var(--main)!important;
+}
+
+
+
+/* Bioscoop overview (logged out) Page */
+#cardSize {
+  height: 380px;
+}
+/* image size of the card */
+#cardImage {
+  height: 166px;
+  width: auto!important;
+}
+
+
 
 /* Footer part */
 footer {
@@ -74,9 +81,7 @@ footer {
   color: black;
 }
 
-.row {
-    margin-right: 0!important;
-}
+/* Footer alignmet */
 .col p.copyright-text {
   text-align: center;
 }
