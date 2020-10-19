@@ -7,46 +7,16 @@
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php"; ?>
-
-<div class="container mt-lg-3 mt-2">
-  <h2><?php echo $data['title']; ?></h2>
-
 <?php
+include APPROOT."/views/fragments/header.php"; 
+
 $cinema = $data["cms"]["cinema"];
 $cms = $data["cms"];
 
-// echo "cinema_id = " . $cinema->cinema_id . "<br>";
-// echo "user_id = " . $cinema->user_id . "<br>";
-// echo "name = " . $cinema->name . "<br>";
-// echo "adress = " . $cinema->adress . "<br>";
-// echo "city = " . $cinema->city . "<br>";
-// echo "zipcode = " . $cinema->zipcode . "<br>";
-// echo "province = " . $cinema->province . "<br>";
-// echo "images = " . $cinema->images . "<br>";
-// echo "description = " . $cinema->description . "<br>";
-
-// echo "<br><hr><br>";
-
-
-// foreach ($cms["cinema_halls"] as $hall) {
-//   echo "hall_id = " . $hall->hall_id . "<br>";
-//   echo "cinema_id = " . $hall->cinema_id . "<br>";
-//   echo "hall_number = " . $hall->hall_number . "<br>";
-//   echo "quantity_chairs = " . $hall->quantity_chairs . "<br>";
-//   echo "wheelchair_accessible = " . $hall->wheelchair_accessible . "<br>";
-//   echo "screen_size = " . $hall->screen_size . "<br>";
-//   echo "version = " . $hall->version . "<br>";
-    
-  // echo "<br>";
-  // foreach ($cms["hall_facilities"] as $facility) {
-  //   echo "hall_id = " . $facility[$hall->hall_id]->hall_id . "<br>";
-  //   echo "facility = " . $facility[$hall->hall_id]->facility . "<br>";
-  // }
-
-//   echo "<br><hr><br>";
-// }
 ?>
+
+<div class="container mt-lg-3 mt-2">
+  <h2><?php echo $data['title']; ?></h2>
 
   <div class="row">
     <div class="col-md-6 mb-md-0 p-md-4">
@@ -60,9 +30,8 @@ $cms = $data["cms"];
   </div>
 
   <div class="row">
-    <?php
-    foreach ($cms["cinema_halls"] as $hall) { ?>
-    
+    <?php foreach ($cms["cinema_halls"] as $hall) { ?>
+
       <div class="col-lg-3 col-md-4 col-12">
         <p id="BoldStyle">Zaal: <?php echo $hall->hall_number; ?></p>
         <p id="BoldStyle"><i class="fas fa-couch"></i> <?php echo $hall->quantity_chairs; ?> Stoelen</p>
@@ -71,13 +40,16 @@ $cms = $data["cms"];
         <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
       </div>
 
-    <?php } ?>
+    <?php
+      // foreach ($cms["hall_facilities"] as $facility) {
+      //   echo "hall_id = " . $facility[$hall->hall_id]->hall_id . "<br>";
+      //   echo "facility = " . $facility[$hall->hall_id]->facility . "<br>";
+      // }
+    } ?>
+
   </div>
+
+
 </div>
-
-
-
-
-
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>
