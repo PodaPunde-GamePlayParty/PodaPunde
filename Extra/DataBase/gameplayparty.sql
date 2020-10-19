@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 14 okt 2020 om 14:18
+-- Gegenereerd op: 19 okt 2020 om 12:28
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -30,23 +30,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cinemas` (
   `cinema_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `name` varchar(20) NOT NULL,
   `adress` varchar(60) NOT NULL,
   `city` varchar(40) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `province` varchar(20) NOT NULL,
-  `images` text
+  `images` text,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `cinemas`
 --
 
-INSERT INTO `cinemas` (`cinema_id`, `name`, `adress`, `city`, `zipcode`, `province`, `images`) VALUES
-(1, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg'),
-(2, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg'),
-(3, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg'),
-(4, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg');
+INSERT INTO `cinemas` (`cinema_id`, `user_id`, `name`, `adress`, `city`, `zipcode`, `province`, `images`, `description`) VALUES
+(1, 4, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec magna tortor. Duis metus nunc, varius et dolor non, ultricies pulvinar tortor. Aenean non auctor nibh, et dignissim libero. Aliquam erat volutpat. Nulla pulvinar hendrerit magna eget malesuada. Donec non turpis sapien. Duis venenatis ante a arcu varius condimentum sit amet eget tortor. Nam eget nibh sit amet metus pulvinar dictum. Donec eu velit vitae nisl ullamcorper volutpat.  In hac habitasse platea dictumst. Fusce odio lacus, porttitor nec rutrum a, blandit non dui. Sed at vestibulum purus. Nulla in finibus tortor. Nunc vehicula lorem ut dictum molestie. Pellentesque laoreet nisi sapien, faucibus bibendum risus tempus sit amet. Phasellus nulla massa, lacinia at sapien et, sagittis eleifend arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ac orci vitae leo rhoncus imperdiet. In hac habitasse platea dictumst. Nulla facilisi. Donec ullamcorper consequat mi, et pellentesque odio blandit sit amet.  Ut dictum, dui sit amet placerat lobortis, nisi lacus consectetur dui, non ultricies lacus leo ut dui. Ut hendrerit felis at nunc tincidunt, quis placerat enim dictum. Nulla aliquet fringilla orci, vitae placerat purus tincidunt a. Ut ullamcorper risus dolor, placerat gravida orci bibendum sed. Ut tincidunt est at imperdiet volutpat. Suspendisse potenti. Aliquam a fringilla est, in auctor eros. Duis auctor urna justo, eget faucibus sapien tristique egestas. Donec at eros vel metus pharetra euismod ac a nibh. Aenean luctus neque eleifend pulvinar egestas. Aliquam efficitur, metus vel laoreet pulvinar, urna sem tincidunt libero, ac tristique nisl nisi viverra turpis. Proin egestas tortor ut vehicula consequat. Etiam porta elit id ultrices auctor.'),
+(2, 5, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec magna tortor. Duis metus nunc, varius et dolor non, ultricies pulvinar tortor. Aenean non auctor nibh, et dignissim libero. Aliquam erat volutpat. Nulla pulvinar hendrerit magna eget malesuada. Donec non turpis sapien. Duis venenatis ante a arcu varius condimentum sit amet eget tortor. Nam eget nibh sit amet metus pulvinar dictum. Donec eu velit vitae nisl ullamcorper volutpat.  In hac habitasse platea dictumst. Fusce odio lacus, porttitor nec rutrum a, blandit non dui. Sed at vestibulum purus. Nulla in finibus tortor. Nunc vehicula lorem ut dictum molestie. Pellentesque laoreet nisi sapien, faucibus bibendum risus tempus sit amet. Phasellus nulla massa, lacinia at sapien et, sagittis eleifend arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ac orci vitae leo rhoncus imperdiet. In hac habitasse platea dictumst. Nulla facilisi. Donec ullamcorper consequat mi, et pellentesque odio blandit sit amet.  Ut dictum, dui sit amet placerat lobortis, nisi lacus consectetur dui, non ultricies lacus leo ut dui. Ut hendrerit felis at nunc tincidunt, quis placerat enim dictum. Nulla aliquet fringilla orci, vitae placerat purus tincidunt a. Ut ullamcorper risus dolor, placerat gravida orci bibendum sed. Ut tincidunt est at imperdiet volutpat. Suspendisse potenti. Aliquam a fringilla est, in auctor eros. Duis auctor urna justo, eget faucibus sapien tristique egestas. Donec at eros vel metus pharetra euismod ac a nibh. Aenean luctus neque eleifend pulvinar egestas. Aliquam efficitur, metus vel laoreet pulvinar, urna sem tincidunt libero, ac tristique nisl nisi viverra turpis. Proin egestas tortor ut vehicula consequat. Etiam porta elit id ultrices auctor.'),
+(3, 6, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec magna tortor. Duis metus nunc, varius et dolor non, ultricies pulvinar tortor. Aenean non auctor nibh, et dignissim libero. Aliquam erat volutpat. Nulla pulvinar hendrerit magna eget malesuada. Donec non turpis sapien. Duis venenatis ante a arcu varius condimentum sit amet eget tortor. Nam eget nibh sit amet metus pulvinar dictum. Donec eu velit vitae nisl ullamcorper volutpat.  In hac habitasse platea dictumst. Fusce odio lacus, porttitor nec rutrum a, blandit non dui. Sed at vestibulum purus. Nulla in finibus tortor. Nunc vehicula lorem ut dictum molestie. Pellentesque laoreet nisi sapien, faucibus bibendum risus tempus sit amet. Phasellus nulla massa, lacinia at sapien et, sagittis eleifend arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ac orci vitae leo rhoncus imperdiet. In hac habitasse platea dictumst. Nulla facilisi. Donec ullamcorper consequat mi, et pellentesque odio blandit sit amet.  Ut dictum, dui sit amet placerat lobortis, nisi lacus consectetur dui, non ultricies lacus leo ut dui. Ut hendrerit felis at nunc tincidunt, quis placerat enim dictum. Nulla aliquet fringilla orci, vitae placerat purus tincidunt a. Ut ullamcorper risus dolor, placerat gravida orci bibendum sed. Ut tincidunt est at imperdiet volutpat. Suspendisse potenti. Aliquam a fringilla est, in auctor eros. Duis auctor urna justo, eget faucibus sapien tristique egestas. Donec at eros vel metus pharetra euismod ac a nibh. Aenean luctus neque eleifend pulvinar egestas. Aliquam efficitur, metus vel laoreet pulvinar, urna sem tincidunt libero, ac tristique nisl nisi viverra turpis. Proin egestas tortor ut vehicula consequat. Etiam porta elit id ultrices auctor.'),
+(4, 7, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec magna tortor. Duis metus nunc, varius et dolor non, ultricies pulvinar tortor. Aenean non auctor nibh, et dignissim libero. Aliquam erat volutpat. Nulla pulvinar hendrerit magna eget malesuada. Donec non turpis sapien. Duis venenatis ante a arcu varius condimentum sit amet eget tortor. Nam eget nibh sit amet metus pulvinar dictum. Donec eu velit vitae nisl ullamcorper volutpat.  In hac habitasse platea dictumst. Fusce odio lacus, porttitor nec rutrum a, blandit non dui. Sed at vestibulum purus. Nulla in finibus tortor. Nunc vehicula lorem ut dictum molestie. Pellentesque laoreet nisi sapien, faucibus bibendum risus tempus sit amet. Phasellus nulla massa, lacinia at sapien et, sagittis eleifend arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ac orci vitae leo rhoncus imperdiet. In hac habitasse platea dictumst. Nulla facilisi. Donec ullamcorper consequat mi, et pellentesque odio blandit sit amet.  Ut dictum, dui sit amet placerat lobortis, nisi lacus consectetur dui, non ultricies lacus leo ut dui. Ut hendrerit felis at nunc tincidunt, quis placerat enim dictum. Nulla aliquet fringilla orci, vitae placerat purus tincidunt a. Ut ullamcorper risus dolor, placerat gravida orci bibendum sed. Ut tincidunt est at imperdiet volutpat. Suspendisse potenti. Aliquam a fringilla est, in auctor eros. Duis auctor urna justo, eget faucibus sapien tristique egestas. Donec at eros vel metus pharetra euismod ac a nibh. Aenean luctus neque eleifend pulvinar egestas. Aliquam efficitur, metus vel laoreet pulvinar, urna sem tincidunt libero, ac tristique nisl nisi viverra turpis. Proin egestas tortor ut vehicula consequat. Etiam porta elit id ultrices auctor.');
 
 -- --------------------------------------------------------
 
@@ -64,13 +66,17 @@ CREATE TABLE `customerreservations` (
 --
 
 INSERT INTO `customerreservations` (`reservation_id`, `customer_id`) VALUES
-(1, 1),
-(2, 5),
-(1, 8),
+(1, 2),
+(2, 3),
+(3, 8),
+(4, 1),
+(5, 9),
+(6, 5),
+(6, 4),
 (7, 3),
-(5, 1),
-(10, 2),
-(8, 4);
+(8, 7),
+(9, 6),
+(10, 1);
 
 -- --------------------------------------------------------
 
@@ -234,12 +240,16 @@ CREATE TABLE `reservationcinemas` (
 --
 
 INSERT INTO `reservationcinemas` (`reservation_id`, `cinema_id`) VALUES
-(1, 1),
-(4, 3),
+(1, 2),
+(2, 3),
 (3, 4),
-(8, 2),
-(3, 4),
-(4, 4);
+(4, 1),
+(5, 2),
+(6, 4),
+(7, 3),
+(8, 1),
+(9, 4),
+(10, 2);
 
 -- --------------------------------------------------------
 
@@ -257,12 +267,14 @@ CREATE TABLE `reservationprices` (
 --
 
 INSERT INTO `reservationprices` (`reservation_id`, `service_id`) VALUES
-(1, 3),
-(3, 2),
-(4, 2),
-(7, 3),
-(8, 4),
-(2, 5);
+(1, 2),
+(1, 4),
+(1, 5),
+(2, 3),
+(2, 6),
+(3, 4),
+(5, 5),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -318,7 +330,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `preposition`, `lastname`, `authority_level`, `creation_date`) VALUES
 (1, 'bobnab', '61f279253021bbff55c54e977eff50277d0fb1ba', 'boskaboutertje@outlook.com', 'Bob', NULL, 'Nab', 1, '2020-10-05 11:45:38'),
 (2, 'dyonvanraaij', '\'e8367be53c7d9d1d1aca99f756ef227a9f7af41c', 'dyon.a.van.raaij@gmail.com', 'Dyon', 'Van', 'Raaij', 1, '2020-10-06 09:45:13'),
-(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', NULL, 'Punde', 1, '2020-10-14 13:39:51');
+(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', NULL, 'Punde', 1, '2020-10-14 13:39:51'),
+(4, 'kinpolisurecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', NULL, 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
+(5, 'kinepolisalmere', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'almere@kinepolis.nl', 'Kinepolis', NULL, 'almere', 2, '2020-10-15 14:10:24'),
+(6, 'kinepolisbreda', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'breda@kinepolis.nl', 'Kinepolis', NULL, 'Breda', 2, '2020-10-15 15:41:03'),
+(7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', NULL, 'groningen', 2, '2020-10-15 15:42:03');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -328,7 +344,8 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `p
 -- Indexen voor tabel `cinemas`
 --
 ALTER TABLE `cinemas`
-  ADD PRIMARY KEY (`cinema_id`);
+  ADD PRIMARY KEY (`cinema_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexen voor tabel `customerreservations`
@@ -354,7 +371,7 @@ ALTER TABLE `facilities`
 --
 ALTER TABLE `halls`
   ADD PRIMARY KEY (`hall_id`),
-  ADD KEY `Cinema_ID` (`cinema_id`);
+  ADD KEY `cinema_id` (`cinema_id`);
 
 --
 -- Indexen voor tabel `prices`
@@ -402,68 +419,74 @@ ALTER TABLE `cinemas`
 -- AUTO_INCREMENT voor een tabel `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT voor een tabel `halls`
 --
 ALTER TABLE `halls`
-  MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT voor een tabel `prices`
 --
 ALTER TABLE `prices`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
 
 --
+-- Beperkingen voor tabel `cinemas`
+--
+ALTER TABLE `cinemas`
+  ADD CONSTRAINT `cinemas_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
 -- Beperkingen voor tabel `customerreservations`
 --
 ALTER TABLE `customerreservations`
-  ADD CONSTRAINT `customerreservations_ibfk_1` FOREIGN KEY (`Reservation_ID`) REFERENCES `reservations` (`Reservation_ID`),
-  ADD CONSTRAINT `customerreservations_ibfk_2` FOREIGN KEY (`Customer_ID`) REFERENCES `customers` (`Customer_ID`);
+  ADD CONSTRAINT `customerreservations_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`),
+  ADD CONSTRAINT `customerreservations_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`);
 
 --
 -- Beperkingen voor tabel `facilities`
 --
 ALTER TABLE `facilities`
-  ADD CONSTRAINT `facilities_ibfk_1` FOREIGN KEY (`Hall_ID`) REFERENCES `halls` (`Hall_ID`);
+  ADD CONSTRAINT `facilities_ibfk_1` FOREIGN KEY (`hall_id`) REFERENCES `halls` (`hall_id`);
 
 --
 -- Beperkingen voor tabel `halls`
 --
 ALTER TABLE `halls`
-  ADD CONSTRAINT `halls_ibfk_1` FOREIGN KEY (`Cinema_ID`) REFERENCES `cinemas` (`Cinema_ID`);
+  ADD CONSTRAINT `halls_ibfk_1` FOREIGN KEY (`cinema_id`) REFERENCES `cinemas` (`cinema_id`);
 
 --
 -- Beperkingen voor tabel `reservationcinemas`
 --
 ALTER TABLE `reservationcinemas`
-  ADD CONSTRAINT `reservationcinemas_ibfk_1` FOREIGN KEY (`Reservation_ID`) REFERENCES `reservations` (`Reservation_ID`),
-  ADD CONSTRAINT `reservationcinemas_ibfk_2` FOREIGN KEY (`Cinema_ID`) REFERENCES `cinemas` (`Cinema_ID`);
+  ADD CONSTRAINT `reservationcinemas_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`),
+  ADD CONSTRAINT `reservationcinemas_ibfk_2` FOREIGN KEY (`cinema_id`) REFERENCES `cinemas` (`cinema_id`);
 
 --
 -- Beperkingen voor tabel `reservationprices`
 --
 ALTER TABLE `reservationprices`
-  ADD CONSTRAINT `reservationprices_ibfk_1` FOREIGN KEY (`Reservation_ID`) REFERENCES `reservations` (`Reservation_ID`),
-  ADD CONSTRAINT `reservationprices_ibfk_2` FOREIGN KEY (`Service_ID`) REFERENCES `prices` (`Service_ID`);
+  ADD CONSTRAINT `reservationprices_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`),
+  ADD CONSTRAINT `reservationprices_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `prices` (`service_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
