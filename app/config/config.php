@@ -8,10 +8,10 @@
 
 
 // Database
-define("DBHOST","localhost");
-define("DBUSER","root");
-define("DBPASS","");
-define("DBNAME","gameplayparty");
+define("DBHOST","185.105.219.7");
+define("DBUSER","gameplay_podapunde");
+define("DBPASS","PodaPunde2020");
+define("DBNAME","gameplay_party");
 
 // Sitename
 define ("SITENAME","GamePlayParty");
