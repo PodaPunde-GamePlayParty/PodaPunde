@@ -18,7 +18,7 @@ $cms = $data["cms"];
 <div class="container mt-lg-3 mt-2">
   <h2><?php echo $data['title']; ?></h2>
 
-  <div class="row">
+  <div class="row mt-lg-5">
     <div class="col-md-6 mb-md-0 p-md-4">
       <img src="<?php echo IMAGEROOT . $cinema->images; ?>" class="w-100" alt="<?php echo $cinema->name; ?>">
     </div>
@@ -29,24 +29,39 @@ $cms = $data["cms"];
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-lg-5">
     <?php foreach ($cms["cinema_halls"] as $hall) { ?>
 
-      <div class="col-lg-3 col-md-4 col-12">
-        <p id="BoldStyle">Zaal: <?php echo $hall->hall_number; ?></p>
-        <p id="BoldStyle"><i class="fas fa-couch"></i> <?php echo $hall->quantity_chairs; ?> Stoelen</p>
-        <p id="BoldStyle"><i class="fas fa-wheelchair"></i> <?php echo $hall->wheelchair_accessible; ?> Rolstoel plaatsen</p>
-        <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $hall->screen_size; ?></p>
-        <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
+      <div class="col-lg-3 col-md-6 col-12 mb-lg-5 mb-md-3 mb-2" style="width: 18rem;">
+        <div class="card">
+
+          <div class="card-body">
+            <h5 id="BoldStyle">Zaal: <?php echo $hall->hall_number; ?></h5>
+
+            <div class="card-text">
+              <p id="BoldStyle"><i class="fas fa-couch"></i> <?php echo $hall->quantity_chairs; ?> Stoelen</p>
+              <p id="BoldStyle"><i class="fas fa-wheelchair"></i> <?php echo $hall->wheelchair_accessible; ?> Rolstoel plaatsen</p>
+              <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $hall->screen_size; ?></p>
+              <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
+            </div>
+            
+            <div id="alignmentCenter">
+              <a href="#" class="btn btn-primary">Knop</a>
+            </div>
+          
+          </div>
+        </div>
       </div>
 
+
     <?php
+      // Krijg error bij deze
+
       // foreach ($cms["hall_facilities"] as $facility) {
       //   echo "hall_id = " . $facility[$hall->hall_id]->hall_id . "<br>";
       //   echo "facility = " . $facility[$hall->hall_id]->facility . "<br>";
       // }
     } ?>
-
   </div>
 
 
