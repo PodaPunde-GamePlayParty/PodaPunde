@@ -13,8 +13,8 @@ class Cms extends Controller {
         $this->cmsModel = $this->model("Cmsmodel");
     }
 
-    // CMS page
-    public function dashboard() {
+    // Bioscopen page
+    public function index() {
 
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
@@ -26,11 +26,11 @@ class Cms extends Controller {
         $cms = $this->cmsModel->getCinemaByUserId($user_id);
 
         $data = [
-            "title" => "Dashboard",
+            "title" => "Overzicht",
             "cms" => $cms
         ];
 
-        $this->view("/cms/bioscoop/dashboard", $data);
+        $this->view("/cms/bioscoop/index", $data);
     }
 
 }

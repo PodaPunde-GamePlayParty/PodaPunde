@@ -42,7 +42,7 @@
                         
                         case "2":
                             echo "<li class='nav-item'>";
-                            echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms/dashboard'>Dashboard</a>";
+                            echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
                             echo "</li>";
                             break;
                         
