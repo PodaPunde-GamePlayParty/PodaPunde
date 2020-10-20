@@ -16,17 +16,27 @@ $cms = $data["cms"];
 ?>
 
 <div class="container mt-lg-3 mt-2">
-  <h2><?php echo $data['title']; ?></h2>
+  <h1><?php echo $data['title']; ?></h1>
 
-  <div class="row mt-lg-5">
-    <div class="rounded">
-      <div class="col-md-6 mb-md-0 p-md-4">
-        <img src="<?php echo IMAGEROOT . $cinema->images; ?>" class="w-100" alt="<?php echo $cinema->name; ?>">
-      </div>
-      <div class="col-md-6 position-static p-4 pl-md-0">
-        <h5 class="mt-0"><?php echo $cinema->name; ?></h5>
-        <p><?php echo $cinema->description; ?></p>
-        <a href="#" class="btn btn-primary">Knop</a>
+  <div class="row mt-lg-3">
+    <div class="col-md-6 mb-md-0 p-md-4">
+      <img src="<?php echo IMAGEROOT . $cinema->images; ?>" class="w-100" alt="<?php echo $cinema->name; ?>">
+    </div>
+
+    <div class="col-md-6 position-static p-4 pl-md-0">
+      <h5 class="mt-0"><?php echo $cinema->name; ?></h5>
+      <p><?php echo $cinema->description; ?></p>
+
+      <div class="form-row">
+        <div class="col">
+          <a href="#" class="form-control btn btn-outline-secondary">Knop 1</a>
+        </div>
+        <div class="col">
+          <a href="#" class="form-control btn btn-outline-secondary">Knop 2</a>
+        </div>
+        <div class="col">
+          <a href="#" class="form-control btn btn-outline-secondary">Knop 3</a>
+        </div>
       </div>
     </div>
   </div>
@@ -48,7 +58,7 @@ $cms = $data["cms"];
             </div>
             
             <div id="alignmentCenter">
-              <a href="#" class="btn btn-primary">Knop</a>
+              <a href="#" class="form-control btn btn-light">Knop</a>
             </div>
           
           </div>
