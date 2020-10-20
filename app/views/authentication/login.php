@@ -1,9 +1,18 @@
+<?php
+/*
+ * Login form
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
     <div class="container mt-lg-5 mt-2">
         <div class="row form-rows justify-content-center">
             <div class="col-lg-8 col-12">
-                <form method="post">
+                <form method="POST">
                     <div class="form-group">
                         <label for="email font-weight-bold">Email</label>
                         <input type="text" name="email" class="form-control form-control-lg

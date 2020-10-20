@@ -1,3 +1,12 @@
+<?php
+/*
+ * User Page (Content)
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
 

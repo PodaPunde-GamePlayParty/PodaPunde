@@ -1,9 +1,12 @@
 <?php
-
 /*
- * Base controller
- * Loads the models and views
+ * Base Controller Load Models and Views
+ *
+ * © 2020 Team PodaPunde
+ * 
  */
+
+// Create class Controller
 class Controller {
 
     // Load model

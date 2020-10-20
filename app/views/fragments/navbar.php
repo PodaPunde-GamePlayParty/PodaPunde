@@ -1,3 +1,12 @@
+<?php
+/*
+ * Navbar Fragment
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
         aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,20 +21,40 @@
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/index">Home</a>
             </li>
             <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>">Reserveren</a>
+                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reservation">Reserveren</a>
             </li>
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/bioscopen">Bioscoop</a>
             </li>
             <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>">Over Ons</a>
+                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/aboutUs">Over Ons</a>
             </li>
             <li class="nav-item">
                 <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/contact">Contact</a>
             </li>
+            <?php
+                if(!empty($_SESSION['authority'])) {
+                    $authority = $_SESSION['authority'];
+                                        
+                    switch ($authority) {
+                        case "1":
+                            break;
+                        
+                        case "2":
+                            echo "<li class='nav-item'>";
+                            echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
+                            echo "</li>";
+                            break;
+                        
+                        default:
+                            
+                            break;
+                    }
+            } ?>
         </ul>
-        <form class="form-inline my-2 my-lg-0 pr-5">
 
+
+        <div class="form-inline my-2 my-lg-0 pr-5">
             <?php if (!empty($_SESSION['userid'])) { ?>
                 <a class="nav-item text-dark nav-link" href="<?php echo URLROOT; ?>/authentication/logout">Log out</a>
             <?php } else { ?>
@@ -40,6 +69,6 @@
                     </svg> -->
                 </a>
             <?php } ?>
-        </form>
+            </div>
     </div>
 </nav>

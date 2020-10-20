@@ -1,11 +1,11 @@
 <?php
 /*
-Title: MVC Template
-Discription: MVC
-Author: Dyon van Raaij
-Date: 10-09-2020
-Copyright ©2020
-*/
+ * Public index, load files and make session ready
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
+
 
 // Include autoloader for libraries
 require_once "../app/autoloader.php";

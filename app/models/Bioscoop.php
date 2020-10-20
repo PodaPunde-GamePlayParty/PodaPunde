@@ -2,8 +2,11 @@
 /*
  * Database management for the products
  *
- * (C) 2020 Dyon van Raaij
+ * © 2020 Team PodaPunde
+ * 
  */
+
+// Create class Bioscoop
 class Bioscoop {
 
 	private $database;
@@ -12,7 +15,7 @@ class Bioscoop {
 		$this->database = new Database;
 	}
 
-	// Return users
+	// Return cinemas
 	public function getBioscopen() {
 
 		$query  = "SELECT * ";

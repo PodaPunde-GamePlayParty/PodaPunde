@@ -1,4 +1,10 @@
 <?php
+/*
+ * Authentication Controller
+ *
+ * © 2020 Team PodaPunde
+ * 
+ */
 
 // Create Login class
 class Authentication extends Controller {

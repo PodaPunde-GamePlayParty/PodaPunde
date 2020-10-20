@@ -2,7 +2,8 @@
 /*
  * Configuration file
  *
- * (C) 2020 PodaPunde
+ * © 2020 Team PodaPunde
+ * 
  */
 
 
@@ -19,6 +20,7 @@ define ("APPVERSION","0.0.1");
 // Folderpaths
 define("APPROOT", dirname(dirname(__FILE__)));
 define("URLROOT", "http://localhost/projecten/gameplayparty/PodaPunde");
+define("IMAGEROOT", "http://localhost/projecten/gameplayparty/PodaPunde/public/graph/");
 
 //  Salt
 define ("SALTHEADER", "PLOP23B453J");

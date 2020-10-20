@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 okt 2020 om 11:03
+-- Gegenereerd op: 20 okt 2020 om 09:28
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -30,23 +30,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cinemas` (
   `cinema_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `name` varchar(20) NOT NULL,
   `adress` varchar(60) NOT NULL,
   `city` varchar(40) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `province` varchar(20) NOT NULL,
-  `images` text
+  `images` text,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `cinemas`
 --
 
-INSERT INTO `cinemas` (`cinema_id`, `name`, `adress`, `city`, `zipcode`, `province`, `images`) VALUES
-(1, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', ''),
-(2, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', ''),
-(3, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', ''),
-(4, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', '');
+INSERT INTO `cinemas` (`cinema_id`, `user_id`, `name`, `adress`, `city`, `zipcode`, `province`, `images`, `description`) VALUES
+(1, 4, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg', 'Met Kinepolis Jaarbeurs (14 zalen, 3.010 stoelen) heeft Utrecht eindelijk een moderne megabioscoop in de binnenstad: de grootste bioscoop van Utrecht, en een van de grootste bioscopen van Nederland. Kinepolis Jaarbeurs biedt elke filmbezoeker \"the ultimate cinema experience\": ruime en comfortabele stoelen, royale beenruimte, en beeld en geluid van het allerhoogste niveau. Alle zalen zijn voorzien van laserprojectie. Voor een nog intensere bioscoopervaring kijk je een film in Laser ULTRA, met haarscherp laserbeeld en het ruimtelijke geluid van Dolby Atmos. Kinepolis Jaarbeurs ligt op slechts een paar minuten loopafstand van het Centraal Station van Utrecht, tegen de Jaarbeurshallen aan. Een hapje eten of borrelen voor of na de film? Dat kan bij de naastgelegen foodcourt Speys.'),
+(2, 5, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg', 'Kinepolis Almere is sinds 2004 gevestigd in het levendige centrum van Almere. Het ontwerp van het imposante gebouw is van de bekroonde architect Rem Koolhaas. De megabioscoop telt 8 zalen met in totaal 2137 comfortabele stoelen. Bij binnenkomst is de trap die diagonaal door het gebouw loopt, de eerste blikvanger. Kinepolis Almere is sinds november 2017 verbouwd om meer aan te sluiten bij de look-and-feel van Kinepolis. Dit betekent dat alle zetels zijn vernieuwd,  dat er automatische ticket machines (ATMs) op de trap zijn geplaatst en er een volledige nieuwe shop met een ruimer assortiment is gekomen.'),
+(3, 6, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg', 'Kinepolis Breda op het Breepark is de plek waar een filmbezoek een ware beleving wordt. Alle 10 de zalen hebben luxe bioscoopstoelen met extra brede armleuningen en royale beenruimte. Voor nog meer comfort zijn er speciale Cosy Seats te boeken. Kinepolis Breda is een volledig laserprojectie-bioscoop, wat betekent dat de beeldkwaliteit in elke zaal superscherp is. De grootste zaal is uitgerust met Kinepolis Laser ULTRA, een exclusieve combinatie van spectaculair laserbeeld en het ruimtelijke geluid van Dolby Atmos. Parkeren is GRATIS.'),
+(4, 7, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg', 'Kinepolis Groningen telt tien moderne bioscoopzalen en bedient door de uitstekende bereikbaarheid pal naast het NS station en met ruime parkeervoorzieningen een breed publiek uit zowel de stad als ook de provincie Groningen. Kinepolis Groningen biedt haar klanten maximale gastgerichtheid door vriendelijke, goed geinformeerde en professioneel getrainde medewerkers, perfect beeld en geluid en optimaal comfort, waardoor het bioscoopbezoek tot een ware belevenis wordt gemaakt.');
 
 -- --------------------------------------------------------
 
@@ -64,13 +66,17 @@ CREATE TABLE `customerreservations` (
 --
 
 INSERT INTO `customerreservations` (`reservation_id`, `customer_id`) VALUES
-(1, 1),
-(2, 5),
-(1, 8),
+(1, 2),
+(2, 3),
+(3, 8),
+(4, 1),
+(5, 9),
+(6, 5),
+(6, 4),
 (7, 3),
-(5, 1),
-(10, 2),
-(8, 4);
+(8, 7),
+(9, 6),
+(10, 1);
 
 -- --------------------------------------------------------
 
@@ -179,18 +185,18 @@ CREATE TABLE `halls` (
 --
 
 INSERT INTO `halls` (`hall_id`, `cinema_id`, `hall_number`, `quantity_chairs`, `wheelchair_accessible`, `screen_size`, `version`) VALUES
-(1, 1, 1, 100, '5', '1900x1080', '1'),
-(2, 1, 2, 100, '2', '1900x1080', '1'),
-(3, 1, 3, 108, '8', '1900x1080', '2'),
+(1, 1, 1, 100, '5', '1900x1080', '1.0'),
+(2, 1, 2, 100, '2', '1900x1080', '1.0'),
+(3, 1, 3, 108, '8', '1900x1080', '2.0'),
 (4, 2, 1, 100, '5', '1900x1080', '7.9'),
-(5, 2, 2, 78, '3', '1900x1080', '2'),
-(6, 2, 3, 44, '4', '1900x1080', '3'),
-(7, 3, 1, 205, '5', '1900x1080', '6'),
+(5, 2, 2, 78, '3', '1900x1080', '2.0'),
+(6, 2, 3, 44, '4', '1900x1080', '3.0'),
+(7, 3, 1, 205, '5', '1900x1080', '6.0'),
 (8, 3, 2, 207, '2', '1900x1080', '10.0.5'),
 (9, 3, 3, 250, '10', '1900x1080', '10.1.7'),
-(10, 4, 1, 52, '2', '1900x1080', '1'),
-(11, 4, 2, 58, '3', '1900x1080', '3'),
-(12, 4, 3, 64, '4', '1900x1080', '0.8');
+(10, 4, 1, 52, '2', '1900x1080', '1.0'),
+(11, 4, 2, 58, '3', '1900x1080', '3.0'),
+(12, 4, 3, 64, '4', '1900x1080', '1.8.7');
 
 -- --------------------------------------------------------
 
@@ -234,12 +240,16 @@ CREATE TABLE `reservationcinemas` (
 --
 
 INSERT INTO `reservationcinemas` (`reservation_id`, `cinema_id`) VALUES
-(1, 1),
-(4, 3),
+(1, 2),
+(2, 3),
 (3, 4),
-(8, 2),
-(3, 4),
-(4, 4);
+(4, 1),
+(5, 2),
+(6, 4),
+(7, 3),
+(8, 1),
+(9, 4),
+(10, 2);
 
 -- --------------------------------------------------------
 
@@ -257,12 +267,14 @@ CREATE TABLE `reservationprices` (
 --
 
 INSERT INTO `reservationprices` (`reservation_id`, `service_id`) VALUES
-(1, 3),
-(3, 2),
-(4, 2),
-(7, 3),
-(8, 4),
-(2, 5);
+(1, 2),
+(1, 4),
+(1, 5),
+(2, 3),
+(2, 6),
+(3, 4),
+(5, 5),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -316,8 +328,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `preposition`, `lastname`, `authority_level`, `creation_date`) VALUES
-(1, 'bobnab', '1234', 'boskaboutertje@outlook.com', 'Bob', NULL, 'Nab', 3, '2020-10-05 11:45:38'),
-(2, 'dyonvanraaij', '\'e8367be53c7d9d1d1aca99f756ef227a9f7af41c', 'dyon.a.van.raaij@gmail.com', 'Dyon', 'Van', 'Raaij', 1, '2020-10-06 09:45:13');
+(1, 'bobnab', '61f279253021bbff55c54e977eff50277d0fb1ba', 'boskaboutertje@outlook.com', 'Bob', NULL, 'Nab', 1, '2020-10-05 11:45:38'),
+(2, 'dyonvanraaij', '\'e8367be53c7d9d1d1aca99f756ef227a9f7af41c', 'dyon.a.van.raaij@gmail.com', 'Dyon', 'Van', 'Raaij', 1, '2020-10-06 09:45:13'),
+(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', NULL, 'Punde', 1, '2020-10-14 13:39:51'),
+(4, 'kinpolisurecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', NULL, 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
+(5, 'kinepolisalmere', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'almere@kinepolis.nl', 'Kinepolis', NULL, 'almere', 2, '2020-10-15 14:10:24'),
+(6, 'kinepolisbreda', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'breda@kinepolis.nl', 'Kinepolis', NULL, 'Breda', 2, '2020-10-15 15:41:03'),
+(7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', NULL, 'groningen', 2, '2020-10-15 15:42:03');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -327,7 +344,8 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `p
 -- Indexen voor tabel `cinemas`
 --
 ALTER TABLE `cinemas`
-  ADD PRIMARY KEY (`cinema_id`);
+  ADD PRIMARY KEY (`cinema_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexen voor tabel `customerreservations`
@@ -353,7 +371,7 @@ ALTER TABLE `facilities`
 --
 ALTER TABLE `halls`
   ADD PRIMARY KEY (`hall_id`),
-  ADD KEY `Cinema_ID` (`cinema_id`);
+  ADD KEY `cinema_id` (`cinema_id`);
 
 --
 -- Indexen voor tabel `prices`
@@ -425,44 +443,50 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
 
 --
+-- Beperkingen voor tabel `cinemas`
+--
+ALTER TABLE `cinemas`
+  ADD CONSTRAINT `cinemas_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
 -- Beperkingen voor tabel `customerreservations`
 --
 ALTER TABLE `customerreservations`
-  ADD CONSTRAINT `customerreservations_ibfk_1` FOREIGN KEY (`Reservation_ID`) REFERENCES `reservations` (`Reservation_ID`),
-  ADD CONSTRAINT `customerreservations_ibfk_2` FOREIGN KEY (`Customer_ID`) REFERENCES `customers` (`Customer_ID`);
+  ADD CONSTRAINT `customerreservations_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`),
+  ADD CONSTRAINT `customerreservations_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`);
 
 --
 -- Beperkingen voor tabel `facilities`
 --
 ALTER TABLE `facilities`
-  ADD CONSTRAINT `facilities_ibfk_1` FOREIGN KEY (`Hall_ID`) REFERENCES `halls` (`Hall_ID`);
+  ADD CONSTRAINT `facilities_ibfk_1` FOREIGN KEY (`hall_id`) REFERENCES `halls` (`hall_id`);
 
 --
 -- Beperkingen voor tabel `halls`
 --
 ALTER TABLE `halls`
-  ADD CONSTRAINT `halls_ibfk_1` FOREIGN KEY (`Cinema_ID`) REFERENCES `cinemas` (`Cinema_ID`);
+  ADD CONSTRAINT `halls_ibfk_1` FOREIGN KEY (`cinema_id`) REFERENCES `cinemas` (`cinema_id`);
 
 --
 -- Beperkingen voor tabel `reservationcinemas`
 --
 ALTER TABLE `reservationcinemas`
-  ADD CONSTRAINT `reservationcinemas_ibfk_1` FOREIGN KEY (`Reservation_ID`) REFERENCES `reservations` (`Reservation_ID`),
-  ADD CONSTRAINT `reservationcinemas_ibfk_2` FOREIGN KEY (`Cinema_ID`) REFERENCES `cinemas` (`Cinema_ID`);
+  ADD CONSTRAINT `reservationcinemas_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`),
+  ADD CONSTRAINT `reservationcinemas_ibfk_2` FOREIGN KEY (`cinema_id`) REFERENCES `cinemas` (`cinema_id`);
 
 --
 -- Beperkingen voor tabel `reservationprices`
 --
 ALTER TABLE `reservationprices`
-  ADD CONSTRAINT `reservationprices_ibfk_1` FOREIGN KEY (`Reservation_ID`) REFERENCES `reservations` (`Reservation_ID`),
-  ADD CONSTRAINT `reservationprices_ibfk_2` FOREIGN KEY (`Service_ID`) REFERENCES `prices` (`Service_ID`);
+  ADD CONSTRAINT `reservationprices_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservations` (`reservation_id`),
+  ADD CONSTRAINT `reservationprices_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `prices` (`service_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
