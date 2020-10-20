@@ -19,13 +19,15 @@ $cms = $data["cms"];
   <h2><?php echo $data['title']; ?></h2>
 
   <div class="row mt-lg-5">
-    <div class="col-md-6 mb-md-0 p-md-4">
-      <img src="<?php echo IMAGEROOT . $cinema->images; ?>" class="w-100" alt="<?php echo $cinema->name; ?>">
-    </div>
-    <div class="col-md-6 position-static p-4 pl-md-0">
-      <h5 class="mt-0"><?php echo $cinema->name; ?></h5>
-      <p><?php echo $cinema->description; ?></p>
-      <a href="#" class="btn btn-primary">Knop</a>
+    <div class="rounded">
+      <div class="col-md-6 mb-md-0 p-md-4">
+        <img src="<?php echo IMAGEROOT . $cinema->images; ?>" class="w-100" alt="<?php echo $cinema->name; ?>">
+      </div>
+      <div class="col-md-6 position-static p-4 pl-md-0">
+        <h5 class="mt-0"><?php echo $cinema->name; ?></h5>
+        <p><?php echo $cinema->description; ?></p>
+        <a href="#" class="btn btn-primary">Knop</a>
+      </div>
     </div>
   </div>
 
