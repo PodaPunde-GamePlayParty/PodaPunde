@@ -1,18 +1,13 @@
 <?php
 /*
- * CMS Page (Admin)
+ * Halls Page (Admin)
  *
  * © 2020 Team PodaPunde
  *
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php";
-
-$cinema = $data["cms"]["cinema"];
-$cms = $data["cms"];
-
-?>
+<?php include APPROOT."/views/fragments/header.php"; ?>
 
 <div class="row">
 
@@ -20,7 +15,7 @@ $cms = $data["cms"];
     <div class="col-12 col-md-3">
         <ul class="list-group m-md-3 m-0">
           <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/zalen">Zalen</a>
+            <a class="" href="#">Zalen</a>
           </li>
           <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
@@ -29,8 +24,8 @@ $cms = $data["cms"];
     </div>
 
     <!-- CMS content -->
-    <div class="col-12 col-md-9 p-0 p-md-4">
-        <h1>Welkom terug <?php echo $cinema->name ?></h1>
+    <div class="col-12 col-md-9">
+hai
     </div>
 </div>
 

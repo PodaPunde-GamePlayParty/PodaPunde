@@ -3,7 +3,7 @@
  * Cms management for the content manager / admin
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 
 // Create class content manager
@@ -27,7 +27,7 @@ class Cmsmodel {
 		return $this->database->getRow(); // single Row
 	}
 
-	// **will used in function "getCinemaByUserId" ** 
+	// **will used in function "getCinemaByUserId" **
 	// get the cinema that is signed to the user
 	public function getCinema($user_id) {
 
@@ -40,7 +40,7 @@ class Cmsmodel {
 		return $this->database->getRow(); // single Row
 	}
 
-	// **will used in function "getCinemaByUserId" ** 
+	// **will used in function "getCinemaByUserId" **
 	// get the halss that are asigned to the cinema
 	public function getHalls($cinema_id) {
 
@@ -71,8 +71,8 @@ class Cmsmodel {
 
 		$cinema = $this->getCinema($user_id);
 		$cinema_id = $cinema->cinema_id;
-		$cinema_halls = $this->getHalls($cinema_id); 
-		
+		$cinema_halls = $this->getHalls($cinema_id);
+
 		// foreach($cinema_halls as $id) {
 		// 	$hall_id = $id->hall_id;
 		// 	$hall_facilities[$hall_id] = $this->getFacilities($hall_id);
@@ -85,7 +85,7 @@ class Cmsmodel {
 			// krijg error in mijn hoofd werk later bij
 		];
 	}
-	
+
 	public function getAllCinema() {
 
 		$query  = "SELECT * ";

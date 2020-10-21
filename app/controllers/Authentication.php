@@ -22,8 +22,8 @@ class Authentication extends Controller {
 
         //  prepare login form
         $data = [
-          "email" => "",
-          "password" => "",
+          "email" => "jaarbeursutrecht@kinepolis.nl",
+          "password" => "bioscoop",
           "email_error" => "",
           "password_error" => ""
         ];
@@ -68,15 +68,15 @@ class Authentication extends Controller {
                     case '1':
                         redirect("pages/index");
                     break;
-        
+
                     case '2':
                         redirect("cms/index");
                     break;
-        
+
                     case '3':
                         redirect("cms/index");
                     break;
-                    
+
                     default:
                         redirect("pages/index");
                     break;

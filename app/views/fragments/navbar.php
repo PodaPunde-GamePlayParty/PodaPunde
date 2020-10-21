@@ -27,15 +27,15 @@ if(!empty($_SESSION['authority'])) {
 
 switch ($authority) {
     case "2":
-        echo "<li class='nav-item'>";
-        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-        echo "</li>";
+        // echo "<li class='nav-item'>";
+        // echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
+        // echo "</li>";
     break;
 
     case "3":
-        echo "<li class='nav-item'>";
-        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-        echo "</li>";
+        // echo "<li class='nav-item'>";
+        // echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
+        // echo "</li>";
     break;
 
     default:
