@@ -65,10 +65,6 @@ class Authentication extends Controller {
                   $authority_level = $loggedInUser->authority_level;
 
                   switch ($authority_level) {
-                    case '1':
-                        redirect("pages/index");
-                    break;
-
                     case '2':
                         redirect("cms/index");
                     break;

@@ -15,6 +15,7 @@ class Cms extends Controller {
 
     // CMS page
     public function index() {
+
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
 
@@ -40,8 +41,14 @@ class Cms extends Controller {
         $this->view("cms/index", $data);
 
         }
-    }
 
+        $data = [
+            "title" => "Overzicht",
+            "cms" => $cms
+        ];
+
+        $this->view("cms/index", $data);
+    }
 
     // Bioscoop overzicht pagina
     public function overzicht() {
@@ -95,28 +102,6 @@ class Cms extends Controller {
         ];
 
         $this->view("cms/bioscoop/zalen", $data);
-    }
-
-
-    // Cinema Details Page
-    public function cinemaDetails() {
-       
-        if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
-            redirect("bioscopen");
-        }
-
-        $cinema_id = $_GET["cinema_id"];
-
-        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
-        $cinema_halls = $this->cmsModel->getHalls($cinema_id);
-
-        $data = [
-            "title" => $cinema->name,
-            "cinema" => $cinema,
-            "cinema_halls" => $cinema_halls
-        ];
-
-        $this->view("cinema/details", $data);
     }
 
 }
