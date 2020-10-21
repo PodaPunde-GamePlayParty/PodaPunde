@@ -3,7 +3,7 @@
  * Authentication Controller
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 
 // Create Login class
@@ -22,8 +22,8 @@ class Authentication extends Controller {
 
         //  prepare login form
         $data = [
-          "email" => "",
-          "password" => "",
+          "email" => "jaarbeursutrecht@kinepolis.nl",
+          "password" => "bioscoop",
           "email_error" => "",
           "password_error" => ""
         ];
@@ -61,7 +61,22 @@ class Authentication extends Controller {
                   $_SESSION['userid'] = $loggedInUser->user_id;
                   $_SESSION['authority'] = $loggedInUser->authority_level;
                   $_SESSION['firstname'] = $loggedInUser->firstname;
-                  redirect("pages/index");
+
+                  $authority_level = $loggedInUser->authority_level;
+
+                  switch ($authority_level) {
+                    case '2':
+                        redirect("cms/index");
+                    break;
+
+                    case '3':
+                        redirect("cms/index");
+                    break;
+
+                    default:
+                        redirect("pages/index");
+                    break;
+                }
 
               } else {
 

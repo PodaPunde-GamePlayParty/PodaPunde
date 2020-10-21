@@ -6,82 +6,122 @@
 *
 */
 
-/* GENERAL */ /*
+
+/* GENERAL */
+
+
+/*
 What is GENERAL?
 General is:
 - Style elements/values that are multifunctional
 - Constants
 */
 
-/* PART OF GENERAL */
-/* Root Colors */
-:root {
-  --main: #8cfaa9;
-  --oldMain: #5ac541;
-}
 
 /* PART OF GENERAL */
+
+
+/* Root Colors */
+
+:root {
+    --main: #8cfaa9;
+    --oldMain: #5ac541;
+}
+
+
+/* PART OF GENERAL */
+
+
 /* Multifunctional Id's and Classes */
+
 #BoldStyle {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #alignmentCenter {
-  text-align: center;
+    text-align: center;
 }
 
 #noMarginBottom {
-  margin-bottom: 0!important;
+    margin-bottom: 0!important;
 }
+
 
 /* Hiding Scrollbar (work at almost al Bowsers) */
-html::-webkit-scrollbar {
-  display: none!important; /* Chrome, Safari and Opera */
-}
 
-html {
-  -ms-overflow-style: none!important;  /* IE and Edge */
-  scrollbar-width: none!important;  /* Firefox */
-}
 
+/* html::-webkit-scrollbar { */
+
+
+/* display: none!important; Chrome, Safari and Opera */
+
+
+/* } */
+
+
+/* html { */
+
+
+/* -ms-overflow-style: none!important;  IE and Edge */
+
+
+/* scrollbar-width: none!important;  Firefox */
+
+
+/* } */
 
 
 /* Header Part */
+
 .header {
     background-color: var(--main)!important;
     height: 20vh;
 }
 
+
 /* Nav-bar Part */
+
 .navbar {
     background-color: var(--main)!important;
 }
 
 
-
 /* Bioscoop overview (logged out) Page */
+
 #cardSize {
-  height: 380px;
-}
-/* image size of the card */
-#cardImage {
-  height: 166px;
-  width: auto!important;
+    height: 380px;
 }
 
+
+/* image size of the card */
+
+#cardImage {
+    height: 166px;
+    width: auto!important;
+}
+
+
+/* x scrollbar remove */
+
+.row {
+    margin-right: 0!important;
+}
 
 
 /* Footer part */
+
 footer {
-  position: relative;
-  width: 100%;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  background: var(--main);
-  color: black;
+    position: relative;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    background: var(--main);
+    color: black;
 }
 
+
 /* Footer alignmet */
+
 .col p.copyright-text {
-  text-align: center;
+    text-align: center;
 }

@@ -3,7 +3,7 @@
  * Bioscopen Page (Content)
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 ?>
 
@@ -19,7 +19,7 @@
 
       <div id="cardSize" class="card">
         <img src="<?php echo IMAGEROOT . $bioscopen->images; ?>" id="cardImage" class="card-img-top" alt="<?php echo $bioscopen->name; ?>">
-          
+
         <div class="card-body">
           <h5 class="card-title"><?php echo $bioscopen->name; ?></h5>
           <div class="card-text">
@@ -33,11 +33,11 @@
             ?>
           </div>
         </div>
-        
+
         <div id="alignmentCenter">
-          <a href="<?php echo URLROOT ?>/pages/reservation" class="btn btn-primary mb-3">Reserveren</a>
+          <a href="<?php echo URLROOT . "/cms/cinemaDetails?cinema_id=" . $bioscopen->cinema_id; ?>" class="btn btn-primary mb-3">Reserveren</a>
         </div>
-      
+
       </div>
     <?php
       echo "</div>";
@@ -46,6 +46,3 @@
 ?>
 </div>
 <?php include APPROOT."/views/fragments/footer.php"; ?>
-
-
-
