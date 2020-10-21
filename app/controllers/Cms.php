@@ -36,7 +36,6 @@ class Cms extends Controller {
             default:
                 redirect("index");
             break;
-
         }
 
         $data["title"] = "Overzicht";
@@ -57,7 +56,6 @@ class Cms extends Controller {
             case '2':
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
             break;
-
 
             default:
                 redirect("index");
