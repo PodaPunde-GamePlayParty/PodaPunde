@@ -9,9 +9,7 @@
 
 <?php include APPROOT."/views/fragments/header.php"; ?>
 
-<div class="container mt-lg-5">
-
-<table class="table">
+<table class="table full-width">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Bioscoop</th>
@@ -33,7 +31,6 @@
     <?php } ?>
   </tbody>
 </table>
-</div>
 <?php include APPROOT."/views/fragments/footer.php"; ?>
 
 
