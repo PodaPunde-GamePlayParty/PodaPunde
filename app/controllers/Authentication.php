@@ -3,7 +3,7 @@
  * Authentication Controller
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 
 // Create Login class
@@ -61,7 +61,7 @@ class Authentication extends Controller {
                   $_SESSION['userid'] = $loggedInUser->user_id;
                   $_SESSION['authority'] = $loggedInUser->authority_level;
                   $_SESSION['firstname'] = $loggedInUser->firstname;
-                  redirect("pages/index");
+                  redirect("cms");
 
               } else {
 

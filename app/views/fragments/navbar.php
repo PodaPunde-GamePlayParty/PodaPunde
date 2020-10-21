@@ -3,7 +3,7 @@
  * Navbar Fragment
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 ?>
 
@@ -17,58 +17,40 @@
             <img src="<?php echo URLROOT; ?>/public/graph/logo.png" alt="logo" width="300px" class="navbar-brand p-0">
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/index">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/reservation">Reserveren</a>
-            </li>
-            <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/bioscopen">Bioscoop</a>
-            </li>
-            <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/aboutUs">Over Ons</a>
-            </li>
-            <li class="nav-item">
-                <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/contact">Contact</a>
-            </li>
-            <?php
-                if(!empty($_SESSION['authority'])) {
-                    $authority = $_SESSION['authority'];
-                                        
-                    switch ($authority) {
-                        case "1":
-                            break;
-                        
-                        case "2":
-                            echo "<li class='nav-item'>";
-                            echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-                            echo "</li>";
-                            break;
-                        
-                        default:
-                            
-                            break;
-                    }
-            } ?>
+
+            <?php if ((!empty($_SESSION['userid'])) && (!empty($_SESSION['authority']))) {
+                if (($_SESSION['authority'] == 2) || ($_SESSION['authority'] == 3)) { ?>
+                <li class='nav-item'>
+                    <a class='text-dark nav-link px-3 font-weight-bold' href="<?php echo URLROOT; ?>/cms">Overzicht</a>
+                </li>
+            <?php } ?>
+
+            <?php } else { ?>
+                <li class="nav-item active">
+                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/bioscopen">Bioscoop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/aboutUs">Over Ons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/contact">Contact</a>
+                </li>
+            <?php } ?>
+
         </ul>
 
 
         <div class="form-inline my-2 my-lg-0 pr-5">
             <?php if (!empty($_SESSION['userid'])) { ?>
-                <a class="nav-item text-dark nav-link" href="<?php echo URLROOT; ?>/authentication/logout">Log out</a>
+                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/logout">
+                    Log out</a>
             <?php } else { ?>
-                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/login">Log in
-                    <!-- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        <path fill-rule="evenodd"
-                            d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-                    </svg> -->
-                </a>
+                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/login">
+                    Log in</a>
             <?php } ?>
-            </div>
+        </div>
     </div>
 </nav>
