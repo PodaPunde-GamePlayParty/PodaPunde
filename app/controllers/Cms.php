@@ -40,7 +40,7 @@ class Cms extends Controller {
             "cms" => $cms
         ];
 
-        $this->view("cms/bioscoop/overzicht", $data);
+        $this->view("cms/index", $data);
     }
 
     // Bioscoop overzicht pagina
