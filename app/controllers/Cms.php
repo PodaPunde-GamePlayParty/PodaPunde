@@ -6,7 +6,7 @@
  *
  */
 
-// Create bioscopen class
+// Create CMS class
 class Cms extends Controller {
 
     public function __construct() {
