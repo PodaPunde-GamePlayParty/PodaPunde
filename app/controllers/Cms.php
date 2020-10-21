@@ -22,10 +22,6 @@ class Cms extends Controller {
         $authority_level = $authCheck->authority_level;
 
         switch ($authority_level) {
-            case '1':
-                redirect("index");
-            break;
-
             case '2':
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
             break;
@@ -44,7 +40,7 @@ class Cms extends Controller {
             "cms" => $cms
         ];
 
-        $this->view("/cms/bioscoop/index", $data);
+        $this->view("/cms/index", $data);
     }
 
     // Bioscoop overzicht pagina
