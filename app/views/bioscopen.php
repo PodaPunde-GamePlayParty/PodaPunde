@@ -35,7 +35,7 @@
         </div>
         
         <div id="alignmentCenter">
-          <a href="<?php echo URLROOT ?>/pages/reservation" class="btn btn-primary mb-3">Reserveren</a>
+          <a href="<?php echo URLROOT . "/cms/cinemaDetails?cinema_id=" . $bioscopen->cinema_id; ?>" class="btn btn-primary mb-3">Reserveren</a>
         </div>
       
       </div>

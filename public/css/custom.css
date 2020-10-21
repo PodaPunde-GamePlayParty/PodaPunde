@@ -69,7 +69,10 @@ General is:
   width: auto!important;
 }
 
-
+/* x scrollbar remove */
+.row {
+  margin-right: 0!important;
+}
 
 /* Footer part */
 footer {
