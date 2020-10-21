@@ -23,27 +23,22 @@ class Cms extends Controller {
         switch ($authority_level) {
             case '2':
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
-
-                $data = [
-                    "title" => "Overzicht",
-                    "cms" => $cms
-                ];
-                $this->view("cms/bioscoop/index", $data);
             break;
 
             case '3':
                 $cms = $this->cmsModel->getAllCinemas();
-
-                $data = [
-                    "title" => "Overzicht",
-                    "cms" => $cms
-                ];
-                $this->view("cms/index", $data);
             break;
 
             default:
                 redirect("index");
             break;
+
+        $data = [
+            "title" => "Overzicht",
+            "cms" => $cms
+        ];
+        $this->view("cms/index", $data);
+
         }
     }
 
