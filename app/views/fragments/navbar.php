@@ -37,26 +37,22 @@ switch ($authority) {
         echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
         echo "</li>";
     break;
-    
+
     default:
         echo "<li class='nav-item active'>";
-        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/index'>Home</a>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/index'>Home</a>";
         echo "</li>";
 
         echo "<li class='nav-item'>";
-        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/pages/reservation'>Reserveren</a>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/bioscopen'>Bioscoop</a>";
         echo "</li>";
 
         echo "<li class='nav-item'>";
-        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/bioscopen'>Bioscoop</a>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/pages/aboutUs'>Over Ons</a>";
         echo "</li>";
 
         echo "<li class='nav-item'>";
-        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/pages/aboutUs'>Over Ons</a>";
-        echo "</li>";
-        
-        echo "<li class='nav-item'>";
-        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/pages/contact'>Contact</a>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/pages/contact'>Contact</a>";
         echo "</li>";
     break;
 

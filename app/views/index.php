@@ -35,8 +35,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<br>
-<br>
+
 <div class="container mt-lg-5">
     <div class="media">
     <div class="media-body">
@@ -46,11 +45,10 @@
     <img class="ml-3 img-thumbnail" src="<?php echo URLROOT; ?>/public/graph/xbox.jpg" width="300px">
   </div>
   </div>
-<br>
-<br>
+
 <div class="container">
   <h1 class="text-center"> Populaire games </h1>
-  <br>
+
   <div class="container">
          <div class="card-group">
              <div class="row">
@@ -80,8 +78,7 @@
              </div>
          </div>
      </div>
-<br>
-<br>
+
      <div class="container">
             <div class="card-group">
                 <div class="row">
@@ -114,24 +111,24 @@
     </div>
   </div>
 </div>
-<br>
-<br>
+
 <div class="container mt-lg-5">
     <div class="media">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">Dingen die u moet weten, voordat u een bestelling plaatst!</h5>
-          <p class="font-italic">  Er is geen minimum voor groepen, maar het wordt aanbevolen dat de groepsgrootte tussen de 8 en 12 personen is. Dit zal de speeltijd voor elke speler maximaliseren.
-      	    Voel je vrij om je eigen Xbox-spel mee te nemen om te spelen (persoonlijke spelconsoles of spellen voor andere spelconsoles zijn niet toegestaan).
-      	    Er is geen leeftijdsgrens voor videospelletjes op Xbox, maar de ouders moeten wel zelf kunnen beslissen over de spelbeoordeling van oudere gamers (d.w.z., titels met een 'M'-rating).
-      	    Feesten kunnen maximaal 6 weken voor de datum van uw voorkeur worden aangevraagd en zijn niet gegarandeerd tot de datum is bevestigd en geboekt door het theater.
-      	    Voor elke partij kan een aanbetaling van $50 worden gevraagd en kan op elk moment voor de partij aan de kassa worden betaald. De boeking kan pas worden gereserveerd na ontvangst van de aanbetaling.
-      	    Annuleringen met een opzegtermijn van minder dan 24 uur kunnen leiden tot een niet-terugvorderbare aanbetaling.
-      	    Buiten eten en drinken is niet toegestaan in de theatercomplexen, maar als u een verjaardag viert, kunt u uw eigen verjaardagstaart meenemen! Wij zorgen voor de borden, servetten en bestek.
-      	    Feesten kunnen op elk moment buiten de openingsuren geboekt worden. Een voorbeeldboeking is zaterdag 10.00 - 12.00 uur of eender welke nacht na 22.30 uur, in afwachting van beschikbaarheid in bepaalde theaters en kan rechtstreeks bij het theater worden bevestigd.
-      	    Cadeaubonnen, alle belangrijke creditcards en debetkaarten worden geaccepteerd als betaalmiddel.
-      	    Het is mogelijk dat er op sommige locaties doordeweeks geen partyboekingen beschikbaar zijn. </p>   </div>
-  </div>
-  </div>
+        <div class="media-body">
+          <h5 class="mt-0 mb-1">Dingen die u moet weten, voordat u een bestelling plaatst!</h5>
+              <p class="font-italic">  Er is geen minimum voor groepen, maar het wordt aanbevolen dat de groepsgrootte tussen de 8 en 12 personen is. Dit zal de speeltijd voor elke speler maximaliseren.
+          	    Voel je vrij om je eigen Xbox-spel mee te nemen om te spelen (persoonlijke spelconsoles of spellen voor andere spelconsoles zijn niet toegestaan).
+          	    Er is geen leeftijdsgrens voor videospelletjes op Xbox, maar de ouders moeten wel zelf kunnen beslissen over de spelbeoordeling van oudere gamers (d.w.z., titels met een 'M'-rating).
+          	    Feesten kunnen maximaal 6 weken voor de datum van uw voorkeur worden aangevraagd en zijn niet gegarandeerd tot de datum is bevestigd en geboekt door het theater.
+          	    Voor elke partij kan een aanbetaling van $50 worden gevraagd en kan op elk moment voor de partij aan de kassa worden betaald. De boeking kan pas worden gereserveerd na ontvangst van de aanbetaling.
+          	    Annuleringen met een opzegtermijn van minder dan 24 uur kunnen leiden tot een niet-terugvorderbare aanbetaling.
+          	    Buiten eten en drinken is niet toegestaan in de theatercomplexen, maar als u een verjaardag viert, kunt u uw eigen verjaardagstaart meenemen! Wij zorgen voor de borden, servetten en bestek.
+          	    Feesten kunnen op elk moment buiten de openingsuren geboekt worden. Een voorbeeldboeking is zaterdag 10.00 - 12.00 uur of eender welke nacht na 22.30 uur, in afwachting van beschikbaarheid in bepaalde theaters en kan rechtstreeks bij het theater worden bevestigd.
+          	    Cadeaubonnen, alle belangrijke creditcards en debetkaarten worden geaccepteerd als betaalmiddel.
+          	    Het is mogelijk dat er op sommige locaties doordeweeks geen partyboekingen beschikbaar zijn. </p>
+        </div>
+    </div>
+</div>
 
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>
