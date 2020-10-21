@@ -19,11 +19,25 @@ class Cms extends Controller {
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
 
-        if($authCheck->authority_level != 2) {
-            redirect("index");
-        }
+        $authority_level = $authCheck->authority_level;
 
-        $cms = $this->cmsModel->getCinemaByUserId($user_id);
+        switch ($authority_level) {
+            case '1':
+                redirect("index");
+            break;
+
+            case '2':
+                $cms = $this->cmsModel->getCinemaByUserId($user_id);
+            break;
+
+            case '3':
+                $cms = $this->cmsModel->getAllCinema();
+            break;
+
+            default:
+                redirect("index");
+            break;
+        }
 
         $data = [
             "title" => "Overzicht",
