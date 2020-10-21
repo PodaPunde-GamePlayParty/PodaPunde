@@ -27,7 +27,6 @@ class Cmsmodel {
 		return $this->database->getRow(); // single Row
 	}
 
-	// **will used in function "getCinemaByUserId" **
 	// get the cinema that is signed to the user
 	public function getCinema($user_id) {
 
@@ -40,7 +39,18 @@ class Cmsmodel {
 		return $this->database->getRow(); // single Row
 	}
 
-	// **will used in function "getCinemaByUserId" **
+	// get the cinema details with cinema_id
+	public function getCinemaDetails($cinema_id) {
+
+		$query = "SELECT * ";
+		$query .= "FROM cinemas ";
+		$query .= "WHERE cinema_id = :cinema_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":cinema_id", $cinema_id);
+		return $this->database->getRow(); // get single Row
+	}
+
 	// get the halss that are asigned to the cinema
 	public function getHalls($cinema_id) {
 
@@ -65,10 +75,9 @@ class Cmsmodel {
 		return $this->database->getArray(); // Array
 	}
 
-	// **will use functions above here**
 	// get all info from the specific cinema
 	public function getCinemaByUserId($user_id) {
-
+		
 		$cinema = $this->getCinema($user_id);
 		$cinema_id = $cinema->cinema_id;
 		$cinema_halls = $this->getHalls($cinema_id);
@@ -85,8 +94,9 @@ class Cmsmodel {
 			// krijg error in mijn hoofd werk later bij
 		];
 	}
-
-	public function getAllCinema() {
+	
+	// get all cinemas an put them every row in an array
+	public function getAllCinemas() {
 
 		$query  = "SELECT * ";
 		$query .= "FROM cinemas ";
@@ -95,4 +105,7 @@ class Cmsmodel {
 		return $this->database->getArray(); // Multiple Rows in array
 	}
 
+
 }
+
+
