@@ -65,9 +65,6 @@ class Cmsmodel {
 		return $this->database->getArray(); // Array
 	}
 
-
-
-
 	// **will use functions above here**
 	// get all info from the specific cinema
 	public function getCinemaByUserId($user_id) {
@@ -89,5 +86,13 @@ class Cmsmodel {
 		];
 	}
 	
+	public function getAllCinema() {
+
+		$query  = "SELECT * ";
+		$query .= "FROM cinemas ";
+
+		$this->database->prepare($query);
+		return $this->database->getArray(); // Multiple Rows in array
+	}
 
 }

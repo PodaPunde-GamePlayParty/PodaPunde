@@ -61,7 +61,26 @@ class Authentication extends Controller {
                   $_SESSION['userid'] = $loggedInUser->user_id;
                   $_SESSION['authority'] = $loggedInUser->authority_level;
                   $_SESSION['firstname'] = $loggedInUser->firstname;
-                  redirect("cms");
+
+                  $authority_level = $loggedInUser->authority_level;
+
+                  switch ($authority_level) {
+                    case '1':
+                        redirect("pages/index");
+                    break;
+        
+                    case '2':
+                        redirect("cms/index");
+                    break;
+        
+                    case '3':
+                        redirect("cms/index");
+                    break;
+                    
+                    default:
+                        redirect("pages/index");
+                    break;
+                }
 
               } else {
 

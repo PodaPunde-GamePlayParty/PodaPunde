@@ -18,39 +18,62 @@
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-            <?php if ((!empty($_SESSION['userid'])) && (!empty($_SESSION['authority']))) {
-                if (($_SESSION['authority'] == 2) || ($_SESSION['authority'] == 3)) { ?>
-                <li class='nav-item'>
-                    <a class='text-dark nav-link px-3 font-weight-bold' href="<?php echo URLROOT; ?>/cms">Overzicht</a>
-                </li>
-            <?php } ?>
+<?php
+if(!empty($_SESSION['authority'])) {
+    $authority = $_SESSION['authority'];
+} else {
+    $authority = "";
+}
 
-            <?php } else { ?>
-                <li class="nav-item active">
-                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/bioscopen">Bioscoop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/aboutUs">Over Ons</a>
-                </li>
-                <li class="nav-item">
-                    <a class="text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/pages/contact">Contact</a>
-                </li>
-            <?php } ?>
+switch ($authority) {
+    case "2":
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
+        echo "</li>";
+    break;
+
+    case "3":
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
+        echo "</li>";
+    break;
+    
+    default:
+        echo "<li class='nav-item active'>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/index'>Home</a>";
+        echo "</li>";
+
+        echo "<li class='nav-item'>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/pages/reservation'>Reserveren</a>";
+        echo "</li>";
+
+        echo "<li class='nav-item'>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/bioscopen'>Bioscoop</a>";
+        echo "</li>";
+
+        echo "<li class='nav-item'>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/pages/aboutUs'>Over Ons</a>";
+        echo "</li>";
+        
+        echo "<li class='nav-item'>";
+        echo "    <a class='text-dark nav-link px-3 font-weight-bold' href='<?php echo URLROOT; ?>/pages/contact'>Contact</a>";
+        echo "</li>";
+    break;
+
+}
+
+?>
 
         </ul>
-
-
         <div class="form-inline my-2 my-lg-0 pr-5">
-            <?php if (!empty($_SESSION['userid'])) { ?>
-                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/logout">
-                    Log out</a>
-            <?php } else { ?>
-                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/login">
-                    Log in</a>
-            <?php } ?>
+            <?php
+            if(!empty($_SESSION['userid'])) { ?>
+                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/logout">Log out</a>
+            <?php
+            } else { ?>
+                <a class="nav-item text-dark nav-link px-3 font-weight-bold" href="<?php echo URLROOT; ?>/authentication/login"><i class="fas fa-user-alt"></i></a>
+            <?php
+            } ?>
         </div>
     </div>
 </nav>

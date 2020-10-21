@@ -19,25 +19,38 @@ class Cms extends Controller {
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
 
-        if(($authCheck->authority_level == 2) || ($authCheck->authority_level == 3)) {
+        $authority_level = $authCheck->authority_level;
 
-            $cms = $this->cmsModel->getCinemaByUserId($user_id);
+        switch ($authority_level) {
+            case '1':
+                redirect("index");
+            break;
 
-            $data = [
-                "title" => "Cms",
-                "cms" => $cms
-            ];
+            case '2':
+                $cms = $this->cmsModel->getCinemaByUserId($user_id);
+            break;
 
-            $this->view("cms/index", $data);
-        } else {
+            case '3':
+                $cms = $this->cmsModel->getAllCinema();
+            break;
 
-            redirect("index");
-
+            default:
+                redirect("index");
+            break;
         }
+
+        $data = [
+            "title" => "Overzicht",
+            "cms" => $cms
+        ];
+
+        $this->view("/cms/bioscoop/index", $data);
     }
 
     // Bioscoop overzicht pagina
     public function overzicht() {
+
+        $authority_level = $authCheck->authority_level;
 
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
