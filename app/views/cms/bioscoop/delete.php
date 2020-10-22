@@ -18,7 +18,7 @@ $cms = $data["cms"];
     <div class="col-12 col-md-3">
         <ul class="list-group m-md-3 m-0">
           <li class="list-group-item">
-            <a class="" href="#">Zalen</a>
+            <a class="" href="<?php echo URLROOT; ?>/cms/zalen">Zalen</a>
           </li>
           <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
