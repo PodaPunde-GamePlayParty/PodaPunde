@@ -45,7 +45,7 @@ $cms = $data["cms"];
                   </div>
 
                   <div id="alignmentCenter">
-                    <a href="<?php echo URLROOT;?>/cms/deleteHalls?hall_id=<?php echo $halls->hall_id; ?>" class="form-control btn btn-light">Verwijder zaal: <?php echo $halls->hall_number; ?> </a>
+                    <a href="#" class="form-control btn btn-light">Knop</a>
                   </div>
 
                 </div>

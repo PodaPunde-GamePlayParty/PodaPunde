@@ -51,19 +51,7 @@ class Cmsmodel {
 		return $this->database->getRow(); // get single Row
 	}
 
-	// get the halls that are asigned to the cinema
-	public function getHall($hall_id) {
-
-		$query  = "SELECT * ";
-		$query .= "FROM halls ";
-		$query .= "WHERE hall_id = :hall_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
-		return $this->database->getRow(); // Get single Row
-	}
-
-	// get the halls that are asigned to the cinema
+	// get the halss that are asigned to the cinema
 	public function getHalls($cinema_id) {
 
 		$query  = "SELECT * ";
@@ -89,7 +77,7 @@ class Cmsmodel {
 
 	// get all info from the specific cinema
 	public function getCinemaByUserId($user_id) {
-
+		
 		$cinema = $this->getCinema($user_id);
 		$cinema_id = $cinema->cinema_id;
 		$cinema_halls = $this->getHalls($cinema_id);
@@ -106,7 +94,7 @@ class Cmsmodel {
 			// krijg error in mijn hoofd werk later bij
 		];
 	}
-
+	
 	// get all cinemas an put them every row in an array
 	public function getAllCinemas() {
 
@@ -117,15 +105,7 @@ class Cmsmodel {
 		return $this->database->getArray(); // Multiple Rows in array
 	}
 
-	public function deleteHalls($hall_id) {
-
-		$query  = "DELETE * ";
-		$query .= "FROM halls ";
-		$query .= "WHERE hall_id = :hall_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
-		return $this->database->execute();
-	}
 
 }
+
+

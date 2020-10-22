@@ -96,32 +96,4 @@ class Cms extends Controller {
         $this->view("cms/bioscoop/zalen", $data);
     }
 
-
-    public function deleteHalls() {
-
-      if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
-          redirect("Cms/zalen");
-      }
-
-      $data = [
-          "title" => "Overzicht",
-          "cms" => $cms
-      ];
-
-      $hall_id = $_GET["hall_id"];
-      $this->view("cms/bioscoop/delete", $data);
-
-    }
-
-    public function deleteHallConfirmed($hall_id) {
-
-      $deleteConfirmed = $this->cmsModel->deleteHalls($hall_id);
-
-      $data = [
-          "title" => "Overzicht",
-          "cms" => $cms
-      ];
-
-      $this->view("cms/bioscoop/delete", $data);
-    }
 }
