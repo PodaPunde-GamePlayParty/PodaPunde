@@ -52,19 +52,42 @@ class Authentication extends Controller {
 
           if ((empty($data['email_error'])) && (empty($data["password_error"]))) {
 
-              $data['password'] = encrypt($data['password']);
+            // use Email or username to login
+            $posted = $data["email"];
+            $mailCharacter = "/@/";
+            $temp_posted = $posted;
+            $temp_posted = preg_replace($mailCharacter,"",$temp_posted);
 
-              $loggedInUser = $this->userModel->login($data["email"],$data['password']);
+            if($temp_posted === $posted) {
+                $use_username = "YES";
+            } else {
+                $use_username = "NO";
+            }
 
-              if ($loggedInUser) {
 
-                  $_SESSION['userid'] = $loggedInUser->user_id;
-                  $_SESSION['authority'] = $loggedInUser->authority_level;
-                  $_SESSION['firstname'] = $loggedInUser->firstname;
+            // encrypt password
+            $data['password'] = encrypt($data['password']);
 
-                  $authority_level = $loggedInUser->authority_level;
+            // select function(query) on the login method
+            switch($use_username) {
+                case "YES":
+                    $loggedInUser = $this->userModel->loginUsername($data["email"],$data['password']); //login with username
+                break;
 
-                  switch ($authority_level) {
+                case "NO":
+                    $loggedInUser = $this->userModel->login($data["email"],$data['password']); // login with email
+                break;
+            }
+
+            if ($loggedInUser) {
+
+                $_SESSION['userid'] = $loggedInUser->user_id;
+                $_SESSION['authority'] = $loggedInUser->authority_level;
+                $_SESSION['firstname'] = $loggedInUser->firstname;
+
+                $authority_level = $loggedInUser->authority_level;
+
+                switch ($authority_level) {
                     case '2':
                         redirect("cms/index");
                     break;

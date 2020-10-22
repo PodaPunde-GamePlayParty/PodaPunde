@@ -51,6 +51,19 @@ class User {
     return $this->database->getRow();
 	}
 
+	public function loginUsername($username, $password) {
+
+		$query  = "SELECT * ";
+		$query .= "FROM users ";
+		$query .= "WHERE username = :username ";
+		$query .= "AND password = :password ";
+
+    $this->database->prepare($query);
+    $this->database->bind(":username", $username);
+		$this->database->bind(":password", $password);
+    return $this->database->getRow();
+	}
+
 	public function logOut() {
 
 		unset($_SESSION['userid']);
