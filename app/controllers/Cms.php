@@ -27,10 +27,7 @@ class Cms extends Controller {
             break;
 
             case '3':
-                $user = $this->cmsModel->getUser($user_id);
-                $cms = $this->cmsModel->getAllCinemas();
-
-                $data["user"] = $user;
+                $cms = $this->cmsModel->getAllCinema();
             break;
 
             default:
@@ -38,8 +35,10 @@ class Cms extends Controller {
             break;
         }
 
-        $data["title"] = "Overzicht";
-        $data["cms"] = $cms;
+        $data = [
+            "title" => "Overzicht",
+            "cms" => $cms
+        ];
 
         $this->view("cms/index", $data);
     }
@@ -125,36 +124,4 @@ class Cms extends Controller {
 
       $this->view("cms/bioscoop/delete", $data);
     }
-    public function cinemaList() {
-        $cinemaList = $this->cmsModel->getAllCinemas();
-
-        $data = [
-            "title" => "Lijst van alle bioscopen",
-            "cinemaList" => $cinemaList
-        ];
-
-        $this->view("cms/admin/cinemaList", $data);
-    }
-
-    // Cinema Details Page
-    public function cinemaDetails() {
-
-        if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
-            redirect("bioscopen");
-        }
-
-        $cinema_id = $_GET["cinema_id"];
-
-        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
-        $cinema_halls = $this->cmsModel->getHalls($cinema_id);
-
-        $data = [
-            "title" => $cinema->name,
-            "cinema" => $cinema,
-            "cinema_halls" => $cinema_halls
-        ];
-
-        $this->view("cms/admin/cinemaDetails", $data);
-    }
-
 }
