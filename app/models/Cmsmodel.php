@@ -69,6 +69,7 @@ class Cmsmodel {
 		$query  = "SELECT * ";
 		$query .= "FROM halls ";
 		$query .= "WHERE cinema_id = :cinema_id ";
+		$query .= "ORDER BY hall_number ";
 
 		$this->database->prepare($query);
 		$this->database->bind(":cinema_id", $cinema_id);
@@ -141,4 +142,45 @@ class Cmsmodel {
 
 	}
 
+	public function addHall($data) {
+
+		$query = "INSERT INTO halls (cinema_id, hall_number, quantity_chairs, wheelchair_accessible, screen_size, version) ";
+		$query .= "VALUES(:cinema_id, :hall_number, :quantity_chairs, :wheelchair_accessible, :screen_size, :version) ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":cinema_id", $data['cinema_id']);
+		$this->database->bind(":hall_number", $data['hall_number']);
+		$this->database->bind(":quantity_chairs", $data['quantity_chairs']);
+		$this->database->bind(":wheelchair_accessible", $data['wheelchair_accessible']);
+		$this->database->bind(":screen_size", $data['screen_size']);
+		$this->database->bind(":version", $data['version']);
+
+		if ($this->database->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public function updateHall($data) {
+
+		$query = "UPDATE halls ";
+		$query .= "SET cinema_id=:cinema_id, hall_number=:hall_number, quantity_chairs=:quantity_chairs, wheelchair_accessible=:wheelchair_accessible, screen_size=:screen_size, version=:version ";
+		$query .= "WHERE hall_id = $hall_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":cinema_id", $data['cinema_id']);
+		$this->database->bind(":hall_number", $data['hall_number']);
+		$this->database->bind(":quantity_chairs", $data['quantity_chairs']);
+		$this->database->bind(":wheelchair_accessible", $data['wheelchair_accessible']);
+		$this->database->bind(":screen_size", $data['screen_size']);
+		$this->database->bind(":version", $data['version']);
+
+		if ($this->database->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
