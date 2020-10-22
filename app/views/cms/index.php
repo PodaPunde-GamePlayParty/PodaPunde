@@ -7,31 +7,54 @@
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php";
+<?php include APPROOT."/views/fragments/header.php"; ?>
 
-$cinema = $data["cms"]["cinema"];
-$cms = $data["cms"];
 
-?>
 
 <div class="row">
 
-    <!-- side nav CMS -->
-    <div class="col-12 col-md-3">
-        <ul class="list-group m-md-3 m-0">
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/zalen">Zalen</a>
-          </li>
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
-          </li>
-        </ul>
-    </div>
+  <!-- side nav CMS -->
+  <div class="col-12 col-md-3">
+    <ul class="list-group m-md-3 m-0">
 
-    <!-- CMS content -->
-    <div class="col-12 col-md-9 p-0 p-md-4">
-        <h1>Welkom terug <?php echo $cinema->name ?></h1>
-    </div>
+<?php
+
+$authority_level = $_SESSION["authority"];
+switch ($authority_level) {
+  case '2':
+    $cinema = $data["cms"]["cinema"];
+    $username = $cinema->name;
+
+    echo "<li class='list-group-item'>";
+    echo " 	<a class='' href='" . URLROOT . "/cms/zalen'>Zalen</a>";
+    echo "</li>";
+    echo "<li class='list-group-item'>";
+    echo "  <a class='' href='" . URLROOT . "/cms/overzicht'>Bioscoop overzicht</a>";
+    echo "</li>";
+  break;
+  
+  case '3':
+    $user = $data["user"];
+    $username = $user->username;
+
+    echo "<li class='list-group-item'>";
+    echo "  <a class='' href='" . URLROOT . "/cms/cinemaList'>Bioscopen overzicht</a>";
+    echo "</li>";
+  break;
+  
+  default:
+  redirect("index");
+break;
+
+} ?>
+
+    </ul>
+  </div>
+
+  <!-- CMS content -->
+  <div class="col-12 col-md-9 p-0 p-md-4">
+    <h1>Welkom terug <?php echo $username ?></h1>
+  </div>
 </div>
 
 

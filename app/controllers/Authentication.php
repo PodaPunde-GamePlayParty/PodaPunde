@@ -22,8 +22,8 @@ class Authentication extends Controller {
 
         //  prepare login form
         $data = [
-          "email" => "jaarbeursutrecht@kinepolis.nl",
-          "password" => "bioscoop",
+          "email" => "PodaPunde@gameplayparties.nl",
+          "password" => "PodaPunde2020",
           "email_error" => "",
           "password_error" => ""
         ];
