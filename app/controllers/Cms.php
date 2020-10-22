@@ -27,7 +27,10 @@ class Cms extends Controller {
             break;
 
             case '3':
-                $cms = $this->cmsModel->getAllCinema();
+                $user = $this->cmsModel->getUser($user_id);
+                $cms = $this->cmsModel->getAllCinemas();
+
+                $data["user"] = $user;
             break;
 
             default:
@@ -35,10 +38,8 @@ class Cms extends Controller {
             break;
         }
 
-        $data = [
-            "title" => "Overzicht",
-            "cms" => $cms
-        ];
+        $data["title"] = "Overzicht";
+        $data["cms"] = $cms;
 
         $this->view("cms/index", $data);
     }
@@ -70,6 +71,7 @@ class Cms extends Controller {
 
     }
 
+    // Bioscoop zalen overzicht pagina
     public function zalen() {
 
         $user_id = $_SESSION["userid"];
@@ -94,6 +96,85 @@ class Cms extends Controller {
         ];
 
         $this->view("cms/bioscoop/zalen", $data);
+    }
+
+    // Bioscoop zaal verwijderen pagina
+    public function deleteHall() {
+
+      if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+          redirect("Cms/zalen");
+      }
+
+      $hall_id = $_GET["hall_id"];
+      $hall = $this->cmsModel->getHall($hall_id);
+      $data = [
+          "title" => "Overzicht",
+          "hall" => $hall
+      ];
+
+      $this->view("cms/bioscoop/delete", $data);
+
+    }
+
+    // Bioscoop zaal verwijderen actie pagina
+    public function deleteHallConfirmed() {
+      if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+          redirect("Cms/zalen");
+      }
+
+      $hall_id = $_GET["hall_id"];
+      $hall = $this->cmsModel->getHall($hall_id);
+      $deleteConfirmed = $this->cmsModel->deleteHall($hall_id);
+
+      $authority = $_SESSION["authority"];
+    
+      switch ($authority) {
+        case "2":
+          redirect("cms/zalen");
+        break;
+
+        case "3":
+          redirect("cms/cinemaDetails?cinema_id=" . $hall->cinema_id);
+        break;
+
+        default:
+          redirect("cms/index");
+        break;
+
+      }
+    }
+
+    // list of all cinemas
+    public function cinemaList() {
+        $cinemaList = $this->cmsModel->getAllCinemas();
+
+        $data = [
+            "title" => "Lijst van alle bioscopen",
+            "cinemaList" => $cinemaList
+        ];
+
+        $this->view("cms/admin/cinemaList", $data);
+    }
+
+    // Cinema Details Page
+    public function cinemaDetails() {
+
+        if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
+            redirect("bioscopen");
+        }
+
+        $cinema_id = $_GET["cinema_id"];
+
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
+        $cinema_halls = $this->cmsModel->getHalls($cinema_id);
+
+        $data = [
+            "title" => $cinema->name,
+            "cinema" => $cinema,
+            "cinema_halls" => $cinema_halls
+        ];
+
+        $this->view("cms/admin/cinemaDetails", $data);
     }
 
 }

@@ -18,7 +18,7 @@ $cms = $data["cms"];
     <div class="col-12 col-md-3">
         <ul class="list-group m-md-3 m-0">
           <li class="list-group-item">
-            <a class="" href="#">Zalen</a>
+            <a class="" href="<?php echo URLROOT; ?>/cms/index"><- Terug</a>
           </li>
           <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
@@ -45,7 +45,7 @@ $cms = $data["cms"];
                   </div>
 
                   <div id="alignmentCenter">
-                    <a href="#" class="form-control btn btn-light">Knop</a>
+                    <a href="<?php echo URLROOT;?>/cms/deleteHall?hall_id=<?php echo $halls->hall_id; ?>" class="form-control btn btn-light">Verwijder zaal: <?php echo $halls->hall_number; ?> </a>
                   </div>
 
                 </div>

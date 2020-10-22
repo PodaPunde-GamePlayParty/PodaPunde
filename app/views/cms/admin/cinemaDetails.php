@@ -3,15 +3,14 @@
  * Overview Page (Cinama account)
  *
  * © 2020 Team PodaPunde
- *
+ * 
  */
 ?>
 
 <?php
 include APPROOT."/views/fragments/header.php";
 
-$cinema = $data["cms"]["cinema"];
-$cms = $data["cms"];
+$cinema = $data["cinema"];
 
 ?>
 
@@ -26,23 +25,12 @@ $cms = $data["cms"];
     <div class="col-md-6 position-static p-4 pl-md-0">
       <h5 class="mt-0"><?php echo $cinema->name; ?></h5>
       <p><?php echo $cinema->description; ?></p>
-
-      <div class="form-row">
-        <div class="col">
-          <a href="#" class="form-control btn btn-outline-secondary">Knop 1</a>
-        </div>
-        <div class="col">
-          <a href="#" class="form-control btn btn-outline-secondary">Knop 2</a>
-        </div>
-        <div class="col">
-          <a href="#" class="form-control btn btn-outline-secondary">Knop 3</a>
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="row mt-lg-5">
-    <?php foreach ($cms["cinema_halls"] as $hall) { ?>
+    <?php
+    foreach ($data["cinema_halls"] as $hall) { ?>
 
       <div class="col-lg-3 col-md-6 col-12 mb-lg-5 mb-md-3 mb-2" style="width: 18rem;">
         <div class="card">
@@ -56,27 +44,17 @@ $cms = $data["cms"];
               <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $hall->screen_size; ?></p>
               <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
             </div>
-
+            
             <div id="alignmentCenter">
-              <a href="#" class="form-control btn btn-light">Knop</a>
+              <a href="<?php echo URLROOT . '/cms/deleteHall?hall_id=' . $hall->hall_id; ?>" class="form-control btn btn-light">Zaal verwijderen</a>
             </div>
-
+          
           </div>
         </div>
       </div>
-
-
     <?php
-      // Krijg error bij deze
-
-      // foreach ($cms["hall_facilities"] as $facility) {
-      //   echo "hall_id = " . $facility[$hall->hall_id]->hall_id . "<br>";
-      //   echo "facility = " . $facility[$hall->hall_id]->facility . "<br>";
-      // }
     } ?>
   </div>
-
-
 </div>
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>

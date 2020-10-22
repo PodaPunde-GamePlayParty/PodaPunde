@@ -42,12 +42,25 @@ class User {
 
 		$query  = "SELECT * ";
 		$query .= "FROM users ";
-    	$query .= "WHERE email = :email ";
+		$query .= "WHERE email = :email ";
 		$query .= "AND password = :password ";
 
     $this->database->prepare($query);
     $this->database->bind(":email", $email);
-	$this->database->bind(":password", $password);
+		$this->database->bind(":password", $password);
+    return $this->database->getRow();
+	}
+
+	public function loginUsername($username, $password) {
+
+		$query  = "SELECT * ";
+		$query .= "FROM users ";
+		$query .= "WHERE username = :username ";
+		$query .= "AND password = :password ";
+
+    $this->database->prepare($query);
+    $this->database->bind(":username", $username);
+		$this->database->bind(":password", $password);
     return $this->database->getRow();
 	}
 

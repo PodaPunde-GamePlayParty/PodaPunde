@@ -14,7 +14,7 @@
             <div class="col-lg-8 col-12">
                 <form method="POST">
                     <div class="form-group">
-                        <label for="email font-weight-bold">Email</label>
+                        <label for="email" class="font-weight-bold">Email</label>
                         <input type="text" name="email" class="form-control form-control-lg
                         <?php echo (!empty($data['email_error'])) ? "is-invalid" : ""; ?>
                         " value="<?php echo $data['email'] ?>">
@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password font-weight-bold">Password</label>
+                        <label for="password" class="font-weight-bold">Password</label>
                         <input type="password" name="password" class="form-control form-control-lg
                         <?php echo (!empty($data['password_error'])) ? "is-invalid" : ""; ?>
                         " value="<?php echo $data['password'] ?>">
