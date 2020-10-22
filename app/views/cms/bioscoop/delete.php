@@ -30,7 +30,24 @@
     </div>
 
     <div class="col-lg-3 col-md-6">
-      <a class="btn btn-outline-success form-control" href="<?php echo URLROOT; ?>/cms/deleteHall?hall_id=<?php echo $hall->hall_id; ?>">Annuleren</a>
+      <?php
+      $authority = $_SESSION["authority"];
+    
+      switch ($authority) {
+        case "2":
+          echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/zalen'>Annuleren</a>";
+        break;
+
+        case "3":
+          echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/cinemaDetails?cinema_id=" . $hall->cinema_id . "'>Annuleren</a>";
+        break;
+
+        default:
+          echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/index'>Annuleren</a>";
+        break;
+
+      }
+      ?>
     </div>
 
       <!-- side nav CMS -->

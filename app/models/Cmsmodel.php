@@ -131,13 +131,14 @@ class Cmsmodel {
 
 	public function deleteHall($hall_id) {
 
-		$query  = "DELETE * ";
+		$query  = "DELETE ";
 		$query .= "FROM halls ";
-		$query .= "WHERE hall_id = " . $hall_id . " ";
+		$query .= "WHERE hall_id = :hall_id ";
 
-		// $this->database->prepare($query);
-		// $this->database->bind(":hall_id", $hall_id);
+		$this->database->prepare($query);
+		$this->database->bind(":hall_id", $hall_id);
 		return $this->database->execute();
+
 	}
 
 }

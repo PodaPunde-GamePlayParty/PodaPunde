@@ -46,7 +46,7 @@ $cinema = $data["cinema"];
             </div>
             
             <div id="alignmentCenter">
-              <a href="#" class="form-control btn btn-light">Zaal bekijken</a>
+              <a href="<?php echo URLROOT . '/cms/deleteHall?hall_id=' . $hall->hall_id; ?>" class="form-control btn btn-light">Zaal verwijderen</a>
             </div>
           
           </div>

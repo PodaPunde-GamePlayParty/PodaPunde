@@ -71,6 +71,7 @@ class Cms extends Controller {
 
     }
 
+    // Bioscoop zalen overzicht pagina
     public function zalen() {
 
         $user_id = $_SESSION["userid"];
@@ -97,7 +98,7 @@ class Cms extends Controller {
         $this->view("cms/bioscoop/zalen", $data);
     }
 
-
+    // Bioscoop zaal verwijderen pagina
     public function deleteHall() {
 
       if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
@@ -115,21 +116,35 @@ class Cms extends Controller {
 
     }
 
+    // Bioscoop zaal verwijderen actie pagina
     public function deleteHallConfirmed() {
       if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
           redirect("Cms/zalen");
       }
 
       $hall_id = $_GET["hall_id"];
+      $hall = $this->cmsModel->getHall($hall_id);
       $deleteConfirmed = $this->cmsModel->deleteHall($hall_id);
-      if($deleteConfirmed = TRUE) {
-        echo "Zaal succesvol verwijderd.";
-      } else {
-        echo "Er is een fout opgetreden bij het uitvoeren van het verwijderproces.";
+
+      $authority = $_SESSION["authority"];
+    
+      switch ($authority) {
+        case "2":
+          redirect("cms/zalen");
+        break;
+
+        case "3":
+          redirect("cms/cinemaDetails?cinema_id=" . $hall->cinema_id);
+        break;
+
+        default:
+          redirect("cms/index");
+        break;
+
       }
-      $this->view("cms/bioscoop/overzicht");
     }
 
+    // list of all cinemas
     public function cinemaList() {
         $cinemaList = $this->cmsModel->getAllCinemas();
 
