@@ -107,9 +107,12 @@ class Cms extends Controller {
 
       $hall_id = $_GET["hall_id"];
       $hall = $this->cmsModel->getHall($hall_id);
+      $cinema_id = $hall->cinema_id;
+      $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
       $data = [
           "title" => "Overzicht",
-          "hall" => $hall
+          "hall" => $hall,
+          "cinema" => $cinema
       ];
 
       $this->view("cms/bioscoop/delete", $data);
@@ -127,7 +130,7 @@ class Cms extends Controller {
       $deleteConfirmed = $this->cmsModel->deleteHall($hall_id);
 
       $authority = $_SESSION["authority"];
-    
+
       switch ($authority) {
         case "2":
           redirect("cms/zalen");
