@@ -6,6 +6,12 @@
  *
  */
 ?>
+<?php
+if(!empty($_SESSION['authority'])) {
+    $authority = $_SESSION['authority'];
+} else {
+    $authority = "";
+} ?>
 
 <nav class="navbar navbar-expand-lg navbar-light p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
@@ -18,24 +24,18 @@
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-<?php
-if(!empty($_SESSION['authority'])) {
-    $authority = $_SESSION['authority'];
-} else {
-    $authority = "";
-}
 
-switch ($authority) {
+<?php switch ($authority) {
     case "2":
-        // echo "<li class='nav-item'>";
-        // echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-        // echo "</li>";
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
+        echo "</li>";
     break;
 
     case "3":
-        // echo "<li class='nav-item'>";
-        // echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-        // echo "</li>";
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
+        echo "</li>";
     break;
 
     default:
