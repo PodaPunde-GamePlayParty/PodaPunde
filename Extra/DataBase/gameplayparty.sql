@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 20 okt 2020 om 09:28
+-- Gegenereerd op: 22 okt 2020 om 13:40
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -328,10 +328,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `preposition`, `lastname`, `authority_level`, `creation_date`) VALUES
-(1, 'bobnab', '61f279253021bbff55c54e977eff50277d0fb1ba', 'boskaboutertje@outlook.com', 'Bob', NULL, 'Nab', 1, '2020-10-05 11:45:38'),
-(2, 'dyonvanraaij', '\'e8367be53c7d9d1d1aca99f756ef227a9f7af41c', 'dyon.a.van.raaij@gmail.com', 'Dyon', 'Van', 'Raaij', 1, '2020-10-06 09:45:13'),
-(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', NULL, 'Punde', 1, '2020-10-14 13:39:51'),
-(4, 'kinpolisurecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', NULL, 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
+(1, 'bobnab', '61f279253021bbff55c54e977eff50277d0fb1ba', 'boskaboutertje@outlook.com', 'Bob', NULL, 'Nab', 3, '2020-10-05 11:45:38'),
+(2, 'dyonvanraaij', 'e8367be53c7d9d1d1aca99f756ef227a9f7af41c', 'dyon.a.van.raaij@gmail.com', 'Dyon', 'Van', 'Raaij', 3, '2020-10-06 09:45:13'),
+(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', NULL, 'Punde', 3, '2020-10-14 13:39:51'),
+(4, 'kinepolisutrecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', NULL, 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
 (5, 'kinepolisalmere', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'almere@kinepolis.nl', 'Kinepolis', NULL, 'almere', 2, '2020-10-15 14:10:24'),
 (6, 'kinepolisbreda', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'breda@kinepolis.nl', 'Kinepolis', NULL, 'Breda', 2, '2020-10-15 15:41:03'),
 (7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', NULL, 'groningen', 2, '2020-10-15 15:42:03');
@@ -425,7 +425,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT voor een tabel `halls`
 --
 ALTER TABLE `halls`
-  MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT voor een tabel `prices`
