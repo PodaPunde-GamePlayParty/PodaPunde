@@ -48,26 +48,12 @@ General is:
 
 
 /* Hiding Scrollbar (work at almost al Bowsers) */
-
-
 /* html::-webkit-scrollbar { */
-
-
 /* display: none!important; Chrome, Safari and Opera */
-
-
 /* } */
-
-
 /* html { */
-
-
 /* -ms-overflow-style: none!important;  IE and Edge */
-
-
 /* scrollbar-width: none!important;  Firefox */
-
-
 /* } */
 
 
