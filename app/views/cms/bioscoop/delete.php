@@ -8,24 +8,45 @@
 ?>
 
 <?php include APPROOT."/views/fragments/header.php";
-$cinema = $data["cms"]["cinema"];
-$cms = $data["cms"];
+  $hall = $data["hall"];
 ?>
 
-<div class="row">
+<div class="container mt-lg-5 mt-3">
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+    <?php
+      echo "Zaal-Id: " . $hall->hall_id . "<br>";
+      echo "Bioscoop-Id: " . $hall->cinema_id . "<br>";
+      echo "Zaalnummer: " . $hall->hall_number . "<br>";
+      echo "Aantal stoelen: " . $hall->quantity_chairs . "<br>";
+      echo "Rolstoel plekken: " . $hall->wheelchair_accessible . "<br>";
+      echo "Schermgrootte: " . $hall->screen_size . "<br>";
+      echo "Versie: " . $hall->version . "<br>";
+    ?>
+  </div>
 
-    <!-- side nav CMS -->
-    <div class="col-12 col-md-3">
-        <ul class="list-group m-md-3 m-0">
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/zalen">Zalen</a>
-          </li>
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
-          </li>
-        </ul>
+    <div class="col-lg-3 col-md-6">
+      <a class="btn btn-outline-danger form-control" href="<?php echo URLROOT; ?>/cms/deleteHallConfirmed?hall_id=<?php echo $hall->hall_id; ?>">Verwijder</a>
     </div>
 
-    <!-- CMS content -->
+    <div class="col-lg-3 col-md-6">
+      <a class="btn btn-outline-success form-control" href="<?php echo URLROOT; ?>/cms/deleteHall?hall_id=<?php echo $hall->hall_id; ?>">Annuleren</a>
+    </div>
+
+      <!-- side nav CMS -->
+      <!-- <div class="col-12 col-md-3">
+          <ul class="list-group m-md-3 m-0">
+            <li class="list-group-item">
+              <a class="" href="#">Zalen</a>
+            </li>
+            <li class="list-group-item">
+              <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
+            </li>
+          </ul>
+      </div> -->
+
+  </div>
+</div>
+
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>
