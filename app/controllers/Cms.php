@@ -98,33 +98,38 @@ class Cms extends Controller {
     }
 
 
-    public function deleteHalls() {
+    public function deleteHall() {
 
       if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
           redirect("Cms/zalen");
       }
 
+      $hall_id = $_GET["hall_id"];
+      $hall = $this->cmsModel->getHall($hall_id);
       $data = [
           "title" => "Overzicht",
-          "cms" => $cms
+          "hall" => $hall
       ];
+
+      $this->view("cms/bioscoop/delete", $data);
+
+    }
+
+    public function deleteHallConfirmed() {
+      if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+          redirect("Cms/zalen");
+      }
 
       $hall_id = $_GET["hall_id"];
-      $this->view("cms/bioscoop/delete", $data);
-
+      $deleteConfirmed = $this->cmsModel->deleteHall($hall_id);
+      if($deleteConfirmed = TRUE) {
+        echo "Zaal succesvol verwijderd.";
+      } else {
+        echo "Er is een fout opgetreden bij het uitvoeren van het verwijderproces.";
+      }
+      $this->view("cms/bioscoop/overzicht");
     }
 
-    public function deleteHallConfirmed($hall_id) {
-
-      $deleteConfirmed = $this->cmsModel->deleteHalls($hall_id);
-
-      $data = [
-          "title" => "Overzicht",
-          "cms" => $cms
-      ];
-
-      $this->view("cms/bioscoop/delete", $data);
-    }
     public function cinemaList() {
         $cinemaList = $this->cmsModel->getAllCinemas();
 

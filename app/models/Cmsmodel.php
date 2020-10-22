@@ -119,24 +119,24 @@ class Cmsmodel {
 
 	// get user data
 	public function getUser($user_id) {
-		
+
 		$query  = "SELECT * ";
 		$query .= "FROM users ";
 		$query .= "WHERE user_id = :user_id ";
-		
+
 		$this->database->prepare($query);
 		$this->database->bind(":user_id", $user_id);
 		return $this->database->getRow();
 	}
-	
-	public function deleteHalls($hall_id) {
+
+	public function deleteHall($hall_id) {
 
 		$query  = "DELETE * ";
 		$query .= "FROM halls ";
-		$query .= "WHERE hall_id = :hall_id ";
+		$query .= "WHERE hall_id = " . $hall_id . " ";
 
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
+		// $this->database->prepare($query);
+		// $this->database->bind(":hall_id", $hall_id);
 		return $this->database->execute();
 	}
 
