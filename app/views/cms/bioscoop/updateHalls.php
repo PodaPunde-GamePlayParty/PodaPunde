@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="version" class="font-weight-bold">Versie</label>
+                        <label for="version" class="font-weight-bold">Geluidsysteem</label>
                         <input type="text" name="version" class="form-control form-control-lg
                         <?php echo (!empty($data['version_error'])) ? "is-invalid" : ""; ?>
                         " value="<?php echo $data['version'] ?>">
