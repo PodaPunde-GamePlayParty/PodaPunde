@@ -29,10 +29,10 @@ switch ($authority_level) {
     echo " 	<a class='' href='" . URLROOT . "/cms/zalen'>Zalen</a>";
     echo "</li>";
     echo "<li class='list-group-item'>";
-    echo "  <a class='' href='" . URLROOT . "/cms/overzicht'>Bioscoop overzicht</a>";
+    echo "<a class='' href='" . URLROOT . "/cms/overzicht'>Bioscoop overzicht</a>";
     echo "</li>";
   break;
-  
+
   case '3':
     $user = $data["user"];
     $username = $user->username;
@@ -41,7 +41,7 @@ switch ($authority_level) {
     echo "  <a class='' href='" . URLROOT . "/cms/cinemaList'>Bioscopen overzicht</a>";
     echo "</li>";
   break;
-  
+
   default:
   redirect("index");
 break;
@@ -53,7 +53,7 @@ break;
 
   <!-- CMS content -->
   <div class="col-12 col-md-9 p-0 p-md-4">
-    <h1>Welkom terug <?php echo $username ?></h1>
+    <h1>Welkom terug <?php echo $username ?>!</h1>
   </div>
 </div>
 
