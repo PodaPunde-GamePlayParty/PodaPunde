@@ -1,6 +1,6 @@
 <?php
 /*
- * Update form
+ * Create form
  *
  * © 2020 Team PodaPunde
  *
@@ -59,4 +59,4 @@
         </div>
     </div>
 
-<?php include APPROOT."/views/fragments/footer.php"; ?>s
+<?php include APPROOT."/views/fragments/footer.php"; ?>

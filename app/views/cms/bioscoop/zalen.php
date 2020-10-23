@@ -31,7 +31,7 @@ $cms = $data["cms"];
     <div class="col-12 col-md-9">
         <div class="row">
             <div class="col-12 mt-lg-3 mt-0">
-                <a href="<?php echo URLROOT;?>/cms/updateHalls"
+                <a href="<?php echo URLROOT;?>/cms/addHall"
                      class="text-dark font-weight-bold">Zaal toevoegen
                 </a>
             </div>

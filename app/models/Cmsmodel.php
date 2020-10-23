@@ -165,6 +165,8 @@ class Cmsmodel {
 
 	public function updateHall($data) {
 
+		$hall_id = $_GET['hall_id'];
+
 		$query = "UPDATE halls ";
 		$query .= "SET cinema_id=:cinema_id, hall_number=:hall_number, quantity_chairs=:quantity_chairs, wheelchair_accessible=:wheelchair_accessible, screen_size=:screen_size, version=:version ";
 		$query .= "WHERE hall_id = $hall_id ";
