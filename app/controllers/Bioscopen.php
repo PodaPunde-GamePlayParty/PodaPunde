@@ -62,11 +62,11 @@ class Bioscopen extends Controller {
             break;
 
             case VERIFIED_CINEMA:
-                redirect("cms/index")
+                redirect("cms/index");
             break;
 
             case ADMINISTRATOR:
-                redirect("cms/index")
+                redirect("cms/index");
             break;
 
             default:
@@ -74,12 +74,12 @@ class Bioscopen extends Controller {
             break;
         }
 
-        $user_id_cinemas = $this->bioscoopModel->getUserIdFromCinemas();
+        $user_id_cinemas = $this->bioscoopModel->getCinema($user_id);
 
-        foreach ($user_id_cinemas->user_id as $user_ids) {
-            if($user_ids === $user_id) {
-                $cinema_already_exist = "TRUE";
-            }
+        if(!$user_id_cinemas) {
+            $cinema_already_exist = "FALSE";
+        } else {
+            $cinema_already_exist = "TRUE";
         }
 
         $data = [
@@ -120,11 +120,11 @@ class Bioscopen extends Controller {
             break;
 
             case VERIFIED_CINEMA:
-                redirect("cms/index")
+                redirect("cms/index");
             break;
 
             case ADMINISTRATOR:
-                redirect("cms/index")
+                redirect("cms/index");
             break;
 
             default:
@@ -133,7 +133,7 @@ class Bioscopen extends Controller {
         }
 
         if(!$un_verified) {
-            redirect("bioscoop/addCinema")
+            redirect("bioscoop/addCinema");
         }
 
         if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -241,7 +241,7 @@ class Bioscopen extends Controller {
 
                 // check if insert was succesfull
                 if ($result) {
-                    redirect("bioscoop/overview")
+                    redirect("bioscoop/overview");
                 } else {
                     die("Account aanmaken mislukt");
                 }

@@ -22,8 +22,8 @@ class Authentication extends Controller {
 
         // prepare login form
         $data = [
-          "email" => "podapunde",
-          "password" => "PodaPunde2020",
+          "email" => "unverifiedCinema",
+          "password" => "unverifiedCinema",
           "email_error" => "",
           "password_error" => ""
         ];
@@ -234,43 +234,7 @@ class Authentication extends Controller {
 
                 // check if insert was succesfull
                 if ($result) {
-                    
-                    $loggedInUser = $this->userModel->login($data);
-
-                    if ($loggedInUser) {
-
-                        $_SESSION['userid'] = $loggedInUser->user_id;
-                        $_SESSION['authority'] = $loggedInUser->authority_level;
-                        $_SESSION['firstname'] = $loggedInUser->firstname;
-        
-                        $authority_level = $loggedInUser->authority_level;
-        
-                        switch ($authority_level) {
-                            case UN_VERIFIED_CINEMA:
-                                redirect("bioscopen/overview");
-                            break;
-
-                            case VERIFIED_CINEMA:
-                                redirect("cms/index");
-                            break;
-        
-                            case ADMINISTRATOR:
-                                redirect("cms/index");
-                            break;
-        
-                            default:
-                                redirect("pages/index");
-                            break;
-                        }
-        
-                      } else {
-        
-                          $data["email_error"] = "Email/wachtwoord combinatie is niet correct";
-                          $data["password_error"] = "Email/wachtwoord combinatie is niet correct";
-                          $data["password"] = "";
-                          $this->view("authentication/login", $data);
-                      }
-
+                    redirect("authentication/login");
                 } else {
                     die("Account aanmaken mislukt");
                 }

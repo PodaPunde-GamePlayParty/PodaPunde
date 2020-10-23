@@ -139,13 +139,20 @@ class Bioscoop {
 		}
 	}
 
-	public function getUserIdFromCinemas() {
+	public function getCinema($user_id) {
 
-		$query  = "SELECT user_id ";
+		$query  = "SELECT * ";
 		$query .= "FROM cinemas ";
+		$query .= "WHERE user_id = :user_id ";
 
 		$this->database->prepare($query);
-		return $this->database->getArray(); // Multiple Rows
+		$this->database->bind(":user_id", $user_id);
+	
+		if ($this->database->execute()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 
