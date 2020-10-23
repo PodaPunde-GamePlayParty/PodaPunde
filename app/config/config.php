@@ -22,6 +22,12 @@ define("APPROOT", dirname(dirname(__FILE__)));
 define("URLROOT", "http://localhost/projecten/gameplayparty/PodaPunde");
 define("IMAGEROOT", "http://localhost/projecten/gameplayparty/PodaPunde/public/graph/");
 
+// Authorities
+define ("VISITOR", "0");
+define ("UN_VERIFIED_CINEMA", "1");
+define ("VERIFIED_CINEMA", "2");
+define ("ADMINISTRATOR", "3");
+
 //  Salt
 define ("SALTHEADER", "PLOP23B453J");
 define ("SALTTRAILER", "FDSFS9434VH");

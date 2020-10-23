@@ -34,11 +34,11 @@
       $authority = $_SESSION["authority"];
     
       switch ($authority) {
-        case "2":
+        case VERIFIED_CINEMA:
           echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/zalen'>Annuleren</a>";
         break;
 
-        case "3":
+        case ADMINISTRATOR:
           echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/cinemaDetails?cinema_id=" . $hall->cinema_id . "'>Annuleren</a>";
         break;
 

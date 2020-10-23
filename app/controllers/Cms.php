@@ -22,11 +22,11 @@ class Cms extends Controller {
         $authority_level = $authCheck->authority_level;
 
         switch ($authority_level) {
-            case '2':
+            case VERIFIED_CINEMA:
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
             break;
 
-            case '3':
+            case ADMINISTRATOR:
                 $user = $this->cmsModel->getUser($user_id);
                 $cms = $this->cmsModel->getAllCinemas();
 
@@ -53,7 +53,7 @@ class Cms extends Controller {
         $authority_level = $authCheck->authority_level;
 
         switch ($authority_level) {
-            case '2':
+            case VERIFIED_CINEMA:
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
             break;
 
@@ -80,7 +80,7 @@ class Cms extends Controller {
         $authority_level = $authCheck->authority_level;
 
         switch ($authority_level) {
-            case '2':
+            case VERIFIED_CINEMA:
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
             break;
 
@@ -129,11 +129,11 @@ class Cms extends Controller {
       $authority = $_SESSION["authority"];
 
       switch ($authority) {
-        case "2":
+        case VERIFIED_CINEMA:
           redirect("cms/zalen");
         break;
 
-        case "3":
+        case ADMINISTRATOR:
           redirect("cms/cinemaDetails?cinema_id=" . $hall->cinema_id);
         break;
 
@@ -180,99 +180,99 @@ class Cms extends Controller {
     // Create Halls
     public function addHall() {
 
-                $user_id = $_SESSION['userid'];
-                $cinema = $this->cmsModel->getCinema($user_id);
-                $cinema_id = $cinema->cinema_id;
+        $user_id = $_SESSION['userid'];
+        $cinema = $this->cmsModel->getCinema($user_id);
+        $cinema_id = $cinema->cinema_id;
 
-                // Check for GET
-                if ($_SERVER['REQUEST_METHOD'] == "GET") {
+        // Check for GET
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-                    // prepare form
-                    $data = [
-                        "hall_id" => "",
-                        "cinema_id" => $cinema_id,
-                        "hall_number" => "",
-                        "quantity_chairs" => "",
-                        "wheelchair_accessible" => "",
-                        "screen_size" => "",
-                        "version" => "",
-                        "hall_id_error" => "",
-                        "cinema_id_error" => "",
-                        "hall_number_error" => "",
-                        "quantity_chairs_error" => "",
-                        "wheelchair_accessible_error" => "",
-                        "screen_size_error" => "",
-                        "version_error" => ""
-                    ];
+            // prepare form
+            $data = [
+                "hall_id" => "",
+                "cinema_id" => $cinema_id,
+                "hall_number" => "",
+                "quantity_chairs" => "",
+                "wheelchair_accessible" => "",
+                "screen_size" => "",
+                "version" => "",
+                "hall_id_error" => "",
+                "cinema_id_error" => "",
+                "hall_number_error" => "",
+                "quantity_chairs_error" => "",
+                "wheelchair_accessible_error" => "",
+                "screen_size_error" => "",
+                "version_error" => ""
+            ];
 
-                    $this->view("cms/bioscoop/updateHalls", $data);
-                } else {
+            $this->view("cms/bioscoop/updateHalls", $data);
+        } else {
 
-                    // Sanitize POST data
-                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                    // Get Data
-                    $data = [
-                        "hall_id" => "",
-                        "cinema_id" => $cinema_id,
-                        "hall_number" => trim($_POST['hall_number']),
-                        "quantity_chairs" => trim($_POST['quantity_chairs']),
-                        "wheelchair_accessible" => trim($_POST['wheelchair_accessible']),
-                        "screen_size" => trim($_POST['screen_size']),
-                        "version" => trim($_POST['version']),
-                        "hall_id_error" => "",
-                        "cinema_id_error" => "",
-                        "hall_number_error" => "",
-                        "quantity_chairs_error" => "",
-                        "wheelchair_accessible_error" => "",
-                        "screen_size_error" => "",
-                        "version_error" => ""
-                    ];
+            // Get Data
+            $data = [
+                "hall_id" => "",
+                "cinema_id" => $cinema_id,
+                "hall_number" => trim($_POST['hall_number']),
+                "quantity_chairs" => trim($_POST['quantity_chairs']),
+                "wheelchair_accessible" => trim($_POST['wheelchair_accessible']),
+                "screen_size" => trim($_POST['screen_size']),
+                "version" => trim($_POST['version']),
+                "hall_id_error" => "",
+                "cinema_id_error" => "",
+                "hall_number_error" => "",
+                "quantity_chairs_error" => "",
+                "wheelchair_accessible_error" => "",
+                "screen_size_error" => "",
+                "version_error" => ""
+            ];
 
-                    // Validate
-                    // Word mee gegeven
-                    if (empty($data['hall_id'])) {
-                        $data['hall_id_error'] = "Vul zaalnummer in!";
-                    }
-
-                    if (empty($data['hall_number'])) {
-                        $data['hall_number_error'] = "Vul zaalnummer in!";
-                    }
-
-                    if (empty($data['quantity_chairs'])) {
-                        $data['quantity_chairs_error'] = "Vul het aantal stoelen in!";
-                    }
-
-                    if (empty($data['wheelchair_accessible'])) {
-                        $data['wheelchair_accessible_error'] = "Vul het aantal invalide stoelen in!";
-                    }
-
-                    if (empty($data['screen_size'])) {
-                        $data['screen_size_error'] = "Vul de schermgrote in!";
-                    }
-
-                    if (empty($data['version'])) {
-                        $data['version_error'] = "Vul het geluidssyteem in!";
-                    }
-
-                    // Check for errors
-                    if ((empty($data['hall_number_error'])) && (empty($data['quantity_chairs_error'])) &&
-                    (empty($data['wheelchair_accessible_error'])) && (empty($data['screen_size_error'])) && (empty($data['version_error']))) {
-
-                        // save data
-                        if ($this->cmsModel->addHall($data)) {
-                            redirect("cms/zalen");
-                        } else {
-                            die("Opslaan niet gelukt!");
-                        }
-                    } else {
-                        // Load view to display errors
-                        $this->view("cms/bioscoop/createHalls", $data);
-                    }
-                }
-
-
+            // Validate
+            // Word mee gegeven
+            if (empty($data['hall_id'])) {
+                $data['hall_id_error'] = "Vul zaalnummer in!";
             }
+
+            if (empty($data['hall_number'])) {
+                $data['hall_number_error'] = "Vul zaalnummer in!";
+            }
+
+            if (empty($data['quantity_chairs'])) {
+                $data['quantity_chairs_error'] = "Vul het aantal stoelen in!";
+            }
+
+            if (empty($data['wheelchair_accessible'])) {
+                $data['wheelchair_accessible_error'] = "Vul het aantal invalide stoelen in!";
+            }
+
+            if (empty($data['screen_size'])) {
+                $data['screen_size_error'] = "Vul de schermgrote in!";
+            }
+
+            if (empty($data['version'])) {
+                $data['version_error'] = "Vul het geluidssyteem in!";
+            }
+
+            // Check for errors
+            if ((empty($data['hall_number_error'])) && (empty($data['quantity_chairs_error'])) &&
+            (empty($data['wheelchair_accessible_error'])) && (empty($data['screen_size_error'])) && (empty($data['version_error']))) {
+
+                // save data
+                if ($this->cmsModel->addHall($data)) {
+                    redirect("cms/zalen");
+                } else {
+                    die("Opslaan niet gelukt!");
+                }
+            } else {
+                // Load view to display errors
+                $this->view("cms/bioscoop/createHalls", $data);
+            }
+        }
+    }
+
+    
 
     // Update Halls
     public function updateHalls() {

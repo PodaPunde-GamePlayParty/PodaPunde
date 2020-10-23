@@ -26,13 +26,19 @@ if(!empty($_SESSION['authority'])) {
 
 
 <?php switch ($authority) {
-    case "2":
+    case UN_VERIFIED_CINEMA:
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/bioscopen/overview'>Overzicht</a>";
+        echo "</li>";
+    break;
+    
+    case VERIFIED_CINEMA:
         echo "<li class='nav-item'>";
         echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
         echo "</li>";
     break;
 
-    case "3":
+    case ADMINISTRATOR:
         echo "<li class='nav-item'>";
         echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
         echo "</li>";

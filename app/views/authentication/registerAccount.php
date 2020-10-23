@@ -47,10 +47,7 @@
 
                     <div class="form-group">
                         <label for="preposition" class="font-weight-bold">Tussevoegsel</label>
-                        <input type="text" name="preposition" class="form-control form-control-lg
-                        <?php echo (!empty($data['preposition_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['preposition'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['preposition_error']; ?></span>
+                        <input type="text" name="preposition" class="form-control form-control-lg" value="<?php echo $data['preposition'] ?>">
                     </div>
 
                     <div class="form-group">

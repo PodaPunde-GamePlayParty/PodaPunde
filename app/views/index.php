@@ -7,7 +7,26 @@
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php"; ?>
+<?php include APPROOT."/views/fragments/header.php"; 
+
+if(isset($_SESSION["authority"])) {
+
+  $authority = $_SESSION["authority"];
+  switch ($authority) {
+    case UN_VERIFIED_CINEMA:
+      redirect("bioscopen/overview");
+    break;
+    
+    case VERIFIED_CINEMA:
+      redirect("cms/index");
+    break;
+    
+    case ADMINISTRATOR:
+      redirect("cms/index");
+    break;
+  }
+}
+?>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">

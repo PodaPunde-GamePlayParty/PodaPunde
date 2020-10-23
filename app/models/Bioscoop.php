@@ -60,6 +60,95 @@ class Bioscoop {
 		$this->database->bind(":hall_id", $hall_id);
 		return $this->database->getArray(); // Array
 	}
+
+    //Check if the user have he right authority
+    public function getAuthority($user_id) {
+
+        $query  = "SELECT * ";
+        $query .= "FROM users ";
+        $query .= "WHERE user_id = :user_id ";
+
+        $this->database->prepare($query);
+        $this->database->bind(":user_id", $user_id);
+        return $this->database->getRow(); // single Row
+    }
+
+
+    // Return info for specific user
+	public function getUser($user_id) {
+
+		$query  = "SELECT * ";
+		$query .= "FROM users ";
+		$query .= "WHERE user_id = :user_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":user_id", $user_id);
+		return $this->database->getRow(); // Singel Row
+	}
+
+	public function addCinema($data) {
+
+		$user_id = $data["user_id"];
+		$name = $data["name"];
+		$address = $data["address"];
+		$city = $data["city"];
+		$zipcode = $data["zipcode"];
+		$province = $data["province"];
+		$images = $data["images"];
+		$description = $data["description"];
+		$verified = $data["verified"];
+
+						
+		$query = "INSERT INTO cinemas ";
+		$query .= "(user_id, ";
+		$query .= "name, ";
+		$query .= "address, ";
+		$query .= "city, ";
+		$query .= "zipcode, ";
+		$query .= "province, ";
+		$query .= "images, ";
+		$query .= "description, ";
+		$query .= "verified) ";
+
+		$query .= "VALUES(:user_id, ";
+		$query .= ":name, ";
+		$query .= ":address, ";
+		$query .= ":city, ";
+		$query .= ":zipcode, ";
+		$query .= ":province, ";
+		$query .= ":images, ";
+		$query .= ":description, ";
+		$query .= ":verified) ";
+
+		$this->database->prepare($query);
+
+		$this->database->bind(":user_id", $user_id);
+		$this->database->bind(":name", $name);
+		$this->database->bind(":address", $address);
+		$this->database->bind(":city", $city);
+		$this->database->bind(":zipcode", $zipcode);
+		$this->database->bind(":province", $province);
+		$this->database->bind(":images", $images);
+		$this->database->bind(":description", $description);
+		$this->database->bind(":verified", $verified);
+
+		if ($this->database->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function getUserIdFromCinemas() {
+
+		$query  = "SELECT user_id ";
+		$query .= "FROM cinemas ";
+
+		$this->database->prepare($query);
+		return $this->database->getArray(); // Multiple Rows
+	}
+
+
 	
 
 }

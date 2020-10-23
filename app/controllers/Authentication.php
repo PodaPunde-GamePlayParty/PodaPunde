@@ -20,7 +20,7 @@ class Authentication extends Controller {
 
       if($_SERVER['REQUEST_METHOD'] == "GET") {
 
-        //  prepare login form
+        // prepare login form
         $data = [
           "email" => "podapunde",
           "password" => "PodaPunde2020",
@@ -88,11 +88,15 @@ class Authentication extends Controller {
                 $authority_level = $loggedInUser->authority_level;
 
                 switch ($authority_level) {
-                    case '2':
+                    case UN_VERIFIED_CINEMA:
+                        redirect("bioscopen/overview");
+                    break;
+
+                    case VERIFIED_CINEMA:
                         redirect("cms/index");
                     break;
 
-                    case '3':
+                    case CONTENT_MANAGER:
                         redirect("cms/index");
                     break;
 
@@ -120,7 +124,7 @@ class Authentication extends Controller {
 
         $this->userModel->logOut();
 
-        redirect("authentication/login");
+        redirect("index");
 
     }
 
@@ -174,6 +178,9 @@ class Authentication extends Controller {
                 "authority_level_error" => ""
             ];
 
+            if (!empty($data["user_id"])) {
+                $data["user_id"] = "NULL";
+            }
             if (empty($data["username"])) {
                 $data["username_error"] = "Voer een gebruikersnaam in";
             }
@@ -185,9 +192,6 @@ class Authentication extends Controller {
             }
             if (empty($data["firstname"])) {
                 $data["firstname_error"] = "Voer je voornaam in";
-            }
-            if (empty($data["preposition"])) {
-                $data["preposition_error"] = "Voer je tussenvoegsel in";
             }
             if (empty($data["lastname"])) {
                 $data["lastname_error"] = "voer je achternaam in";
@@ -201,43 +205,80 @@ class Authentication extends Controller {
                 (empty($data["password_error"])) && 
                 (empty($data["email_error"])) && 
                 (empty($data["firstname_error"])) && 
-                (empty($data["preposition_error"])) && 
                 (empty($data["lastname_error"])) && 
                 (empty($data["authority_level_error"]))) {
+
+                if (empty($data["preposition"])) {
+                    $data["preposition"] = "NULL";
+                }
 
                 $data["password"] = encrypt($data["password"]);
 
                 // set string with type of account/authority to integer
                 switch($data["authority_level"]) {
                     case "Visitor":
-                        $data["authority_level"] = "0"; // bezoeker
+                        $data["authority_level"] = VISITOR; // bezoeker
                     break;
 
                     case "Cinema":
-                        $data["authority_level"] = "1"; // nog geen verified account
+                        $data["authority_level"] = UN_VERIFIED_CINEMA; // nog geen verified account
                     break;
 
                     default:
-                        redirect("authentication/register");
+                        redirect("authentication/registerAccount");
                     break;
                 }
 
-                if () {
+                // Insert all data in DB
+                $result = $this->userModel->registerAccount($data);
 
+                // check if insert was succesfull
+                if ($result) {
+                    
+                    $loggedInUser = $this->userModel->login($data);
 
+                    if ($loggedInUser) {
+
+                        $_SESSION['userid'] = $loggedInUser->user_id;
+                        $_SESSION['authority'] = $loggedInUser->authority_level;
+                        $_SESSION['firstname'] = $loggedInUser->firstname;
+        
+                        $authority_level = $loggedInUser->authority_level;
+        
+                        switch ($authority_level) {
+                            case UN_VERIFIED_CINEMA:
+                                redirect("bioscopen/overview");
+                            break;
+
+                            case VERIFIED_CINEMA:
+                                redirect("cms/index");
+                            break;
+        
+                            case ADMINISTRATOR:
+                                redirect("cms/index");
+                            break;
+        
+                            default:
+                                redirect("pages/index");
+                            break;
+                        }
+        
+                      } else {
+        
+                          $data["email_error"] = "Email/wachtwoord combinatie is niet correct";
+                          $data["password_error"] = "Email/wachtwoord combinatie is niet correct";
+                          $data["password"] = "";
+                          $this->view("authentication/login", $data);
+                      }
 
                 } else {
-
-                    $this->view("authentication/login", $data);
+                    die("Account aanmaken mislukt");
                 }
 
             } else {
-              $this->view("authentication/login", $data);
+              $this->view("authentication/registerAccount", $data);
           }
-
-
         }
-
     }
 
 
