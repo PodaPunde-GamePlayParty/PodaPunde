@@ -77,9 +77,9 @@ class Bioscopen extends Controller {
         $user_id_cinemas = $this->bioscoopModel->getCinema($user_id);
 
         if(!$user_id_cinemas) {
-            $cinema_already_exist = "FALSE";
+            $cinema_already_exist = TRUE;
         } else {
-            $cinema_already_exist = "TRUE";
+            $cinema_already_exist = FALSE;
         }
 
         $data = [

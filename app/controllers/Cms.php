@@ -13,9 +13,10 @@ class Cms extends Controller {
         $this->cmsModel = $this->model("Cmsmodel");
     }
 
+
+
     // CMS page
     public function index() {
-
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
 
@@ -44,9 +45,10 @@ class Cms extends Controller {
         $this->view("cms/index", $data);
     }
 
+
+
     // Bioscoop overzicht pagina
     public function overzicht() {
-
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
 
@@ -68,12 +70,12 @@ class Cms extends Controller {
         ];
 
         $this->view("cms/bioscoop/overzicht", $data);
-
     }
+
+
 
     // Bioscoop zalen overzicht pagina
     public function zalen() {
-
         $user_id = $_SESSION["userid"];
         $authCheck = $this->cmsModel->getAuthority($user_id);
 
@@ -98,51 +100,54 @@ class Cms extends Controller {
         $this->view("cms/bioscoop/zalen", $data);
     }
 
+
+
     // Bioscoop zaal verwijderen pagina
     public function deleteHall() {
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("Cms/zalen");
+        }
 
-      if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
-          redirect("Cms/zalen");
-      }
+        $hall_id = $_GET["hall_id"];
+        $hall = $this->cmsModel->getHall($hall_id);
+        $data = [
+            "title" => "Overzicht",
+            "hall" => $hall
+        ];
 
-      $hall_id = $_GET["hall_id"];
-      $hall = $this->cmsModel->getHall($hall_id);
-      $data = [
-          "title" => "Overzicht",
-          "hall" => $hall
-      ];
-
-      $this->view("cms/bioscoop/delete", $data);
-
+        $this->view("cms/bioscoop/delete", $data);
     }
+
+
 
     // Bioscoop zaal verwijderen actie pagina
     public function deleteHallConfirmed() {
-      if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
-          redirect("Cms/zalen");
-      }
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("Cms/zalen");
+        }
 
-      $hall_id = $_GET["hall_id"];
-      $hall = $this->cmsModel->getHall($hall_id);
-      $deleteConfirmed = $this->cmsModel->deleteHall($hall_id);
+        $hall_id = $_GET["hall_id"];
+        $hall = $this->cmsModel->getHall($hall_id);
+        $deleteConfirmed = $this->cmsModel->deleteHall($hall_id);
 
-      $authority = $_SESSION["authority"];
+        $authority = $_SESSION["authority"];
 
-      switch ($authority) {
-        case VERIFIED_CINEMA:
-          redirect("cms/zalen");
-        break;
+        switch ($authority) {
+            case VERIFIED_CINEMA:
+                redirect("cms/zalen");
+            break;
 
-        case ADMINISTRATOR:
-          redirect("cms/cinemaDetails?cinema_id=" . $hall->cinema_id);
-        break;
+            case ADMINISTRATOR:
+                redirect("cms/cinemaDetails?cinema_id=" . $hall->cinema_id);
+            break;
 
-        default:
-          redirect("cms/index");
-        break;
-
-      }
+            default:
+                redirect("cms/index");
+            break;
+        }
     }
+
+
 
     // list of all cinemas
     public function cinemaList() {
@@ -155,6 +160,8 @@ class Cms extends Controller {
 
         $this->view("cms/admin/cinemaList", $data);
     }
+
+
 
     // Cinema Details Page
     public function cinemaDetails() {
@@ -176,6 +183,8 @@ class Cms extends Controller {
 
         $this->view("cms/admin/cinemaDetails", $data);
     }
+
+
 
     // Create Halls
     public function addHall() {
@@ -371,8 +380,41 @@ class Cms extends Controller {
                 $this->view("cms/bioscoop/updateHalls", $data);
             }
         }
+    }
 
 
+
+    // Verify cinemas that are unverified
+    public function verifyCinema() {
+        if(!isset($_SESSION["authority"])) {
+            redirect("index");
+        }
+        $user_id = $_SESSION["user_id"];
+        $authority = $_SESSION["authority"];
+        
+        switch ($authority) {
+            case VERIFIED_CINEMA:
+                redirect("cms/index");
+            break;
+
+            case ADMINISTRATOR:
+                $info = $this->cmsModel->getUnVerifiedCinemas();
+                $users = $info["users"];
+                $cinemas = $info["cinemas"];
+            break;
+
+            default:
+                redirect("cms/index");
+            break;
+        }
+
+
+        $data = [
+            "title" => "Bioscopen Verifiëren",
+            "users" => $users,
+            "cinemas" => $cinemas
+        ];
+        $this->view("cms/admin/verifyCinemas", $data);
     }
 
 }

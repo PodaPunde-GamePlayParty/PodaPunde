@@ -22,7 +22,7 @@ $cinema_already_exist = $data["cinema_already_exist"];
         <?php if(!$cinema_already_exist) { ?>
             <ul class="list-group m-md-3 m-0">
                 <li class="list-group-item">
-                    <a class="" href="<?php echo URLROOT; ?>/bioscoop/addCinema">Bioscoop toevoegen</a>";
+                    <a class="" href="<?php echo URLROOT; ?>/bioscoop/addCinema">Bioscoop toevoegen</a>
                 </li>
             </ul>
         <?php } ?>

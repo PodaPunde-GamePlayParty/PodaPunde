@@ -28,6 +28,9 @@ define ("UN_VERIFIED_CINEMA", "1");
 define ("VERIFIED_CINEMA", "2");
 define ("ADMINISTRATOR", "3");
 
+// Const
+define("DELETE_TIME_ACCOUNT", "0000-00-00 00:01:00"); // yyyy-mm-dd hh:mm:ss
+
 //  Salt
 define ("SALTHEADER", "PLOP23B453J");
 define ("SALTTRAILER", "FDSFS9434VH");

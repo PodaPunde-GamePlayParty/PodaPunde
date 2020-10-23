@@ -130,6 +130,7 @@ class Cmsmodel {
 		return $this->database->getRow();
 	}
 
+	// delete hall
 	public function deleteHall($hall_id) {
 
 		$query  = "DELETE ";
@@ -142,6 +143,7 @@ class Cmsmodel {
 
 	}
 
+	// insert hall
 	public function addHall($data) {
 
 		$query = "INSERT INTO halls (cinema_id, hall_number, quantity_chairs, wheelchair_accessible, screen_size, version) ";
@@ -163,6 +165,7 @@ class Cmsmodel {
 
 	}
 
+	// updates hall
 	public function updateHall($data) {
 
 		$hall_id = $_GET['hall_id'];
@@ -185,4 +188,29 @@ class Cmsmodel {
 			return false;
 		}
 	}
+
+	// getting al cinemas where verified = false
+	public function getUnVerifiedCinemas() {
+		$verified = "FALSE";
+
+		$query = "SELECT * ";
+		$query .= "FROM cinemas ";
+		$query .= "WHERE verified = :verified ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":verified", $verified);
+		$cinemas = $this->database->getArray(); // Multiple Rows
+
+		foreach ($cinemas as $cinema) {
+			$user_id = $cinema->user_id;
+			$userArray[$user_id] = $this->getUser($user_id);
+		}
+
+		return [
+			"users" => $userArray,
+			"cinemas" => $cinemas
+		];
+
+	}
+
 }

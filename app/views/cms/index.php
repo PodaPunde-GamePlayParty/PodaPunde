@@ -19,8 +19,8 @@
 
 <?php
 
-$authority_level = $_SESSION["authority"];
-switch ($authority_level) {
+$authority = $_SESSION["authority"];
+switch ($authority) {
     case VERIFIED_CINEMA:
         $cinema = $data["cms"]["cinema"];
         $username = $cinema->name;
@@ -39,6 +39,9 @@ switch ($authority_level) {
 
         echo "<li class='list-group-item'>";
         echo "  <a class='' href='" . URLROOT . "/cms/cinemaList'>Bioscopen overzicht</a>";
+        echo "</li>";
+        echo "<li class='list-group-item'>";
+        echo "  <a class='' href='" . URLROOT . "/cms/verifyCinema'>Bioscopen Verfiëren</a>";
         echo "</li>";
     break;
 
