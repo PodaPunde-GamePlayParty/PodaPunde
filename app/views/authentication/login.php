@@ -29,7 +29,16 @@
                         <span class="invalid-feedback"><?php echo $data['password_error']; ?></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6 pr-0">
+                                <button type="submit" class="btn btn-primary mt-2 form-control">Inloggen</button>
+                            </div>
+                            <div class="col-6 pr-0">
+                                <a href="<?php echo URLROOT; ?>/authentication/register" class="btn btn-primary mt-2 form-control">Registreren</a>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

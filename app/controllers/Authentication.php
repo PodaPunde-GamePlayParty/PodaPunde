@@ -124,5 +124,121 @@ class Authentication extends Controller {
 
     }
 
+    // register account
+    public function register() {
+
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+
+            // prepare register form
+            $data = [
+                "user_id" => "",
+                "username" => "",
+                "password" => "",
+                "email" => "",
+                "firstname" => "",
+                "preposition" => "",
+                "lastname" => "",
+                "authority_level" => "",
+                "user_id_error" => "",
+                "username_error" => "",
+                "password_error" => "",
+                "email_error" => "",
+                "firstname_error" => "",
+                "preposition_error" => "",
+                "lastname_error" => "",
+                "authority_level_error" => ""
+            ];
+            $this->view("authentication/registerAccount", $data);
+        } else {
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // load register form
+            $data = [
+                "user_id" => "",
+                "username" => trim($_POST["username"]),
+                "password" => trim($_POST["password"]),
+                "email" => trim($_POST["email"]),
+                "firstname" => trim($_POST["firstname"]),
+                "preposition" => trim($_POST["preposition"]),
+                "lastname" => trim($_POST["lastname"]),
+                "authority_level" => trim($_POST["authority_level"]),
+                "user_id_error" => "",
+                "username_error" => "",
+                "password_error" => "",
+                "email_error" => "",
+                "firstname_error" => "",
+                "preposition_error" => "",
+                "lastname_error" => "",
+                "authority_level_error" => ""
+            ];
+
+            if (empty($data["username"])) {
+                $data["username_error"] = "Voer een gebruikersnaam in";
+            }
+            if (empty($data["password"])) {
+                $data["password_error"] = "Voer een wachtwoord in";
+            }
+            if (empty($data["email"])) {
+                $data["email_error"] = "Voer je email adres in";
+            }
+            if (empty($data["firstname"])) {
+                $data["firstname_error"] = "Voer je voornaam in";
+            }
+            if (empty($data["preposition"])) {
+                $data["preposition_error"] = "Voer je tussenvoegsel in";
+            }
+            if (empty($data["lastname"])) {
+                $data["lastname_error"] = "voer je achternaam in";
+            }
+            if (empty($data["authority_level"])) {
+                $data["authority_level_error"] = "Geef het type account aan";
+            }
+
+            if (
+                (empty($data["username_error"])) && 
+                (empty($data["password_error"])) && 
+                (empty($data["email_error"])) && 
+                (empty($data["firstname_error"])) && 
+                (empty($data["preposition_error"])) && 
+                (empty($data["lastname_error"])) && 
+                (empty($data["authority_level_error"]))) {
+
+                $data["password"] = encrypt($data["password"]);
+
+                // set string with type of account/authority to integer
+                switch($data["authority_level"]) {
+                    case "Visitor":
+                        $data["authority_level"] = "0"; // bezoeker
+                    break;
+
+                    case "Cinema":
+                        $data["authority_level"] = "1"; // nog geen verified account
+                    break;
+
+                    default:
+                        redirect("authentication/register");
+                    break;
+                }
+
+                if () {
+
+
+
+                } else {
+
+                    $this->view("authentication/login", $data);
+                }
+
+            } else {
+              $this->view("authentication/login", $data);
+          }
+
+
+        }
+
+    }
+
 
 }
