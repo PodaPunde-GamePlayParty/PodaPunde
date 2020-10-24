@@ -44,4 +44,4 @@
         </div>
     </div>
 
-<?php include APPROOT."/views/fragments/footer.php"; ?>s
+<?php include APPROOT."/views/fragments/footer.php"; ?>
