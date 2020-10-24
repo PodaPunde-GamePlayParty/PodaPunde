@@ -65,7 +65,7 @@ class Bioscopen extends Controller {
                 redirect("cms/index");
             break;
 
-            case ADMINISTRATOR:
+            case CONTENT_MANAGER:
                 redirect("cms/index");
             break;
 
@@ -94,38 +94,34 @@ class Bioscopen extends Controller {
     // add cinema
     public function addCinema() {
     
-        if(!isset($_SESSION["user_id"])) {
-            redirect("index");
+        if(!isset($_SESSION["userid"])) {
+            // redirect("index");
         }
         $user_id = $_SESSION["userid"];
         $authCheck = $this->bioscoopModel->getAuthority($user_id);
 
-        $user_id_cinemas = $this->bioscoopModel->getCinema($user_id);
-        $cinema_already_exist = "FALSE";
+        if($this->bioscoopModel->getCinema($user_id)) {
+            $cinema_already_exist = TRUE;
+        } else {
+            $cinema_already_exist = FALSE;
+        }
 
-
-        // if(!$user_id_cinemas) {
-        //     $cinema_already_exist = "FALSE";
-        // } else {
-        //     $cinema_already_exist = "TRUE";
-        // }
-
-        // if ($cinema_already_exist) {
-        //     redirect("bioscopen/overview");
-        // }
+        if ($cinema_already_exist) {
+            redirect("bioscopen/overview");
+        }
 
         $authority_level = $authCheck->authority_level;
 
         switch ($authority_level) {
             case UN_VERIFIED_CINEMA;
-                $un_verified = "TRUE";
+                $un_verified = TRUE;
             break;
 
             case VERIFIED_CINEMA:
                 redirect("cms/index");
             break;
 
-            case ADMINISTRATOR:
+            case CONTENT_MANAGER:
                 redirect("cms/index");
             break;
 

@@ -47,7 +47,7 @@ CREATE TABLE `cinemas` (
   `cinema_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `adress` varchar(60) NOT NULL,
+  `address` varchar(60) NOT NULL,
   `city` varchar(40) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `province` varchar(20) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `cinemas` (
 -- Gegevens worden geëxporteerd voor tabel `cinemas`
 --
 
-INSERT INTO `cinemas` (`cinema_id`, `user_id`, `name`, `adress`, `city`, `zipcode`, `province`, `images`, `description`, `verified`) VALUES
+INSERT INTO `cinemas` (`cinema_id`, `user_id`, `name`, `address`, `city`, `zipcode`, `province`, `images`, `description`, `verified`) VALUES
 (1, 4, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg', 'Met Kinepolis Jaarbeurs (14 zalen, 3.010 stoelen) heeft Utrecht eindelijk een moderne megabioscoop in de binnenstad: de grootste bioscoop van Utrecht, en een van de grootste bioscopen van Nederland. Kinepolis Jaarbeurs biedt elke filmbezoeker \"the ultimate cinema experience\": ruime en comfortabele stoelen, royale beenruimte, en beeld en geluid van het allerhoogste niveau. Alle zalen zijn voorzien van laserprojectie. Voor een nog intensere bioscoopervaring kijk je een film in Laser ULTRA, met haarscherp laserbeeld en het ruimtelijke geluid van Dolby Atmos. Kinepolis Jaarbeurs ligt op slechts een paar minuten loopafstand van het Centraal Station van Utrecht, tegen de Jaarbeurshallen aan. Een hapje eten of borrelen voor of na de film? Dat kan bij de naastgelegen foodcourt Speys.', ''),
 (2, 5, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg', 'Kinepolis Almere is sinds 2004 gevestigd in het levendige centrum van Almere. Het ontwerp van het imposante gebouw is van de bekroonde architect Rem Koolhaas. De megabioscoop telt 8 zalen met in totaal 2137 comfortabele stoelen. Bij binnenkomst is de trap die diagonaal door het gebouw loopt, de eerste blikvanger. Kinepolis Almere is sinds november 2017 verbouwd om meer aan te sluiten bij de look-and-feel van Kinepolis. Dit betekent dat alle zetels zijn vernieuwd,  dat er automatische ticket machines (ATMs) op de trap zijn geplaatst en er een volledige nieuwe shop met een ruimer assortiment is gekomen.', ''),
 (3, 6, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg', 'Kinepolis Breda op het Breepark is de plek waar een filmbezoek een ware beleving wordt. Alle 10 de zalen hebben luxe bioscoopstoelen met extra brede armleuningen en royale beenruimte. Voor nog meer comfort zijn er speciale Cosy Seats te boeken. Kinepolis Breda is een volledig laserprojectie-bioscoop, wat betekent dat de beeldkwaliteit in elke zaal superscherp is. De grootste zaal is uitgerust met Kinepolis Laser ULTRA, een exclusieve combinatie van spectaculair laserbeeld en het ruimtelijke geluid van Dolby Atmos. Parkeren is GRATIS.', ''),
@@ -106,7 +106,7 @@ CREATE TABLE `customers` (
   `preposition` varchar(10) DEFAULT NULL,
   `lastname` varchar(40) NOT NULL,
   `phonenumber` int(11) DEFAULT NULL,
-  `adress` varchar(80) NOT NULL,
+  `address` varchar(80) NOT NULL,
   `city` varchar(40) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `province` varchar(20) NOT NULL
@@ -116,7 +116,7 @@ CREATE TABLE `customers` (
 -- Gegevens worden geëxporteerd voor tabel `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `firstname`, `preposition`, `lastname`, `phonenumber`, `adress`, `city`, `zipcode`, `province`) VALUES
+INSERT INTO `customers` (`customer_id`, `firstname`, `preposition`, `lastname`, `phonenumber`, `address`, `city`, `zipcode`, `province`) VALUES
 (1, 'Bob', '', 'Nab', 0, 'Voorbeeld 1', 'VB1', '1234AB', 'Voorbeeld 1'),
 (2, 'Dyon', 'van', 'Raaij', 0, 'Voorbeeld 2', 'VB2', '4321ZY', 'Voorbeeld 2'),
 (3, 'Harisan', '', 'Nades', 0, 'Voorbeeld 3', 'VB3', '0000AA', 'Voorbeeld 3'),

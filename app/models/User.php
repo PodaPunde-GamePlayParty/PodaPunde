@@ -109,9 +109,9 @@ class User {
 		$this->database->bind(":authority_level", $authority_level);
 
 		if ($this->database->execute()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 

@@ -9,11 +9,13 @@
 
 <?php include APPROOT."/views/fragments/header.php";
 
-$users = $data["users"];
-$cinemas = $data["cinemas"];
+if(!$data["empty"]) {
+    $users = $data["users"];
+    $cinemas = $data["cinemas"];
+    echo "<h1 id='alignmentCenter'>" . $data['title'] . "</h1>";
+}
 ?>
 
-<h1 id="alignmentCenter"><?php echo $data["title"]; ?></h1>
 
 
 <div class="row">
@@ -27,7 +29,7 @@ $cinemas = $data["cinemas"];
 $authority = $_SESSION["authority"];
 switch ($authority) {
 
-    case ADMINISTRATOR: ?>
+    case CONTENT_MANAGER: ?>
         <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/index"><- Terug</a>
         </li>
@@ -51,6 +53,7 @@ switch ($authority) {
 
     <!-- CMS content -->
     <div class="col-12 col-md-9 p-0 p-md-4">
+        <?php if(!$data["empty"]) { ?>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -62,18 +65,24 @@ switch ($authority) {
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($cinemas as $cinema) { ?>
-                    <tr>
-                        <th scope="row"><?php echo $cinema->name; ?></th>
-                        <td><?php echo $users[$cinema->user_id]->username; ?></td>
-                        <td><a class="btn btn-outline-danger" href="<?php echo URLROOT . "/cms/deleteCinema?cinema_id=" . $cinema->cinema_id; ?>">Afkeuren</a></td>
-                        <td><a class="btn btn-outline-success" href="<?php echo URLROOT . "/cms/verifyCinemaAction?cinema_id=" . $cinema->cinema_id; ?>">Goedkeuren</a></td>
-                        <td><a class="btn btn-light" href="<?php echo URLROOT . "/cms/cinemaDetails?cinema_id=" . $cinema->cinema_id; ?>">Bekijken</a></td>
-                    </tr>
-
-                <?php } ?>
+                <?php
+                    foreach($cinemas as $cinema) { ?>
+                        <tr>
+                            <th scope="row"><?php echo $cinema->name; ?></th>
+                            <td><?php echo $users[$cinema->user_id]->username; ?></td>
+                            <td><a class="btn btn-outline-danger" href="<?php echo URLROOT . "/cms/deleteCinema?cinema_id=" . $cinema->cinema_id; ?>">Afkeuren</a></td>
+                            <td><a class="btn btn-outline-success" href="<?php echo URLROOT . "/cms/verifyCinemaAction?cinema_id=" . $cinema->cinema_id; ?>">Goedkeuren</a></td>
+                            <td><a class="btn btn-light" href="<?php echo URLROOT . "/cms/cinemaDetails?cinema_id=" . $cinema->cinema_id; ?>">Bekijken</a></td>
+                        </tr>
+    
+                    <?php
+                    } ?>
             </tbody>
         </table>
+        <?php
+        } else { ?>
+            <p id="BoldStyle">alle bioscopen zijn al geverifiëerd</p>
+        <?php } ?>
     </div>
 </div>
 

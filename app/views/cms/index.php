@@ -33,7 +33,7 @@ switch ($authority) {
         echo "</li>";
     break;
 
-    case ADMINISTRATOR:
+    case CONTENT_MANAGER:
         $user = $data["user"];
         $username = $user->username;
 

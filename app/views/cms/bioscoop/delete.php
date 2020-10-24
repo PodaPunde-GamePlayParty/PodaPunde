@@ -38,7 +38,7 @@
           echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/zalen'>Annuleren</a>";
         break;
 
-        case ADMINISTRATOR:
+        case CONTENT_MANAGER:
           echo "<a class='btn btn-outline-success form-control' href='" . URLROOT . "/cms/cinemaDetails?cinema_id=" . $hall->cinema_id . "'>Annuleren</a>";
         break;
 

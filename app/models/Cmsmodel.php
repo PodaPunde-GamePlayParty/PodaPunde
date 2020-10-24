@@ -179,9 +179,9 @@ class Cmsmodel {
 		$this->database->bind(":version", $data['version']);
 
 		if ($this->database->execute()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 
@@ -210,15 +210,15 @@ class Cmsmodel {
 		$this->database->bind(":version", $data['version']);
 
 		if ($this->database->execute()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 
 
 
-	// getting al cinemas where verified = false
+	// getting al cinemas where verified = FALSE
 	public function getUnVerifiedCinemas() {
 		$verified = "FALSE";
 
@@ -230,15 +230,20 @@ class Cmsmodel {
 		$this->database->bind(":verified", $verified);
 		$cinemas = $this->database->getArray(); // Multiple Rows
 
-		foreach ($cinemas as $cinema) {
-			$user_id = $cinema->user_id;
-			$userArray[$user_id] = $this->getUser($user_id);
-		}
+		if(!$cinemas) {
+			return FALSE;
+		} else {
 
-		return [
-			"users" => $userArray,
-			"cinemas" => $cinemas
-		];
+			foreach ($cinemas as $cinema) {
+				$user_id = $cinema->user_id;
+				$userArray[$user_id] = $this->getUser($user_id);
+			}
+			
+			return [
+				"users" => $userArray,
+				"cinemas" => $cinemas
+			];
+		}
 	}
 
 
@@ -246,15 +251,15 @@ class Cmsmodel {
 	// update user
 	public function updateUser($user) {
 
-		$user_id = $user["user_id"];
+		$user_id = $user->user_id;
 
-		$username = $user["username"];
-		$password = $user["password"];
-		$email = $user["email"];
-		$firstname = $user["firstname"];
-		$preposition = $user["preposition"];
-		$lastname = $user["lastname"];
-		$authority_level = $user["authority_level"];
+		$username = $user->username;
+		$password = $user->password;
+		$email = $user->email;
+		$firstname = $user->firstname;
+		$preposition = $user->preposition;
+		$lastname = $user->lastname;
+		$authority_level = $user->authority_level;
 
 		$query = "UPDATE users ";
 		$query .= "SET username = :username, ";
@@ -279,26 +284,26 @@ class Cmsmodel {
 		$this->database->bind(":user_id", $user_id);
 
 		if ($this->database->execute()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 
 	// update cinema
 	public function updateCinema($cinema) {
 		
-		$cinema_id = $cinema["cinema_id"];
-		$user_id = $cinema["user_id"];
+		$cinema_id = $cinema->cinema_id;
+		$user_id = $cinema->user_id;
 
-		$name = $cinema["name"];
-		$address = $cinema["address"];
-		$city = $cinema["city"];
-		$zipcode = $cinema["zipcode"];
-		$province = $cinema["province"];
-		$images = $cinema["images"];
-		$description = $cinema["description"];
-		$verified = $cinema["verified"];
+		$name = $cinema->name;
+		$address = $cinema->address;
+		$city = $cinema->city;
+		$zipcode = $cinema->zipcode;
+		$province = $cinema->province;
+		$images = $cinema->images;
+		$description = $cinema->description;
+		$verified = $cinema->verified;
 
 		$query = "UPDATE cinemas ";
 		$query .= "SET name = :name, ";
@@ -327,16 +332,16 @@ class Cmsmodel {
 		$this->database->bind(":cinema_id", $cinema_id);
 
 		if ($this->database->execute()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 
 
 
 
-	// make all variables true / verified
+	// make all variables TRUE / verified
 	public function verify($user_id) {
 		
 		$user = $this->getUser($user_id); // get all data from user to update correctly

@@ -19,7 +19,7 @@
           <a class="" href="<?php echo URLROOT; ?>/cms/index"><- Terug</a>
         </li>
         <li class="list-group-item">
-          <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
+          <a class="" href="<?php echo URLROOT; ?>/cms/verifyCinema">Bioscoop verifiëren</a>
         </li>
       </ul>
     </div>

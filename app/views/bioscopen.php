@@ -15,7 +15,7 @@
   <?php
     echo "<div class='row mt-lg-5'>";
     foreach($data["bioscopen"] as $bioscopen) { 
-        if($bioscopen->verified != "FALSE") {
+        if($bioscopen->verified != FALSE) {
 
             ?>
 
@@ -29,7 +29,7 @@
                         <?php
                         echo "<p id='noMarginBottom' class='font-weight-bold'>Regio:   " . $bioscopen->province . "</p>";
                         echo "<p>";
-                        echo $bioscopen->adress . "<br>";
+                        echo $bioscopen->address . "<br>";
                         echo $bioscopen->zipcode . "<br>";
                         echo $bioscopen->city;
                         echo "</p>";

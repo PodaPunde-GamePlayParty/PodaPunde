@@ -133,9 +133,9 @@ class Bioscoop {
 		$this->database->bind(":verified", $verified);
 
 		if ($this->database->execute()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 
@@ -149,9 +149,9 @@ class Bioscoop {
 		$this->database->bind(":user_id", $user_id);
 	
 		if ($this->database->getRow()) {
-			return true;
+			return TRUE;
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 

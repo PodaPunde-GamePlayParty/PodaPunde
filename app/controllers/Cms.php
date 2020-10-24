@@ -27,7 +27,7 @@ class Cms extends Controller {
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
             break;
 
-            case ADMINISTRATOR:
+            case CONTENT_MANAGER:
                 $user = $this->cmsModel->getUser($user_id);
                 $cms = $this->cmsModel->getAllCinemas();
 
@@ -57,6 +57,10 @@ class Cms extends Controller {
         switch ($authority_level) {
             case VERIFIED_CINEMA:
                 $cms = $this->cmsModel->getCinemaByUserId($user_id);
+            break;
+
+            case CONTENT_MANAGER:
+                $cms = $this->cmsModel->getAllCinemas();
             break;
 
             default:
@@ -137,7 +141,7 @@ class Cms extends Controller {
                 redirect("cms/zalen");
             break;
 
-            case ADMINISTRATOR:
+            case CONTENT_MANAGER:
                 redirect("cms/cinemaDetails?cinema_id=" . $hall->cinema_id);
             break;
 
@@ -397,10 +401,13 @@ class Cms extends Controller {
                 redirect("cms/index");
             break;
 
-            case ADMINISTRATOR:
+            case CONTENT_MANAGER:
                 $info = $this->cmsModel->getUnVerifiedCinemas();
-                $users = $info["users"];
-                $cinemas = $info["cinemas"];
+                if(!$info) {
+                    $data["empty"] = TRUE;
+                }
+                $data["users"] = $info["users"];
+                $data["cinemas"] = $info["cinemas"];
             break;
 
             default:
@@ -409,11 +416,8 @@ class Cms extends Controller {
         }
 
 
-        $data = [
-            "title" => "Bioscopen Verifiëren",
-            "users" => $users,
-            "cinemas" => $cinemas
-        ];
+        $data["title"] = "Bioscopen Verifiëren";
+        
         $this->view("cms/admin/verifyCinemas", $data);
     }
 
@@ -424,18 +428,21 @@ class Cms extends Controller {
             redirect("index");
         }
         if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
+            echo "line: 427 Cms controller<br>";
+            exit();
             redirect("cms/verifyCinema");
         }
         $user_id = $_SESSION["userid"];
         $authority = $_SESSION["authority"];
+        $cinema_id = $_GET["cinema_id"];
         
         switch ($authority) {
             case VERIFIED_CINEMA:
                 redirect("cms/index");
             break;
 
-            case ADMINISTRATOR:
-                $authAdmin = "TRUE";
+            case CONTENT_MANAGER:
+                $authAdmin = TRUE;
             break;
 
             default:
@@ -447,8 +454,10 @@ class Cms extends Controller {
             redirect("cms/index");
         }
 
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
+        $user_id_cinema = $cinema->user_id;
 
-        $verify = $this->cmsModel->verify($user_id);
+        $verify = $this->cmsModel->verify($user_id_cinema);
         $verifyUser = $verify["user"];
         $verifyCinema = $verify["cinema"];
 

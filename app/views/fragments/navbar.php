@@ -15,7 +15,7 @@ if(!empty($_SESSION['authority'])) {
 
 <nav class="navbar navbar-expand-lg navbar-light p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarTogglerDemo01" aria-expanded="FALSE" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -38,7 +38,7 @@ if(!empty($_SESSION['authority'])) {
         echo "</li>";
     break;
 
-    case ADMINISTRATOR:
+    case CONTENT_MANAGER:
         echo "<li class='nav-item'>";
         echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
         echo "</li>";
