@@ -15,6 +15,8 @@ class Cmsmodel {
 		$this->database = new Database;
 	}
 
+
+
 	//Check if the user have he right authority
 	public function getAuthority($user_id) {
 
@@ -26,6 +28,8 @@ class Cmsmodel {
 		$this->database->bind(":user_id", $user_id);
 		return $this->database->getRow(); // single Row
 	}
+
+
 
 	// get the cinema that is signed to the user
 	public function getCinema($user_id) {
@@ -39,6 +43,8 @@ class Cmsmodel {
 		return $this->database->getRow(); // single Row
 	}
 
+
+
 	// get the cinema details with cinema_id
 	public function getCinemaDetails($cinema_id) {
 
@@ -51,6 +57,8 @@ class Cmsmodel {
 		return $this->database->getRow(); // get single Row
 	}
 
+
+
 	// get the halls that are asigned to the cinema
 	public function getHall($hall_id) {
 
@@ -62,6 +70,8 @@ class Cmsmodel {
 		$this->database->bind(":hall_id", $hall_id);
 		return $this->database->getRow(); // Get single Row
 	}
+
+
 
 	// get the halls that are asigned to the cinema
 	public function getHalls($cinema_id) {
@@ -76,6 +86,8 @@ class Cmsmodel {
 		return $this->database->getArray(); // Array
 	}
 
+
+
 	// get the facilities that are asigned to the hall
 	public function getFacilities($hall_id) {
 
@@ -87,6 +99,8 @@ class Cmsmodel {
 		$this->database->bind(":hall_id", $hall_id);
 		return $this->database->getArray(); // Array
 	}
+
+
 
 	// get all info from the specific cinema
 	public function getCinemaByUserId($user_id) {
@@ -108,6 +122,8 @@ class Cmsmodel {
 		];
 	}
 
+
+
 	// get all cinemas an put them every row in an array
 	public function getAllCinemas() {
 
@@ -117,6 +133,8 @@ class Cmsmodel {
 		$this->database->prepare($query);
 		return $this->database->getArray(); // Multiple Rows in array
 	}
+
+
 
 	// get user data
 	public function getUser($user_id) {
@@ -130,6 +148,8 @@ class Cmsmodel {
 		return $this->database->getRow();
 	}
 
+
+
 	// delete hall
 	public function deleteHall($hall_id) {
 
@@ -140,8 +160,9 @@ class Cmsmodel {
 		$this->database->prepare($query);
 		$this->database->bind(":hall_id", $hall_id);
 		return $this->database->execute();
-
 	}
+
+
 
 	// insert hall
 	public function addHall($data) {
@@ -162,8 +183,9 @@ class Cmsmodel {
 		} else {
 			return false;
 		}
-
 	}
+
+
 
 	// updates hall
 	public function updateHall($data) {
@@ -171,7 +193,12 @@ class Cmsmodel {
 		$hall_id = $_GET['hall_id'];
 
 		$query = "UPDATE halls ";
-		$query .= "SET cinema_id=:cinema_id, hall_number=:hall_number, quantity_chairs=:quantity_chairs, wheelchair_accessible=:wheelchair_accessible, screen_size=:screen_size, version=:version ";
+		$query .= "SET cinema_id = :cinema_id, ";
+		$query .= "hall_number = :hall_number, ";
+		$query .= "quantity_chairs = :quantity_chairs, ";
+		$query .= "wheelchair_accessible = :wheelchair_accessible, ";
+		$query .= "screen_size = :screen_size, ";
+		$query .= "version = :version ";
 		$query .= "WHERE hall_id = $hall_id ";
 
 		$this->database->prepare($query);
@@ -188,6 +215,8 @@ class Cmsmodel {
 			return false;
 		}
 	}
+
+
 
 	// getting al cinemas where verified = false
 	public function getUnVerifiedCinemas() {
@@ -210,7 +239,121 @@ class Cmsmodel {
 			"users" => $userArray,
 			"cinemas" => $cinemas
 		];
+	}
 
+
+
+	// update user
+	public function updateUser($user) {
+
+		$user_id = $user["user_id"];
+
+		$username = $user["username"];
+		$password = $user["password"];
+		$email = $user["email"];
+		$firstname = $user["firstname"];
+		$preposition = $user["preposition"];
+		$lastname = $user["lastname"];
+		$authority_level = $user["authority_level"];
+
+		$query = "UPDATE users ";
+		$query .= "SET username = :username, ";
+		$query .= "password = :password, ";
+		$query .= "email = :email, ";
+		$query .= "firstname = :firstname, ";
+		$query .= "preposition = :preposition, ";
+		$query .= "lastname = :lastname, ";
+		$query .= "authority_level = :authority_level ";
+
+		$query .= "WHERE user_id = :user_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":username", $username);
+		$this->database->bind(":password", $password);
+		$this->database->bind(":email", $email);
+		$this->database->bind(":firstname", $firstname);
+		$this->database->bind(":preposition", $preposition);
+		$this->database->bind(":lastname", $lastname);
+		$this->database->bind(":authority_level", $authority_level);
+
+		$this->database->bind(":user_id", $user_id);
+
+		if ($this->database->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// update cinema
+	public function updateCinema($cinema) {
+		
+		$cinema_id = $cinema["cinema_id"];
+		$user_id = $cinema["user_id"];
+
+		$name = $cinema["name"];
+		$address = $cinema["address"];
+		$city = $cinema["city"];
+		$zipcode = $cinema["zipcode"];
+		$province = $cinema["province"];
+		$images = $cinema["images"];
+		$description = $cinema["description"];
+		$verified = $cinema["verified"];
+
+		$query = "UPDATE cinemas ";
+		$query .= "SET name = :name, ";
+		$query .= "address = :address, ";
+		$query .= "city = :city, ";
+		$query .= "zipcode = :zipcode, ";
+		$query .= "province = :province, ";
+		$query .= "images = :images, ";
+		$query .= "description = :description, ";
+		$query .= "verified = :verified ";
+
+		$query .= "WHERE user_id = :user_id ";
+		$query .= "AND cinema_id = :cinema_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":name", $name);
+		$this->database->bind(":address", $address);
+		$this->database->bind(":city", $city);
+		$this->database->bind(":zipcode", $zipcode);
+		$this->database->bind(":province", $province);
+		$this->database->bind(":images", $images);
+		$this->database->bind(":description", $description);
+		$this->database->bind(":verified", $verified);
+
+		$this->database->bind(":user_id", $user_id);
+		$this->database->bind(":cinema_id", $cinema_id);
+
+		if ($this->database->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+
+
+	// make all variables true / verified
+	public function verify($user_id) {
+		
+		$user = $this->getUser($user_id); // get all data from user to update correctly
+		$cinema = $this->getCinema($user_id); // get all data from cinema to update correctly
+
+		$user->authority_level = 2;
+
+		$cinema->user_id = $user->user_id;
+		$cinema->verified = "TRUE";
+
+		$updateUser = $this->updateUser($user);
+		$updateCinema = $this->updateCinema($cinema);
+
+		return [
+			"user" => $updateUser,
+			"cinema" => $updateCinema
+		];
 	}
 
 }

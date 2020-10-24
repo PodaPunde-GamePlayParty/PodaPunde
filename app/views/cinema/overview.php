@@ -22,7 +22,7 @@ $cinema_already_exist = $data["cinema_already_exist"];
         <?php if(!$cinema_already_exist) { ?>
             <ul class="list-group m-md-3 m-0">
                 <li class="list-group-item">
-                    <a class="" href="<?php echo URLROOT; ?>/bioscoop/addCinema">Bioscoop toevoegen</a>
+                    <a class="" href="<?php echo URLROOT; ?>/bioscopen/addCinema">Bioscoop toevoegen</a>
                 </li>
             </ul>
         <?php } ?>
@@ -31,7 +31,7 @@ $cinema_already_exist = $data["cinema_already_exist"];
     <!-- CMS content -->
     <div class="col-12 col-md-9 p-0 p-md-4">
         <h1>Welkom terug <?php echo $user->username ?></h1>
-        <?php if(!$cinema_already_exist) { ?>
+        <?php if($cinema_already_exist) { ?>
             <p>er is al een bioscoop aangemaakt voor dit account, wacht tot de contentmanger uw bioscoop heeft goedgekeurd</p>
         <?php } ?>
     </div>

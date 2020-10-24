@@ -389,7 +389,7 @@ class Cms extends Controller {
         if(!isset($_SESSION["authority"])) {
             redirect("index");
         }
-        $user_id = $_SESSION["user_id"];
+        $user_id = $_SESSION["userid"];
         $authority = $_SESSION["authority"];
         
         switch ($authority) {
@@ -415,6 +415,51 @@ class Cms extends Controller {
             "cinemas" => $cinemas
         ];
         $this->view("cms/admin/verifyCinemas", $data);
+    }
+
+
+    // verify cinema action
+    public function verifyCinemaAction() {
+        if(!isset($_SESSION["authority"])) {
+            redirect("index");
+        }
+        if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
+            redirect("cms/verifyCinema");
+        }
+        $user_id = $_SESSION["userid"];
+        $authority = $_SESSION["authority"];
+        
+        switch ($authority) {
+            case VERIFIED_CINEMA:
+                redirect("cms/index");
+            break;
+
+            case ADMINISTRATOR:
+                $authAdmin = "TRUE";
+            break;
+
+            default:
+                redirect("cms/index");
+            break;
+        }
+        
+        if(!$authAdmin) {
+            redirect("cms/index");
+        }
+
+
+        $verify = $this->cmsModel->verify($user_id);
+        $verifyUser = $verify["user"];
+        $verifyCinema = $verify["cinema"];
+
+        if(($verifyUser) && ($verifyCinema)) {
+            redirect("cms/verifyCinema");
+        } else {
+
+            $data["title"] = "Mislukt, de opdracht om de bioscoop goed te keuren is mislukt, meld dit eventueel aan de ontwikkelaar";
+
+            $this->view("cms/admin/verifyCinemas", $data);
+        }
     }
 
 }

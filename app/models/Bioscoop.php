@@ -148,7 +148,7 @@ class Bioscoop {
 		$this->database->prepare($query);
 		$this->database->bind(":user_id", $user_id);
 	
-		if ($this->database->execute()) {
+		if ($this->database->getRow()) {
 			return true;
 		} else {
 			return false;

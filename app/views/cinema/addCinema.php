@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="images" class="font-weight-bold">Postcode</label>
+                        <label for="images" class="font-weight-bold">Afbeeldingen</label>
                         <input type="text" name="images" class="form-control form-control-lg
                         <?php echo (!empty($data['images_error'])) ? "is-invalid" : ""; ?>
                         " value="<?php echo $data['images'] ?>">
@@ -62,14 +62,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description" class="font-weight-bold">Postcode</label>
+                        <label for="description" class="font-weight-bold">Omschrijving</label>
                         <input type="text" name="description" class="form-control form-control-lg
                         <?php echo (!empty($data['description_error'])) ? "is-invalid" : ""; ?>
                         " value="<?php echo $data['description'] ?>">
                         <span class="invalid-feedback"><?php echo $data['description_error']; ?></span>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary mt-2">Registreren</button>
+                    <button type="submit" class="btn btn-primary mt-2">Biosoop aanmaken</button>
                 </form>
             </div>
         </div>

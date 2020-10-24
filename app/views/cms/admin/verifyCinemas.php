@@ -13,6 +13,7 @@ $users = $data["users"];
 $cinemas = $data["cinemas"];
 ?>
 
+<h1 id="alignmentCenter"><?php echo $data["title"]; ?></h1>
 
 
 <div class="row">
@@ -24,7 +25,7 @@ $cinemas = $data["cinemas"];
 <?php
 
 $authority = $_SESSION["authority"];
-switch ($authorityl) {
+switch ($authority) {
 
     case ADMINISTRATOR: ?>
         <li class="list-group-item">
@@ -34,10 +35,7 @@ switch ($authorityl) {
         <li class='list-group-item'>
           <a class='' href="<?php echo URLROOT; ?>/cms/cinemaList">Bioscopen overzicht</a>
         </li>
-        
-        <li class="list-group-item">
-          <a class="" href="<?php echo URLROOT; ?>/cms/verifyCinema">Bioscopen Verfiëren</a>
-        </li>
+
         <?php
     break;
 
@@ -50,6 +48,7 @@ switch ($authorityl) {
         </ul>
     </div>
 
+
     <!-- CMS content -->
     <div class="col-12 col-md-9 p-0 p-md-4">
         <table class="table">
@@ -59,6 +58,7 @@ switch ($authorityl) {
                     <th scope="col">Account</th>
                     <th scope="col">Afkeuren</th>
                     <th scope="col">Goedkeuren</th>
+                    <th scope="col">Bekijken</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,8 +66,9 @@ switch ($authorityl) {
                     <tr>
                         <th scope="row"><?php echo $cinema->name; ?></th>
                         <td><?php echo $users[$cinema->user_id]->username; ?></td>
-                        <td><?php echo $cinema->province; ?></td>
-                        <td><a class="btn btn-outline-secondary" href="<?php echo URLROOT . "/cms/cinemaDetails?cinema_id=" . $cinema->cinema_id; ?>">Details</a></td>
+                        <td><a class="btn btn-outline-danger" href="<?php echo URLROOT . "/cms/deleteCinema?cinema_id=" . $cinema->cinema_id; ?>">Afkeuren</a></td>
+                        <td><a class="btn btn-outline-success" href="<?php echo URLROOT . "/cms/verifyCinemaAction?cinema_id=" . $cinema->cinema_id; ?>">Goedkeuren</a></td>
+                        <td><a class="btn btn-light" href="<?php echo URLROOT . "/cms/cinemaDetails?cinema_id=" . $cinema->cinema_id; ?>">Bekijken</a></td>
                     </tr>
 
                 <?php } ?>

@@ -77,9 +77,9 @@ class Bioscopen extends Controller {
         $user_id_cinemas = $this->bioscoopModel->getCinema($user_id);
 
         if(!$user_id_cinemas) {
-            $cinema_already_exist = TRUE;
-        } else {
             $cinema_already_exist = FALSE;
+        } else {
+            $cinema_already_exist = TRUE;
         }
 
         $data = [
@@ -100,17 +100,19 @@ class Bioscopen extends Controller {
         $user_id = $_SESSION["userid"];
         $authCheck = $this->bioscoopModel->getAuthority($user_id);
 
-        $user_id_cinemas = $this->bioscoopModel->getUserIdFromCinemas();
+        $user_id_cinemas = $this->bioscoopModel->getCinema($user_id);
+        $cinema_already_exist = "FALSE";
 
-        foreach ($user_id_cinemas->user_id as $user_ids) {
-            if($user_ids === $user_id) {
-                $cinema_already_exist = "TRUE";
-            }
-        }
 
-        if ($cinema_already_exist) {
-            redirect("bioscoop/overview");
-        }
+        // if(!$user_id_cinemas) {
+        //     $cinema_already_exist = "FALSE";
+        // } else {
+        //     $cinema_already_exist = "TRUE";
+        // }
+
+        // if ($cinema_already_exist) {
+        //     redirect("bioscopen/overview");
+        // }
 
         $authority_level = $authCheck->authority_level;
 
@@ -133,7 +135,8 @@ class Bioscopen extends Controller {
         }
 
         if(!$un_verified) {
-            redirect("bioscoop/addCinema");
+            echo "139";
+            // redirect("cms/index");
         }
 
         if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -197,7 +200,7 @@ class Bioscopen extends Controller {
                 $data["cinema_id"] = "NULL";
             }
             if (empty($data["verified"])) {
-                $data["verified"] = "FASLE";
+                $data["verified"] = "FALSE";
             }
             if (empty($data["user_id"])) {
                 $data["user_id"] = $user_id;
@@ -241,13 +244,13 @@ class Bioscopen extends Controller {
 
                 // check if insert was succesfull
                 if ($result) {
-                    redirect("bioscoop/overview");
+                    redirect("bioscopen/overview");
                 } else {
                     die("Account aanmaken mislukt");
                 }
 
             } else {
-                $this->view("bioscoop/addCinema", $data);
+                $this->view("cinema/addCinema", $data);
             }
         }
     }
