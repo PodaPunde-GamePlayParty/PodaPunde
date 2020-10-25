@@ -39,6 +39,18 @@ class Cmsmodel {
 		return $this->database->getRow(); // single Row
 	}
 
+	// get a single hall by hall_id
+	public function getHall($hall_id) {
+
+		$query  = "SELECT * ";
+		$query .= "FROM halls ";
+		$query .= "WHERE hall_id = :hall_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":hall_id", $hall_id);
+		return $this->database->getRow(); // Single row
+	}
+
 	// get the cinema details with cinema_id
 	public function getCinemaDetails($cinema_id) {
 
@@ -77,7 +89,7 @@ class Cmsmodel {
 
 	// get all info from the specific cinema
 	public function getCinemaByUserId($user_id) {
-		
+
 		$cinema = $this->getCinema($user_id);
 		$cinema_id = $cinema->cinema_id;
 		$cinema_halls = $this->getHalls($cinema_id);
@@ -94,7 +106,7 @@ class Cmsmodel {
 			// krijg error in mijn hoofd werk later bij
 		];
 	}
-	
+
 	// get all cinemas an put them every row in an array
 	public function getAllCinemas() {
 
@@ -105,7 +117,18 @@ class Cmsmodel {
 		return $this->database->getArray(); // Multiple Rows in array
 	}
 
+	public function insertAvailability($hall_id, $begin_time, $end_time, $date) {
+
+		$query  = "INSERT INTO availability ";
+		$query .= "(hall_id, begin_time, end_time, date) ";
+		$query .= "VALUES(:hall_id, :begin_time, :end_time, :date) ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":hall_id", $hall_id);
+		$this->database->bind(":begin_time", $begin_time);
+		$this->database->bind(":end_time", $end_time);
+		$this->database->bind(":date", $date);
+		return $this->database->execute();
+	}
 
 }
-
-

@@ -25,6 +25,9 @@ $cms = $data["cms"];
           <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
           </li>
+          <li class="list-group-item">
+            <a class="" href="<?php echo URLROOT; ?>/cms/availability">Beschikbaarheid opgeven</a>
+          </li>
         </ul>
     </div>
 

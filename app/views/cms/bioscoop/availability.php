@@ -17,9 +17,9 @@ $cms = $data["cms"];
     <!-- side nav CMS -->
     <div class="col-12 col-md-3">
         <ul class="list-group m-md-3 m-0">
-          <li class="list-group-item">
-            <a class="" href="#">Zalen</a>
-          </li>
+            <li class="list-group-item">
+              <a class="" href="<?php echo URLROOT; ?>/cms/zalen">Zalen</a>
+            </li>
           <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
           </li>
@@ -48,7 +48,7 @@ $cms = $data["cms"];
                   </div>
 
                   <div id="alignmentCenter">
-                    <a href="#" class="form-control btn btn-light">Knop</a>
+                    <a href="<?php echo URLROOT;?>/cms/availabilityForm?hall_id=<?php echo $halls->hall_number; ?>" class="form-control btn btn-light">Beschikbaarheid opgeven voor zaal: <?php echo $halls->hall_number; ?> </a>
                   </div>
 
                 </div>
