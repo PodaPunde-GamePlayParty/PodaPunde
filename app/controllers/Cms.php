@@ -469,6 +469,8 @@ class Cms extends Controller {
 
             $this->view("cms/admin/verifyCinemas", $data);
         }
+    }
+
     public function availability() {
 
         $user_id = $_SESSION["userid"];

@@ -30,9 +30,9 @@ switch ($authority) {
         echo "<li class='list-group-item'>";
         echo "  <a class='' href='" . URLROOT . "/cms/overzicht'>Bioscoop overzicht</a>";
         echo "</li>";
-        echo "<li class='list-group-item'>"
-        echo "<a class='' href='" . URLROOT . "cms/availability'>Beschikbaarheid opgeven</a>";
-        echo "</li>"
+        echo "<li class='list-group-item'>";
+        echo "<a class='' href='" . URLROOT . "/cms/availability'>Beschikbaarheid opgeven</a>";
+        echo "</li>";
 
     break;
 
