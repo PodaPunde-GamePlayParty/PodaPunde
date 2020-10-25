@@ -6,10 +6,16 @@
  *
  */
 ?>
+<?php
+if(!empty($_SESSION['authority'])) {
+    $authority = $_SESSION['authority'];
+} else {
+    $authority = "";
+} ?>
 
 <nav class="navbar navbar-expand-lg navbar-light p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarTogglerDemo01" aria-expanded="FALSE" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -18,24 +24,24 @@
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-<?php
-if(!empty($_SESSION['authority'])) {
-    $authority = $_SESSION['authority'];
-} else {
-    $authority = "";
-}
 
-switch ($authority) {
-    case "2":
-        // echo "<li class='nav-item'>";
-        // echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-        // echo "</li>";
+<?php switch ($authority) {
+    case UN_VERIFIED_CINEMA:
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/bioscopen/overview'>Overzicht</a>";
+        echo "</li>";
+    break;
+    
+    case VERIFIED_CINEMA:
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
+        echo "</li>";
     break;
 
-    case "3":
-        // echo "<li class='nav-item'>";
-        // echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>Overzicht</a>";
-        // echo "</li>";
+    case CONTENT_MANAGER:
+        echo "<li class='nav-item'>";
+        echo "  <a class='text-dark nav-link px-3 font-weight-bold' href='" . URLROOT . "/cms'>CMS</a>";
+        echo "</li>";
     break;
 
     default:

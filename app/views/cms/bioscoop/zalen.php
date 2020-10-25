@@ -18,7 +18,7 @@ $cms = $data["cms"];
     <div class="col-12 col-md-3">
         <ul class="list-group m-md-3 m-0">
           <li class="list-group-item">
-            <a class="" href="#">Zalen</a>
+            <a class="" href="<?php echo URLROOT; ?>/cms/index"><- Terug</a>
           </li>
           <li class="list-group-item">
             <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
@@ -29,9 +29,17 @@ $cms = $data["cms"];
         </ul>
     </div>
 
+
     <!-- CMS content -->
     <div class="col-12 col-md-9">
-        <div class="row mt-lg-5">
+        <div class="row">
+            <div class="col-12 mt-lg-3 mt-0">
+                <a href="<?php echo URLROOT;?>/cms/addHall"
+                     class="text-dark font-weight-bold">Zaal toevoegen
+                </a>
+            </div>
+        </div>
+        <div class="row mt-lg-3 mt-0">
           <?php foreach ($cms["cinema_halls"] as $halls) { ?>
 
             <div class="col-lg-3 col-md-6 col-12 mb-lg-5 mb-md-3 mb-2" style="width: 18rem;">
@@ -47,8 +55,18 @@ $cms = $data["cms"];
                     <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $halls->version; ?></p>
                   </div>
 
-                  <div id="alignmentCenter">
-                    <a href="#" class="form-control btn btn-light">Knop</a>
+
+                  <div class="row">
+                      <div class="col-6 text-center">
+                          <a href="<?php echo URLROOT;?>/cms/updateHalls?hall_id=<?php echo $halls->hall_id; ?>"
+                               class=""><i class="fas fa-edit text-dark"></i>
+                          </a>
+                      </div>
+                      <div class="col-6 text-center">
+                          <a href="<?php echo URLROOT;?>/cms/deleteHall?hall_id=<?php echo $halls->hall_id; ?>"
+                               class=""><i class="fas fa-trash-alt text-dark"></i>
+                          </a>
+                      </div>
                   </div>
 
                 </div>

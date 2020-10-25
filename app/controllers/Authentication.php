@@ -20,10 +20,10 @@ class Authentication extends Controller {
 
       if($_SERVER['REQUEST_METHOD'] == "GET") {
 
-        //  prepare login form
+        // prepare login form
         $data = [
-          "email" => "jaarbeursutrecht@kinepolis.nl",
-          "password" => "bioscoop",
+          "email" => "podapunde",
+          "password" => "PodaPunde2020",
           "email_error" => "",
           "password_error" => ""
         ];
@@ -52,24 +52,51 @@ class Authentication extends Controller {
 
           if ((empty($data['email_error'])) && (empty($data["password_error"]))) {
 
-              $data['password'] = encrypt($data['password']);
+            // use Email or username to login
+            $posted = $data["email"];
+            $mailCharacter = "/@/";
+            $temp_posted = $posted;
+            $temp_posted = preg_replace($mailCharacter,"",$temp_posted);
 
-              $loggedInUser = $this->userModel->login($data["email"],$data['password']);
+            if($temp_posted === $posted) {
+                $use_username = "YES";
+            } else {
+                $use_username = "NO";
+            }
 
-              if ($loggedInUser) {
 
-                  $_SESSION['userid'] = $loggedInUser->user_id;
-                  $_SESSION['authority'] = $loggedInUser->authority_level;
-                  $_SESSION['firstname'] = $loggedInUser->firstname;
+            // encrypt password
+            $data['password'] = encrypt($data['password']);
 
-                  $authority_level = $loggedInUser->authority_level;
+            // select function(query) on the login method
+            switch($use_username) {
+                case "YES":
+                    $loggedInUser = $this->userModel->loginUsername($data["email"],$data['password']); //login with username
+                break;
 
-                  switch ($authority_level) {
-                    case '2':
+                case "NO":
+                    $loggedInUser = $this->userModel->login($data["email"],$data['password']); // login with email
+                break;
+            }
+
+            if ($loggedInUser) {
+
+                $_SESSION['userid'] = $loggedInUser->user_id;
+                $_SESSION['authority'] = $loggedInUser->authority_level;
+                $_SESSION['firstname'] = $loggedInUser->firstname;
+
+                $authority_level = $loggedInUser->authority_level;
+
+                switch ($authority_level) {
+                    case UN_VERIFIED_CINEMA:
+                        redirect("bioscopen/overview");
+                    break;
+
+                    case VERIFIED_CINEMA:
                         redirect("cms/index");
                     break;
 
-                    case '3':
+                    case CONTENT_MANAGER:
                         redirect("cms/index");
                     break;
 
@@ -97,8 +124,125 @@ class Authentication extends Controller {
 
         $this->userModel->logOut();
 
-        redirect("authentication/login");
+        redirect("index");
 
+    }
+
+    // register account
+    public function register() {
+
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+
+            // prepare register form
+            $data = [
+                "user_id" => "",
+                "username" => "",
+                "password" => "",
+                "email" => "",
+                "firstname" => "",
+                "preposition" => "",
+                "lastname" => "",
+                "authority_level" => "",
+                "user_id_error" => "",
+                "username_error" => "",
+                "password_error" => "",
+                "email_error" => "",
+                "firstname_error" => "",
+                "preposition_error" => "",
+                "lastname_error" => "",
+                "authority_level_error" => ""
+            ];
+            $this->view("authentication/registerAccount", $data);
+        } else {
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // load register form
+            $data = [
+                "user_id" => "",
+                "username" => trim($_POST["username"]),
+                "password" => trim($_POST["password"]),
+                "email" => trim($_POST["email"]),
+                "firstname" => trim($_POST["firstname"]),
+                "preposition" => trim($_POST["preposition"]),
+                "lastname" => trim($_POST["lastname"]),
+                "authority_level" => trim($_POST["authority_level"]),
+                "user_id_error" => "",
+                "username_error" => "",
+                "password_error" => "",
+                "email_error" => "",
+                "firstname_error" => "",
+                "preposition_error" => "",
+                "lastname_error" => "",
+                "authority_level_error" => ""
+            ];
+
+            if (!empty($data["user_id"])) {
+                $data["user_id"] = "NULL";
+            }
+            if (empty($data["username"])) {
+                $data["username_error"] = "Voer een gebruikersnaam in";
+            }
+            if (empty($data["password"])) {
+                $data["password_error"] = "Voer een wachtwoord in";
+            }
+            if (empty($data["email"])) {
+                $data["email_error"] = "Voer je email adres in";
+            }
+            if (empty($data["firstname"])) {
+                $data["firstname_error"] = "Voer je voornaam in";
+            }
+            if (empty($data["lastname"])) {
+                $data["lastname_error"] = "voer je achternaam in";
+            }
+            if (empty($data["authority_level"])) {
+                $data["authority_level_error"] = "Geef het type account aan";
+            }
+
+            if (
+                (empty($data["username_error"])) && 
+                (empty($data["password_error"])) && 
+                (empty($data["email_error"])) && 
+                (empty($data["firstname_error"])) && 
+                (empty($data["lastname_error"])) && 
+                (empty($data["authority_level_error"]))) {
+
+                if (empty($data["preposition"])) {
+                    $data["preposition"] = "NULL";
+                }
+
+                $data["password"] = encrypt($data["password"]);
+
+                // set string with type of account/authority to integer
+                switch($data["authority_level"]) {
+                    case "Visitor":
+                        $data["authority_level"] = VISITOR; // bezoeker
+                    break;
+
+                    case "Cinema":
+                        $data["authority_level"] = UN_VERIFIED_CINEMA; // nog geen verified account
+                    break;
+
+                    default:
+                        redirect("authentication/registerAccount");
+                    break;
+                }
+
+                // Insert all data in DB
+                $result = $this->userModel->registerAccount($data);
+
+                // check if insert was succesfull
+                if ($result) {
+                    redirect("authentication/login");
+                } else {
+                    die("Account aanmaken mislukt");
+                }
+
+            } else {
+              $this->view("authentication/registerAccount", $data);
+          }
+        }
     }
 
 

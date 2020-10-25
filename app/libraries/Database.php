@@ -18,7 +18,7 @@ class Database {
 		$dsn = "mysql:host=" . DBHOST . ";dbname=". DBNAME;
 
 		$options = array(
-			PDO::ATTR_PERSISTENT => true,
+			PDO::ATTR_PERSISTENT => TRUE,
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 		);
 
@@ -37,7 +37,7 @@ class Database {
 	public function bind($name, $value, $type = null) {
 
 		if(is_null($type)) {
-			switch(true) { // Check that function returns true
+			switch(TRUE) { // Check that function returns TRUE
 				case is_int($value): 
 					$type = PDO::PARAM_INT;
 					break;

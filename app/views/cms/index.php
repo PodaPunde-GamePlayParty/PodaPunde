@@ -7,33 +7,59 @@
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php";
+<?php include APPROOT."/views/fragments/header.php"; ?>
 
-$cinema = $data["cms"]["cinema"];
-$cms = $data["cms"];
 
-?>
 
 <div class="row">
 
-    <!-- side nav CMS -->
+  <!-- side nav CMS -->
     <div class="col-12 col-md-3">
         <ul class="list-group m-md-3 m-0">
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/zalen">Zalen</a>
-          </li>
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/overzicht">Bioscoop overzicht</a>
-          </li>
-          <li class="list-group-item">
-            <a class="" href="<?php echo URLROOT; ?>/cms/availability">Beschikbaarheid opgeven</a>
-          </li>
+<?php
+
+$authority = $_SESSION["authority"];
+switch ($authority) {
+    case VERIFIED_CINEMA:
+        $cinema = $data["cms"]["cinema"];
+        $username = $cinema->name;
+
+        echo "<li class='list-group-item'>";
+        echo " 	<a class='' href='" . URLROOT . "/cms/zalen'>Zalen</a>";
+        echo "</li>";
+        echo "<li class='list-group-item'>";
+        echo "  <a class='' href='" . URLROOT . "/cms/overzicht'>Bioscoop overzicht</a>";
+        echo "</li>";
+        echo "<li class='list-group-item'>"
+        echo "<a class='' href='" . URLROOT . "cms/availability'>Beschikbaarheid opgeven</a>";
+        echo "</li>"
+
+    break;
+
+    case CONTENT_MANAGER:
+        $user = $data["user"];
+        $username = $user->username;
+
+        echo "<li class='list-group-item'>";
+        echo "  <a class='' href='" . URLROOT . "/cms/cinemaList'>Bioscopen overzicht</a>";
+        echo "</li>";
+        echo "<li class='list-group-item'>";
+        echo "  <a class='' href='" . URLROOT . "/cms/verifyCinema'>Bioscopen Verfiëren</a>";
+        echo "</li>";
+    break;
+
+    default:
+        redirect("index");
+    break;
+
+} ?>
+
         </ul>
     </div>
 
     <!-- CMS content -->
     <div class="col-12 col-md-9 p-0 p-md-4">
-        <h1>Welkom terug <?php echo $cinema->name ?></h1>
+        <h1>Welkom terug <?php echo $username ?></h1>
     </div>
 </div>
 

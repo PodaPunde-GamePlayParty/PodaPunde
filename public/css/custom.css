@@ -20,108 +20,84 @@ General is:
 
 /* PART OF GENERAL */
 
+    /* Root Colors */
+    :root {
+        --main: #8cfaa9;
+        --oldMain: #5ac541;
+    }
 
-/* Root Colors */
+    /* Multifunctional Id's and Classes */
 
-:root {
-    --main: #8cfaa9;
-    --oldMain: #5ac541;
-}
+    /* make font bold */
+    #BoldStyle {
+        font-weight: bold;
+    }
 
+    /* align it to center */
+    #alignmentCenter {
+        text-align: center;
+    }
 
-/* PART OF GENERAL */
-
-
-/* Multifunctional Id's and Classes */
-
-#BoldStyle {
-    font-weight: bold;
-}
-
-#alignmentCenter {
-    text-align: center;
-}
-
-#noMarginBottom {
-    margin-bottom: 0!important;
-}
+    /* margin bottom is 0 */
+    #noMarginBottom {
+        margin-bottom: 0!important;
+    }
 
 
 /* Hiding Scrollbar (work at almost al Bowsers) */
+    /* html::-webkit-scrollbar {
+    display: none!important; hrome, Safari and Opera
+    }
+    html {
+    -ms-overflow-style: none!important;  IE and Edge
+    scrollbar-width: none!important;  Firefox
+    } */
 
-
-/* html::-webkit-scrollbar { */
-
-
-/* display: none!important; Chrome, Safari and Opera */
-
-
-/* } */
-
-
-/* html { */
-
-
-/* -ms-overflow-style: none!important;  IE and Edge */
-
-
-/* scrollbar-width: none!important;  Firefox */
-
-
-/* } */
 
 
 /* Header Part */
+    .header {
+        background-color: var(--main)!important;
+        height: 20vh;
+    }
 
-.header {
-    background-color: var(--main)!important;
-    height: 20vh;
-}
-
-
-/* Nav-bar Part */
-
-.navbar {
-    background-color: var(--main)!important;
-}
-
+    /* Nav-bar Part */
+    .navbar {
+        background-color: var(--main)!important;
+    }
 
 /* Bioscoop overview (logged out) Page */
+    /* size of cart */
+    #cardSize {
+        height: 380px;
+    }
 
-#cardSize {
-    height: 380px;
-}
+    /* image size of the card */
+    #cardImage {
+        height: 166px;
+        width: auto!important;
+    }
 
-
-/* image size of the card */
-
-#cardImage {
-    height: 166px;
-    width: auto!important;
-}
 
 
 /* x scrollbar remove */
+    .row {
+        margin-right: 0!important;
+    }
 
-.row {
-    margin-right: 0!important;
-}
 
 
 /* Footer part */
+    footer {
+        position: relative;
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        background: var(--main);
+        color: black;
+    }
 
-footer {
-    position: relative;
-    width: 100%;
-    padding-top: 30px;
-    padding-bottom: 10px;
-    background: var(--main);
-    color: black;
-}
-
-
-/* Footer alignmet */
-
-.col p.copyright-text {
-    text-align: center;
-}
+    /* Footer alignmet */
+    .col p.copyright-text {
+        text-align: center;
+    }
