@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 22 okt 2020 om 15:32
+-- Gegenereerd op: 26 okt 2020 om 10:37
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `GamePlayParty`
+-- Database: `gameplayparty`
 --
 
 -- --------------------------------------------------------
@@ -46,12 +46,12 @@ CREATE TABLE `availability` (
 CREATE TABLE `cinemas` (
   `cinema_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `address` varchar(60) NOT NULL,
   `city` varchar(40) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `province` varchar(20) NOT NULL,
-  `images` text NOT NULL,
+  `images` text,
   `description` text NOT NULL,
   `verified` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -61,10 +61,10 @@ CREATE TABLE `cinemas` (
 --
 
 INSERT INTO `cinemas` (`cinema_id`, `user_id`, `name`, `address`, `city`, `zipcode`, `province`, `images`, `description`, `verified`) VALUES
-(1, 4, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg', 'Met Kinepolis Jaarbeurs (14 zalen, 3.010 stoelen) heeft Utrecht eindelijk een moderne megabioscoop in de binnenstad: de grootste bioscoop van Utrecht, en een van de grootste bioscopen van Nederland. Kinepolis Jaarbeurs biedt elke filmbezoeker \"the ultimate cinema experience\": ruime en comfortabele stoelen, royale beenruimte, en beeld en geluid van het allerhoogste niveau. Alle zalen zijn voorzien van laserprojectie. Voor een nog intensere bioscoopervaring kijk je een film in Laser ULTRA, met haarscherp laserbeeld en het ruimtelijke geluid van Dolby Atmos. Kinepolis Jaarbeurs ligt op slechts een paar minuten loopafstand van het Centraal Station van Utrecht, tegen de Jaarbeurshallen aan. Een hapje eten of borrelen voor of na de film? Dat kan bij de naastgelegen foodcourt Speys.', ''),
-(2, 5, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg', 'Kinepolis Almere is sinds 2004 gevestigd in het levendige centrum van Almere. Het ontwerp van het imposante gebouw is van de bekroonde architect Rem Koolhaas. De megabioscoop telt 8 zalen met in totaal 2137 comfortabele stoelen. Bij binnenkomst is de trap die diagonaal door het gebouw loopt, de eerste blikvanger. Kinepolis Almere is sinds november 2017 verbouwd om meer aan te sluiten bij de look-and-feel van Kinepolis. Dit betekent dat alle zetels zijn vernieuwd,  dat er automatische ticket machines (ATMs) op de trap zijn geplaatst en er een volledige nieuwe shop met een ruimer assortiment is gekomen.', ''),
-(3, 6, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg', 'Kinepolis Breda op het Breepark is de plek waar een filmbezoek een ware beleving wordt. Alle 10 de zalen hebben luxe bioscoopstoelen met extra brede armleuningen en royale beenruimte. Voor nog meer comfort zijn er speciale Cosy Seats te boeken. Kinepolis Breda is een volledig laserprojectie-bioscoop, wat betekent dat de beeldkwaliteit in elke zaal superscherp is. De grootste zaal is uitgerust met Kinepolis Laser ULTRA, een exclusieve combinatie van spectaculair laserbeeld en het ruimtelijke geluid van Dolby Atmos. Parkeren is GRATIS.', ''),
-(4, 7, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg', 'Kinepolis Groningen telt tien moderne bioscoopzalen en bedient door de uitstekende bereikbaarheid pal naast het NS station en met ruime parkeervoorzieningen een breed publiek uit zowel de stad als ook de provincie Groningen. Kinepolis Groningen biedt haar klanten maximale gastgerichtheid door vriendelijke, goed geinformeerde en professioneel getrainde medewerkers, perfect beeld en geluid en optimaal comfort, waardoor het bioscoopbezoek tot een ware belevenis wordt gemaakt.', '');
+(1, 4, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg', 'Met Kinepolis Jaarbeurs (14 zalen, 3.010 stoelen) heeft Utrecht eindelijk een moderne megabioscoop in de binnenstad: de grootste bioscoop van Utrecht, en een van de grootste bioscopen van Nederland. Kinepolis Jaarbeurs biedt elke filmbezoeker \"the ultimate cinema experience\": ruime en comfortabele stoelen, royale beenruimte, en beeld en geluid van het allerhoogste niveau. Alle zalen zijn voorzien van laserprojectie. Voor een nog intensere bioscoopervaring kijk je een film in Laser ULTRA, met haarscherp laserbeeld en het ruimtelijke geluid van Dolby Atmos. Kinepolis Jaarbeurs ligt op slechts een paar minuten loopafstand van het Centraal Station van Utrecht, tegen de Jaarbeurshallen aan. Een hapje eten of borrelen voor of na de film? Dat kan bij de naastgelegen foodcourt Speys.', 'TRUE'),
+(2, 5, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg', 'Kinepolis Almere is sinds 2004 gevestigd in het levendige centrum van Almere. Het ontwerp van het imposante gebouw is van de bekroonde architect Rem Koolhaas. De megabioscoop telt 8 zalen met in totaal 2137 comfortabele stoelen. Bij binnenkomst is de trap die diagonaal door het gebouw loopt, de eerste blikvanger. Kinepolis Almere is sinds november 2017 verbouwd om meer aan te sluiten bij de look-and-feel van Kinepolis. Dit betekent dat alle zetels zijn vernieuwd,  dat er automatische ticket machines (ATMs) op de trap zijn geplaatst en er een volledige nieuwe shop met een ruimer assortiment is gekomen.', 'TRUE'),
+(3, 6, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg', 'Kinepolis Breda op het Breepark is de plek waar een filmbezoek een ware beleving wordt. Alle 10 de zalen hebben luxe bioscoopstoelen met extra brede armleuningen en royale beenruimte. Voor nog meer comfort zijn er speciale Cosy Seats te boeken. Kinepolis Breda is een volledig laserprojectie-bioscoop, wat betekent dat de beeldkwaliteit in elke zaal superscherp is. De grootste zaal is uitgerust met Kinepolis Laser ULTRA, een exclusieve combinatie van spectaculair laserbeeld en het ruimtelijke geluid van Dolby Atmos. Parkeren is GRATIS.', 'TRUE'),
+(4, 7, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg', 'Kinepolis Groningen telt tien moderne bioscoopzalen en bedient door de uitstekende bereikbaarheid pal naast het NS station en met ruime parkeervoorzieningen een breed publiek uit zowel de stad als ook de provincie Groningen. Kinepolis Groningen biedt haar klanten maximale gastgerichtheid door vriendelijke, goed geinformeerde en professioneel getrainde medewerkers, perfect beeld en geluid en optimaal comfort, waardoor het bioscoopbezoek tot een ware belevenis wordt gemaakt.', 'TRUE');
 
 -- --------------------------------------------------------
 
@@ -106,7 +106,7 @@ CREATE TABLE `customers` (
   `preposition` varchar(10) DEFAULT NULL,
   `lastname` varchar(40) NOT NULL,
   `phonenumber` int(11) DEFAULT NULL,
-  `address` varchar(80) NOT NULL,
+  `adress` varchar(80) NOT NULL,
   `city` varchar(40) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `province` varchar(20) NOT NULL
@@ -116,7 +116,7 @@ CREATE TABLE `customers` (
 -- Gegevens worden geëxporteerd voor tabel `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `firstname`, `preposition`, `lastname`, `phonenumber`, `address`, `city`, `zipcode`, `province`) VALUES
+INSERT INTO `customers` (`customer_id`, `firstname`, `preposition`, `lastname`, `phonenumber`, `adress`, `city`, `zipcode`, `province`) VALUES
 (1, 'Bob', '', 'Nab', 0, 'Voorbeeld 1', 'VB1', '1234AB', 'Voorbeeld 1'),
 (2, 'Dyon', 'van', 'Raaij', 0, 'Voorbeeld 2', 'VB2', '4321ZY', 'Voorbeeld 2'),
 (3, 'Harisan', '', 'Nades', 0, 'Voorbeeld 3', 'VB3', '0000AA', 'Voorbeeld 3'),
@@ -212,7 +212,10 @@ INSERT INTO `halls` (`hall_id`, `cinema_id`, `hall_number`, `quantity_chairs`, `
 (9, 3, 3, 250, '10', '1900x1080', '10.1.7'),
 (10, 4, 1, 52, '2', '1900x1080', '1.0'),
 (11, 4, 2, 58, '3', '1900x1080', '3.0'),
-(12, 4, 3, 64, '4', '1900x1080', '1.8.7');
+(12, 4, 3, 64, '4', '1900x1080', '1.8.7'),
+(14, 1, 4, 4, '4', '4', '4'),
+(15, 1, 5, 5, '5', '5', '5'),
+(16, 1, 6, 6, '6', '6', '6');
 
 -- --------------------------------------------------------
 
@@ -344,13 +347,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `preposition`, `lastname`, `authority_level`, `creation_date`) VALUES
-(1, 'bobnab', '61f279253021bbff55c54e977eff50277d0fb1ba', 'boskaboutertje@outlook.com', 'Bob', '', 'Nab', 3, '2020-10-05 11:45:38'),
+(1, 'bobnab', '61f279253021bbff55c54e977eff50277d0fb1ba', 'boskaboutertje@outlook.com', 'Bob', 'NULL', 'Nab', 3, '2020-10-05 11:45:38'),
 (2, 'dyonvanraaij', 'e8367be53c7d9d1d1aca99f756ef227a9f7af41c', 'dyon.a.van.raaij@gmail.com', 'Dyon', 'Van', 'Raaij', 3, '2020-10-06 09:45:13'),
-(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', '', 'Punde', 3, '2020-10-14 13:39:51'),
-(4, 'kinepolisutrecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', '', 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
-(5, 'kinepolisalmere', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'almere@kinepolis.nl', 'Kinepolis', '', 'almere', 2, '2020-10-15 14:10:24'),
-(6, 'kinepolisbreda', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'breda@kinepolis.nl', 'Kinepolis', '', 'Breda', 2, '2020-10-15 15:41:03'),
-(7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', '', 'groningen', 2, '2020-10-15 15:42:03');
+(3, 'podapunde', '1ed279193c21815131fb97798f3f7e9ef4c9cb69', 'podapunde@gameplayparties.nl', 'Poda', 'NULL', 'Punde', 3, '2020-10-14 13:39:51'),
+(4, 'kinepolisutrecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', 'NULL', 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
+(5, 'kinepolisalmere', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'almere@kinepolis.nl', 'Kinepolis', 'NULL', 'almere', 2, '2020-10-15 14:10:24'),
+(6, 'kinepolisbreda', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'breda@kinepolis.nl', 'Kinepolis', 'NULL', 'Breda', 2, '2020-10-15 15:41:03'),
+(7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', 'NULL', 'groningen', 2, '2020-10-15 15:42:03');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -454,7 +457,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT voor een tabel `halls`
 --
 ALTER TABLE `halls`
-  MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT voor een tabel `prices`
