@@ -49,27 +49,33 @@ $hall = $data["hall"];
     </div>
 </div>
 
-    <div class="col-12 col-md-9">
-        <div class="col-lg-3 col-md-6 col-12 mb-lg-5 mb-md-3 mb-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <form class="" action="<?php echo URLROOT; ?>/cms/availabilityCommit" method="post">
-                            <p>Datum:</p>
-                            <input type="date" name="date" ><br><br>
-                            <p>Begin tijd:</p>
-                            <input type="time" name="begin_time" >
-                            <input type="submit" name="" value="submit">
-                            <input type="hidden" name="hall_id" value="<?php echo $hall->hall_id ?>">
-                        </form>
-                    </div>
-                    <div class="allignmentCenter">
-                        </div>
+<div class="container mt-lg-5 mt-2">
+    <div class="row form-rows justify-content-center">
+        <div class="col-lg-8 col-12">
+            <form method="post">
+                <div class="form-group">
+                    <label for="date" class="font-weight-bold">Datum</label>
+                    <input type="date" name="date" class="form-control form-control-lg
+                    <?php echo (!empty($data['date_error'])) ? "is-invalid" : ""; ?>"
+                    value="<?php echo $data['date'] ?>">
+                    <span class="invalid-feedback"><?php echo $data['date_error']; ?></span>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label for="time" class="font-weight-bold">Begin tijd</label>
+                    <input type="time" name="begin_time" class="form-control form-control-lg
+                    <?php echo (!empty($data['time_error'])) ? "is-invalid" : ""; ?>"
+                    value="<?php echo $data['time'] ?>">
+                    <span class="invalid-feedback"><?php echo $data['time_error']; ?></span>
+                </div>
+
+                <input type="hidden" name="hall_id" value="<?php echo $hall->hall_id ?>">
+
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
         </div>
     </div>
-
+</div>
 </div>
 
 
