@@ -430,8 +430,6 @@ class Cms extends Controller {
             redirect("index");
         }
         if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
-            echo "line: 427 Cms controller<br>";
-            exit();
             redirect("cms/verifyCinema");
         }
         $user_id = $_SESSION["userid"];
