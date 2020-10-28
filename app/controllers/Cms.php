@@ -405,6 +405,8 @@ class Cms extends Controller {
                 $info = $this->cmsModel->getUnVerifiedCinemas();
                 if(!$info) {
                     $data["empty"] = TRUE;
+                } else {
+                    $data["empty"] = FALSE;
                 }
                 $data["users"] = $info["users"];
                 $data["cinemas"] = $info["cinemas"];
