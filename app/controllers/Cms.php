@@ -524,14 +524,14 @@ class Cms extends Controller {
         $hall_id = $_POST["hall_id"];
         $date = $_POST["date"];
         $begin_time = $_POST["begin_time"];
-        $end_time = Date('H:i:s', strtotime('+2 hours',strtotime($begin_time)));
+        $end_time = strtotime($begin_time) + 3600;
+        var_dump($hall_id);
 
 
         $hall = $this->cmsModel->insertAvailability($hall_id, $begin_time, $end_time, $date);
 
-        $this->view("cms/bioscoop/availabilityCommit");
 
-        redirect("cms/availability");
+        $this->view("cms/bioscoop/availabilityCommit");
     }
 
 }
