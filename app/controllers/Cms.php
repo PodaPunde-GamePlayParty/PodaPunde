@@ -508,42 +508,10 @@ class Cms extends Controller {
         $hall_id = $_GET["hall_id"];
         $hall = $this->cmsModel->getHall($hall_id);
 
-        if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            $data = [
-                "hall_id" => $hall_id,
-                "date" => "",
-                "time" => "",
-                "date_error" => "",
-                "time_error" => "",
-            ];
-
-            $this->view("cms/bioscoop/availabilityCommit");
-        } else {
-
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $data = [
-                "hall_id" => $hall_id,
-                "date" => trim($_POST['date']),
-                "time" =>   trim($_POST['time']),
-                "date_error" => "",
-                "time_error" => "",
-            ];
-
-            if (empty($date['date'])) {
-                $date['date_error'] = "Vul een datum in!";
-            }
-
-            if (empty($date['time'])) {
-                $date['time_error'] = "Vul een tijd in!";
-            }
-
-            if ((empty($data['date'])) && (empty($data['time'])) {
-                if ($this->cmsModel->) {
-                    // code...
-                }
-            }
-        }
+        $data = [
+            "title" => "Overzicht",
+            "hall" => $hall
+        ];
 
         $this->view("cms/bioscoop/availabilityForm", $data);
     }
