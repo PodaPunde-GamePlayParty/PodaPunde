@@ -16,6 +16,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
+
+<script src="https://raw.githubusercontent.com/PodaPunde-GamePlayParty/PodaPunde/master/Extra/TestForFreeFontAwesome/TestFile.js" crossorigin="anonymous"></script>
+
+
 <!-- Fontawesome Kit --> 
 <!-- <script src="https://kit.fontawesome.com/b8026a7843.js" crossorigin="anonymous"></script> -->
 <!-- Fontawesome Use --> 
