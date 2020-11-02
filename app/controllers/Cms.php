@@ -114,9 +114,12 @@ class Cms extends Controller {
 
         $hall_id = $_GET["hall_id"];
         $hall = $this->cmsModel->getHall($hall_id);
+        $cinema_id = $hall->cinema_id;
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
         $data = [
             "title" => "Overzicht",
-            "hall" => $hall
+            "hall" => $hall,
+            "cinema" => $cinema
         ];
 
         $this->view("cms/bioscoop/delete", $data);
@@ -535,7 +538,7 @@ class Cms extends Controller {
 
     // Read availability
     public function availabilityRead() {
-    
+
         if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
             redirect("cms");
         }
