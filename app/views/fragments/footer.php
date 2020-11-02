@@ -16,14 +16,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
-
-<script src="https://raw.githubusercontent.com/PodaPunde-GamePlayParty/PodaPunde/master/Extra/TestForFreeFontAwesome/TestFile.js" crossorigin="anonymous"></script>
-
-
 <!-- Fontawesome Kit --> 
-<!-- <script src="https://kit.fontawesome.com/b8026a7843.js" crossorigin="anonymous"></script> -->
+<script src="https://kit.fontawesome.com/b8026a7843.js" crossorigin="anonymous"></script>
 <!-- Fontawesome Use --> 
-<!-- <script src="https://use.fontawesome.com/c6692de691.js" crossorigin="anonymous"></script> -->
+<script src="https://use.fontawesome.com/c6692de691.js" crossorigin="anonymous"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
