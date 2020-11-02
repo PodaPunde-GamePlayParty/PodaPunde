@@ -29,6 +29,12 @@
 
     <!-- CMS content -->
     <div class="col-12 col-md-9">
+        <div class="row">
+            <div class="col-12 mt-lg-3 mt-0">
+                <a href="<?php echo URLROOT;?>/cms/addAvailability?hall_id=<?php echo $data['hall']->hall_id; ?>" class="text-dark font-weight-bold">Beschikbaarheid toevoegen</a>
+            </div>
+        </div>
+
         <div class="row mt-lg-3 mt-0">
           <?php foreach ($data["availability"] as $availability) { ?>
 
