@@ -14,60 +14,22 @@
             <div class="col-lg-8 col-12">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Naam Bioscoop</label>
-                        <input type="text" name="name" class="form-control form-control-lg
-                        <?php echo (!empty($data['name_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['name'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['name_error']; ?></span>
+                        <label for="date" class="font-weight-bold">Datum: </label>
+                        <input type="date" name="date" class="form-control form-control-lg
+                        <?php echo (!empty($data['date_error'])) ? "is-invalid" : ""; ?>
+                        " value="<?php echo $data['date'] ?>">
+                        <span class="invalid-feedback"><?php echo $data['date_error']; ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="address" class="font-weight-bold">Adres</label>
-                        <input type="text" name="address" class="form-control form-control-lg
-                        <?php echo (!empty($data['address_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['address'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['address_error']; ?></span>
+                        <label for="begin_time" class="font-weight-bold">Begin Tijd</label>
+                        <input type="time" name="begin_time" class="form-control form-control-lg
+                        <?php echo (!empty($data['begin_time_error'])) ? "is-invalid" : ""; ?>
+                        " value="<?php echo $data['begin_time'] ?>">
+                        <span class="invalid-feedback"><?php echo $data['begin_time_error']; ?></span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="city" class="font-weight-bold">Stad</label>
-                        <input type="text" name="city" class="form-control form-control-lg
-                        <?php echo (!empty($data['city_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['city'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['city_error']; ?></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="zipcode" class="font-weight-bold">Postcode</label>
-                        <input type="text" name="zipcode" class="form-control form-control-lg
-                        <?php echo (!empty($data['zipcode_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['zipcode'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['zipcode_error']; ?></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="province" class="font-weight-bold">Provincie</label>
-                        <input type="text" name="province" class="form-control form-control-lg
-                        <?php echo (!empty($data['province_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['province'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['province_error']; ?></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="images" class="font-weight-bold">Afbeeldingen</label>
-                        <input type="file" name="images" class="form-control form-control-lg
-                        <?php echo (!empty($data['images_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['images'] ?>" accept="image/*">
-                        <span class="invalid-feedback"><?php echo $data['images_error']; ?></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description" class="font-weight-bold">Omschrijving</label>
-                        <input type="text" name="description" class="form-control form-control-lg
-                        <?php echo (!empty($data['description_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['description'] ?>">
-                        <span class="invalid-feedback"><?php echo $data['description_error']; ?></span>
-                    </div>
+                    
                     
                     <button type="submit" name="submit" class="btn btn-primary mt-2">Biosoop aanmaken</button>
                 </form>
