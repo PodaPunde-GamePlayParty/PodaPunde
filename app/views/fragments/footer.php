@@ -17,7 +17,7 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
 
-<script src="https://raw.githubusercontent.com/PodaPunde-GamePlayParty/PodaPunde/master/Extra/TestForFreeFontAwesome/TestFile.js" crossorigin="anonymous"></script>
+<script src="https://raw.githubusercontent.com/PodaPunde-GamePlayParty/PodaPunde/master/Extra/TestForFreeFontAwesome/TestFile.js"></script>
 
 
 <!-- Fontawesome Kit --> 
