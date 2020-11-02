@@ -1,16 +1,13 @@
 <?php
 /*
- * Halls Page (Admin)
+ * Availabillity Hall Page (Admin)
  *
  * © 2020 Team PodaPunde
  *
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php";
-$cinema = $data["cms"]["cinema"];
-$cms = $data["cms"];
-?>
+<?php include APPROOT."/views/fragments/header.php"; ?>
 
 <div class="row">
 
@@ -32,31 +29,25 @@ $cms = $data["cms"];
 
     <!-- CMS content -->
     <div class="col-12 col-md-9">
-        <div class="row">
-            <div class="col-12 mt-lg-3 mt-0">
-                <a href="<?php echo URLROOT;?>/cms/addHall"
-                     class="text-dark font-weight-bold">Zaal toevoegen
-                </a>
-            </div>
-        </div>
         <div class="row mt-lg-3 mt-0">
-          <?php foreach ($cms["cinema_halls"] as $halls) { ?>
+          <?php foreach ($data["availability"] as $availability) { ?>
 
             <div class="col-lg-3 col-md-6 col-12 mb-lg-5 mb-md-3 mb-2" style="width: 18rem;">
               <div class="card">
 
                 <div class="card-body">
-                  <h5 id="BoldStyle">Zaal: <?php echo $halls->hall_number; ?></h5>
+                  <h5 id="BoldStyle">Beschikbaarheid: <?php echo $availability->availability_id; ?></h5>
 
                   <div class="card-text">
-                    <p id="BoldStyle"><i class="fas fa-couch"></i> <?php echo $halls->quantity_chairs; ?> Stoelen</p>
-                    <p id="BoldStyle"><i class="fas fa-wheelchair"></i> <?php echo $halls->wheelchair_accessible; ?> Rolstoel plaatsen</p>
-                    <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $halls->screen_size; ?></p>
-                    <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $halls->version; ?></p>
+                    <p id="BoldStyle"><i class="fa fa-door-open"></i> Zaal: <?php echo $availability->hall_id; ?></p>
+                    <p id="BoldStyle"><i class="far fa-calendar-alt text-dark"></i> Datum: <?php echo $availability->date; ?></p>
+                    <p id="BoldStyle"><i class="far fa-clock"></i> Start: <?php echo $availability->begin_time; ?></p>
+                    <p id="BoldStyle"><i class="far fa-clock"></i> Eind: <?php echo $availability->end_time; ?></p>
+                    <p id="BoldStyle"><i class="far fa-hourglass"></i> Tijd: <?php echo $availability->play_time; ?></p>
                   </div>
 
 
-                  <div class="row">
+                  <!-- <div class="row">
                       <div class="col-4 text-center">
                           <a href="<?php echo URLROOT;?>/cms/updateHalls?hall_id=<?php echo $halls->hall_id; ?>"
                                class=""><i class="fas fa-edit text-dark"></i>
@@ -72,7 +63,7 @@ $cms = $data["cms"];
                                 <i class="far fa-calendar-alt text-dark"></i>
                             </a>
                       </div>
-                  </div>
+                  </div> -->
 
 
                 </div>

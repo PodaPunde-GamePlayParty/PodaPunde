@@ -114,9 +114,12 @@ class Cms extends Controller {
 
         $hall_id = $_GET["hall_id"];
         $hall = $this->cmsModel->getHall($hall_id);
+        $cinema_id = $hall->cinema_id;
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
         $data = [
             "title" => "Overzicht",
-            "hall" => $hall
+            "hall" => $hall,
+            "cinema" => $cinema
         ];
 
         $this->view("cms/bioscoop/delete", $data);
@@ -430,8 +433,6 @@ class Cms extends Controller {
             redirect("index");
         }
         if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
-            echo "line: 427 Cms controller<br>";
-            exit();
             redirect("cms/verifyCinema");
         }
         $user_id = $_SESSION["userid"];
@@ -533,5 +534,26 @@ class Cms extends Controller {
 
         redirect("cms/availability");
     }
+
+
+    // Read availability
+    public function availabilityRead() {
+
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("cms");
+        }
+
+        $hall_id = $_GET["hall_id"];
+
+        $availability = $this->cmsModel->getAvailabillity($hall_id);
+
+        $data = [
+            "title" => "zaal bescikbaarheid",
+            "availability" => $availability
+        ];
+
+        $this->view("cinema/availabilityRead", $data);
+    }
+
 
 }

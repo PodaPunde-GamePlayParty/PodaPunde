@@ -95,7 +95,7 @@ class Bioscopen extends Controller {
     public function addCinema() {
     
         if(!isset($_SESSION["userid"])) {
-            // redirect("index");
+            redirect("index");
         }
         $user_id = $_SESSION["userid"];
         $authCheck = $this->bioscoopModel->getAuthority($user_id);
@@ -131,8 +131,7 @@ class Bioscopen extends Controller {
         }
 
         if(!$un_verified) {
-            echo "139";
-            // redirect("cms/index");
+            redirect("cms/index");
         }
 
         if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -165,6 +164,75 @@ class Bioscopen extends Controller {
 
         } else {
 
+
+            // Check if image file is a actual image or fake image
+            if(isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["images"]["tmp_name"]);
+
+                if($check == FALSE) {
+                    $data["images_error"] = "Bestandstype niet toegestaan! Kies uit een PNG, JPG, JPEG, GIF";
+                }
+            }
+
+            $target_dir = UPLOAD_IMAGE;
+            $filename = $_FILES["images"]["name"];
+            $tmp_name = $_FILES["images"]["tmp_name"];
+            $target_file = $target_dir . $filename;
+            $image_file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $fileType = "." . $image_file_type;
+
+
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                
+                $rename_filename = $filename;
+                $fileTypeToReplace = "/." . $image_file_type . "/";
+                $replace = "";
+                $rename_filename = preg_replace($fileTypeToReplace, $replace, $rename_filename);
+                $rename_filename = $rename_filename . "_";
+
+                $unique = FALSE;
+                $count = 1;
+
+                do {
+                    $temp_rename_filename = $rename_filename . $count . $fileType;
+                    $target_file = $target_dir . $temp_rename_filename;
+                    
+                    if (!file_exists($target_file)) {
+                        $unique = TRUE;
+                    }
+                    
+                    $count++;
+
+                } while (!$unique);
+                $filename = $temp_rename_filename;
+
+            }  
+
+            // check there is only an PNG JPG JPEG or GIF type
+            switch ($image_file_type) {
+                case 'jpg':
+                    $data["images_error"] = "";
+                break;
+                
+                case 'jpeg':
+                    $data["images_error"] = "";
+                break;
+
+                case 'png':
+                    $data["images_error"] = "";
+                break;
+
+                case 'gif':
+                    $data["images_error"] = "";
+                break;
+
+                default:
+                    $data["images_error"] = "Bestandstype niet toegestaan! Kies uit een PNG, JPG, JPEG, GIF";
+                break;
+            }
+
+
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -177,7 +245,7 @@ class Bioscopen extends Controller {
                 "city" => trim($_POST["city"]),
                 "zipcode" => trim($_POST["zipcode"]),
                 "province" => trim($_POST["province"]),
-                "images" => trim($_POST["images"]),
+                "images" => $filename,
                 "description" => trim($_POST["description"]),
                 "verified" => "FALSE",
                 "cinema_id_error" => "",
@@ -218,7 +286,7 @@ class Bioscopen extends Controller {
                 $data["province_error"] = "Voer een provincie in";
             }
             if (empty($data["images"])) {
-                $data["images_error"] = "Voer een afbeelding in";
+                $data["images_error"] = "Kies uit een bestand met type PNG, JPG, JPEG, GIF";
             }
             if (empty($data["description"])) {
                 $data["description_error"] = "Voer een omscrijving in";
@@ -240,6 +308,10 @@ class Bioscopen extends Controller {
 
                 // check if insert was succesfull
                 if ($result) {
+                    // move uploade files, also wordking with rename
+                    rename($tmp_name, $target_file);
+
+                    // redirect to overview page
                     redirect("bioscopen/overview");
                 } else {
                     die("Account aanmaken mislukt");
