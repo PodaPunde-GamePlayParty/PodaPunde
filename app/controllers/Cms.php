@@ -471,70 +471,8 @@ class Cms extends Controller {
         }
     }
 
-    public function availability() {
-
-        $user_id = $_SESSION["userid"];
-        $authCheck = $this->cmsModel->getAuthority($user_id);
-
-        $authority_level = $authCheck->authority_level;
-
-        switch ($authority_level) {
-            case '2':
-                $cms = $this->cmsModel->getCinemaByUserId($user_id);
-            break;
-
-
-            default:
-                redirect("index");
-            break;
-        }
-
-        $data = [
-            "title" => "Overzicht",
-            "cms" => $cms
-        ];
-
-        $this->view("cms/bioscoop/availability", $data);
-    }
-
-    public function availabilityForm() {
-        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
-            redirect("cms/availabilityForm");
-        }
-
-        $user_id = $_SESSION["userid"];
-        $hall_id = $_GET["hall_id"];
-        $hall = $this->cmsModel->getHall($hall_id);
-
-        $data = [
-            "title" => "Overzicht",
-            "hall" => $hall
-        ];
-
-        $this->view("cms/bioscoop/availabilityForm", $data);
-    }
-
-    public function availabilityCommit() {
-        if((!isset($_POST["date"])) || (empty($_POST["begin_time"]))) {
-            redirect("cms/availability");
-        }
-
-        $hall_id = $_POST["hall_id"];
-        $date = $_POST["date"];
-        $begin_time = $_POST["begin_time"];
-        $end_time = Date('H:i:s', strtotime('+2 hours',strtotime($begin_time)));
-
-
-        $hall = $this->cmsModel->insertAvailability($hall_id, $begin_time, $end_time, $date);
-
-        $this->view("cms/bioscoop/availabilityCommit");
-
-        redirect("cms/availability");
-    }
-
-
     // Read availability
-    public function availabilityRead() {
+    public function availability() {
     
         if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
             redirect("cms");
@@ -549,7 +487,7 @@ class Cms extends Controller {
             "availability" => $availability
         ];
 
-        $this->view("cinema/availabilityRead", $data);
+        $this->view("cms/bioscoop/availability", $data);
     }
 
 
