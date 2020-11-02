@@ -154,8 +154,6 @@ class Cms extends Controller {
         }
     }
 
-
-
     // list of all cinemas
     public function cinemaList() {
         $cinemaList = $this->cmsModel->getAllCinemas();
@@ -476,14 +474,14 @@ class Cms extends Controller {
 
     // Read availability
     public function availability() {
-    
+
         if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
             redirect("cms");
         }
 
         $hall_id = $_GET["hall_id"];
 
-        $availability = $this->cmsModel->getAvailabillity($hall_id);
+        $availability = $this->cmsModel->getAvailability($hall_id);
 
         $data = [
             "title" => "zaal bescikbaarheid",
@@ -492,6 +490,54 @@ class Cms extends Controller {
 
         $this->view("cms/bioscoop/availability", $data);
     }
+
+    // Beschikbaarheid zaal verwijderen pagina
+    public function deleteAvailability() {
+        if((!isset($_GET["availability_id"])) || (empty($_GET["availability_id"]))) {
+            redirect("Cms/availability");
+        }
+
+        $availabilty_id = $_GET["availability_id"];
+        $availabilty = $this->cmsModel->getAvailabilityById($availabilty_id);
+        $hall_id = $availabilty->hall_id;
+        $hall = $this->cmsModel->getHall($hall_id);
+        $cinema_id = $hall->cinema_id;
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
+        $data = [
+            "title" => "Overzicht",
+            "availability" => $availabilty,
+            "cinema" => $cinema,
+            "hall" => $hall
+        ];
+
+        $this->view("cms/bioscoop/deleteAvailability", $data);
+    }
+
+
+
+    // Beschikbaarheid zaal verwijderen actie pagina
+    public function deleteAvailabilityConfirmed() {
+        if((!isset($_GET["availability_id"])) || (empty($_GET["availability_id"]))) {
+            redirect("Cms/zalen");
+        }
+
+        $availabilty_id = $_GET["availability_id"];
+        $availabilty = $this->cmsModel->getAvailability($hall_id);
+        $deleteAvailability = $this->cmsModel->deleteAvailability($availabilty_id);
+
+        $authority = $_SESSION["authority"];
+
+        switch ($authority) {
+            case VERIFIED_CINEMA:
+                redirect("cms/zalen");
+            break;
+
+            default:
+                redirect("cms/index");
+            break;
+        }
+    }
+
 
 
 }

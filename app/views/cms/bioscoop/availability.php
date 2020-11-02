@@ -46,6 +46,12 @@
                     <p id="BoldStyle"><i class="far fa-hourglass"></i> Tijd: <?php echo $availability->play_time; ?></p>
                   </div>
 
+                  <div class="col-4 text-center">
+                      <a href="<?php echo URLROOT;?>/cms/deleteAvailability?availability_id=<?php echo $availability->availability_id; ?>"
+                           class=""><i class="fas fa-trash-alt text-dark"></i>
+                      </a>
+                  </div>
+
                 </div>
               </div>
             </div>
