@@ -1,6 +1,6 @@
 <?php
 /*
- * Register form (cinema)
+ * add form (availability)
  *
  * © 2020 Team PodaPunde
  *
