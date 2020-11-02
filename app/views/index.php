@@ -55,18 +55,22 @@ if(isset($_SESSION["authority"])) {
   </a>
 </div>
 
-<div class="container mt-lg-5">
-    <div class="media">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">Komen jullie gamen?</h5>
-      Breng jouw spel naar het volgende niveau op het grote scherm! Met een privé-theater dat speciaal voor jou en je crew is gereserveerd, heb je nog nooit eerder zo gespeeld. Maak er een toernooi van!
-    </div>
-    <img class="ml-3 img-thumbnail" src="<?php echo URLROOT; ?>/public/graph/xbox.jpg" width="300px">
+<div class="container">
+  <div class="justify-content-center">
+    <div class="media mt-lg-5">
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">Komen jullie gamen?</h5>
+        Breng jouw spel naar het volgende niveau op het grote scherm! Met een privé-theater dat speciaal voor jou en je crew is gereserveerd, heb je nog nooit eerder zo gespeeld. Maak er een toernooi van!
+      </div>
+    <img class="ml-3 img-thumbnail" src="<?php echo URLROOT; ?>/public/graph/xbox.jpg" width="200px">
   </div>
   </div>
-
+</div>
+<br>
+<br>
 <div class="container">
   <h1 class="text-center"> Populaire games </h1>
+</div>
 
   <div class="container">
          <div class="card-group">
