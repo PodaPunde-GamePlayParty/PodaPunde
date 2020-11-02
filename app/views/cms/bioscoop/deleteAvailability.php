@@ -47,7 +47,7 @@
 
       switch ($authority) {
         case VERIFIED_CINEMA:
-          echo "<a class='btn btn-outline-success' href='" . URLROOT . "/cms/zalen'>Annuleren</a>";
+        echo "<a class='btn btn-outline-success' href='" . URLROOT . "/cms/availability?hall_id=" . $availabilty->hall_id . "'>Annuleren</a>";
         break;
 
         default:
