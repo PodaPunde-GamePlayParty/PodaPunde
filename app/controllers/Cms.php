@@ -500,9 +500,6 @@ class Cms extends Controller {
     }
 
     public function availabilityForm() {
-        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
-            redirect("cms/availabilityForm");
-        }
 
         $user_id = $_SESSION["userid"];
         $hall_id = $_GET["hall_id"];
@@ -511,41 +508,48 @@ class Cms extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $data = [
                 "hall_id" => $hall_id,
+                "hall" => $hall,
                 "date" => "",
                 "time" => "",
                 "date_error" => "",
                 "time_error" => "",
             ];
 
-            $this->view("cms/bioscoop/availabilityCommit");
+            $this->view("cms/bioscoop/availabilityForm", $data);
         } else {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $end_time = strtotime($_POST['time']) + 3600;
+
 
             $data = [
                 "hall_id" => $hall_id,
+                "hall" => $hall,
                 "date" => trim($_POST['date']),
-                "time" =>   trim($_POST['time']),
+                "begin_time" => trim($_POST['time']),
+                "end_time" => trim($end_time),
                 "date_error" => "",
-                "time_error" => "",
+                "time_error" => ""
             ];
 
-            if (empty($date['date'])) {
+            if (strtotime($data['date']) == "0000-00-00") {
                 $date['date_error'] = "Vul een datum in!";
             }
 
-            if (empty($date['time'])) {
+            if (strtotime($data['begin_time']) == "00:00:00") {
                 $date['time_error'] = "Vul een tijd in!";
             }
 
-            if ((empty($data['date'])) && (empty($data['time'])) {
-                if ($this->cmsModel->) {
-                    // code...
+            if (strtotime($data['date']) == "0000-00-00" OR strtotime($data['begin_time']) == "00:00:00") {
+                if ($this->cmsModel->insertAvailability($data)) {
+                    redirect("cms/availability");
+                } else {
+                    die("opslaan niet gelukt");
                 }
+            } else {
+                $this->view("cms/bioscoop/availabilityForm", $data);
             }
         }
-
-        $this->view("cms/bioscoop/availabilityForm", $data);
     }
 
     public function availabilityCommit() {
@@ -563,7 +567,7 @@ class Cms extends Controller {
         $hall = $this->cmsModel->insertAvailability($hall_id, $begin_time, $end_time, $date);
 
 
-        $this->view("cms/bioscoop/availabilityCommit");
+        $this->view("cms/bioscoop/availabilityCommit", $data);
     }
 
 }

@@ -60,10 +60,10 @@ $hall = $data["hall"];
                     value="<?php echo $data['date'] ?>">
                     <span class="invalid-feedback"><?php echo $data['date_error']; ?></span>
                 </div>
-
+                <?php echo $data['begin_time'] ?>
                 <div class="form-group">
-                    <label for="time" class="font-weight-bold">Begin tijd</label>
-                    <input type="time" name="begin_time" class="form-control form-control-lg
+                    <label for="time" class="font-weight-bold">Tijd</label>
+                    <input type="time" name="time" class="form-control form-control-lg
                     <?php echo (!empty($data['time_error'])) ? "is-invalid" : ""; ?>"
                     value="<?php echo $data['time'] ?>">
                     <span class="invalid-feedback"><?php echo $data['time_error']; ?></span>

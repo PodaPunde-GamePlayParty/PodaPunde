@@ -130,17 +130,17 @@ class Cmsmodel {
 		return $this->database->getArray(); // Multiple Rows in array
 	}
 
-	public function insertAvailability($hall_id, $begin_time, $end_time, $date) {
+	public function insertAvailability($data) {
 
 		$query  = "INSERT INTO availability ";
 		$query .= "(hall_id, begin_time, end_time, date) ";
 		$query .= "VALUES(:hall_id, :begin_time, :end_time, :date) ";
 
 		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
-		$this->database->bind(":begin_time", $begin_time);
-		$this->database->bind(":end_time", $end_time);
-		$this->database->bind(":date", $date);
+		$this->database->bind(":hall_id", $data['hall_id']);
+		$this->database->bind(":begin_time", $data['begin_time']);
+		$this->database->bind(":end_time", $data['end_time']);
+		$this->database->bind(":date", $data['date']);
 		return $this->database->execute();
 	}
 
