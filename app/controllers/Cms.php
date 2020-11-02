@@ -532,4 +532,25 @@ class Cms extends Controller {
         redirect("cms/availability");
     }
 
+
+    // Read availability
+    public function availabilityRead() {
+    
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("cms");
+        }
+
+        $hall_id = $_GET["hall_id"];
+
+        $availability = $this->cmsModel->getAvailabillity($hall_id);
+
+        $data = [
+            "title" => "zaal bescikbaarheid",
+            "availability" => $availability
+        ];
+
+        $this->view("cinema/availabilityRead", $data);
+    }
+
+
 }

@@ -368,4 +368,18 @@ class Cmsmodel {
 		];
 	}
 
+	// Get alll availabilities from hall
+	public function getAvailabillity($hall_id) {
+
+		$query = "SELECT * ";
+		$query .= "FROM availability ";
+		$query .= "WHERE hall_id = :hall_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":hall_id", $hall_id);
+		$availabilty = $this->database->getArray();
+
+		return $availabilty;
+	}
+
 }
