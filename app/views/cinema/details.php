@@ -3,7 +3,7 @@
  * Overview Page (Cinama account)
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 ?>
 
@@ -44,11 +44,7 @@ $cinema = $data["cinema"];
               <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $hall->screen_size; ?></p>
               <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
             </div>
-            
-            <div id="alignmentCenter">
-              <a href="#" class="form-control btn btn-light">Zaal bekijken</a>
-            </div>
-          
+
           </div>
         </div>
       </div>
