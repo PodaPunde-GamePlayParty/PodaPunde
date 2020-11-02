@@ -59,7 +59,7 @@ $cms = $data["cms"];
                       </a>
                   </div>
                   <div class="col-4 text-center">
-                        <a href="<?php echo URLROOT; ?>/cms/availabilityRead?hall_id=<?php echo $halls->hall_id; ?>" class="">
+                        <a href="<?php echo URLROOT; ?>/cms/availability?hall_id=<?php echo $halls->hall_id; ?>" class="">
                             <i class="far fa-calendar-alt text-dark"></i>
                         </a>
                   </div>
