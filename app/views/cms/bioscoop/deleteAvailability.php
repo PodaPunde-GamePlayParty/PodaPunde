@@ -1,6 +1,6 @@
 <?php
 /*
- * `Delete Halls Page (Admin)
+ * `Delete Availability Page (Admin)
  *
  * © 2020 Team PodaPunde
  *
@@ -8,8 +8,9 @@
 ?>
 
 <?php include APPROOT."/views/fragments/header.php";
-  $hall = $data["hall"];
+  $availabilty = $data["availability"];
   $cinema = $data["cinema"];
+  $hall = $data["hall"];
 ?>
 
 <div class="container mt-lg-5 mt-3">
@@ -21,36 +22,32 @@
     <h5 class="text-center">Bioscoop: <?php echo $cinema->name; ?></p>
       <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <p id="BoldStyle"><i class="fas fa-film"></i> <?php echo $hall->hall_number; ?></p>
+          <p id="BoldStyle"><i class="fa fa-door-open"></i> <?php echo $hall->hall_number; ?></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <p id="BoldStyle"><i class="fas fa-couch"></i> <?php echo $hall->quantity_chairs; ?> Stoelen</p>
+          <p id="BoldStyle"><i class="far fa-calendar-alt text-dark"></i> <?php echo $availabilty->date; ?></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <p id="BoldStyle"><i class="fas fa-wheelchair"></i> <?php echo $hall->wheelchair_accessible; ?> Rolstoel plaatsen</p>
+          <p id="BoldStyle"><i class="fas fa-clock"></i> <?php echo $availabilty->begin_time; ?></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $hall->screen_size; ?></p>
+          <p id="BoldStyle"><i class="fas fa-clock"></i> <?php echo $availabilty->end_time; ?></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
+          <p id="BoldStyle"><i class="far fa-hourglass"></i> <?php echo $availabilty->play_time; ?></p>
         </li>
   </div>
 </div>
 
     <div class="row">
       <div id="alignmentCenter" class="col">
-      <a class="btn btn-outline-danger" href="<?php echo URLROOT; ?>/cms/deleteHallConfirmed?hall_id=<?php echo $hall->hall_id; ?>">Verwijder</a>
+      <a class="btn btn-outline-danger" href="<?php echo URLROOT; ?>/cms/deleteAvailabilityConfirmed?availability_id=<?php echo $availabilty->availability_id; ?>">Verwijder</a>
       <?php
       $authority = $_SESSION["authority"];
 
       switch ($authority) {
         case VERIFIED_CINEMA:
-          echo "<a class='btn btn-outline-success' href='" . URLROOT . "/cms/zalen'>Annuleren</a>";
-        break;
-
-        case CONTENT_MANAGER:
-          echo "<a class='btn btn-outline-success' href='" . URLROOT . "/cms/cinemaDetails?cinema_id=" . $hall->cinema_id . "'>Annuleren</a>";
+        echo "<a class='btn btn-outline-success' href='" . URLROOT . "/cms/availability?hall_id=" . $availabilty->hall_id . "'>Annuleren</a>";
         break;
 
         default:

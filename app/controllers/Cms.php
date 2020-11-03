@@ -114,9 +114,12 @@ class Cms extends Controller {
 
         $hall_id = $_GET["hall_id"];
         $hall = $this->cmsModel->getHall($hall_id);
+        $cinema_id = $hall->cinema_id;
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
         $data = [
             "title" => "Overzicht",
-            "hall" => $hall
+            "hall" => $hall,
+            "cinema" => $cinema
         ];
 
         $this->view("cms/bioscoop/delete", $data);
@@ -150,8 +153,6 @@ class Cms extends Controller {
             break;
         }
     }
-
-
 
     // list of all cinemas
     public function cinemaList() {
@@ -430,8 +431,6 @@ class Cms extends Controller {
             redirect("index");
         }
         if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
-            echo "line: 427 Cms controller<br>";
-            exit();
             redirect("cms/verifyCinema");
         }
         $user_id = $_SESSION["userid"];
@@ -473,101 +472,169 @@ class Cms extends Controller {
         }
     }
 
-    public function availability() {
 
-        $user_id = $_SESSION["userid"];
-        $authCheck = $this->cmsModel->getAuthority($user_id);
+    // add availability
+    public function addAvailability() {
 
-        $authority_level = $authCheck->authority_level;
-
-        switch ($authority_level) {
-            case '2':
-                $cms = $this->cmsModel->getCinemaByUserId($user_id);
-            break;
+        $play_time = "00:00";
+        $play_time = date('H:i',strtotime($play_time . "+2 hours"));
 
 
-            default:
-                redirect("index");
-            break;
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("cms");
         }
 
+        $hall_id = $_GET["hall_id"];
+
+        // Check for GET
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+
+            // prepare form
+            $data = [
+                "hall_id" => $hall_id,
+                "date" => "",
+                "begin_time" => "",
+                "hall_id_error" => "",
+                "date_error" => "",
+                "begin_time_error" => "",
+            ];
+
+            $this->view("cinema/addAvailability", $data);
+        } else {
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Get Data
+            $data = [
+                "hall_id" => $hall_id,
+                "date" => $_POST["date"],
+                "begin_time" => $_POST["begin_time"],
+                "hall_id_error" => "",
+                "date_error" => "",
+                "begin_time_error" => ""
+            ];
+
+            // Validate
+            if (empty($data['hall_id'])) {
+                $data['hall_id_error'] = "Er is een fout opgetreden!";
+            }
+
+            if (empty($data['date'])) {
+                $data['date_error'] = "Kies een datum!";
+            }
+
+            if (empty($data['begin_time'])) {
+                $data['begin_time_error'] = "Kies een tijd om te beginnen!";
+            }
+
+
+            // Check for errors
+            if(
+                (empty($data['hall_id_error'])) && 
+                (empty($data['date_error'])) && 
+                (empty($data['begin_time_error']))) {
+
+
+                $begin_time = $data["begin_time"];
+                $end_time = $begin_time;
+                $end_time = date('H:i',strtotime($end_time . "+2 hours"));
+                    
+                    
+                $hall_id = $hall_id;
+                $date = $data["date"];
+                $play_time = $play_time;
+
+                $data = [
+                    "hall_id" => $hall_id,
+                    "date" => $date,
+                    "begin_time" => $begin_time,
+                    "end_time" => $end_time,
+                    "play_time" => $play_time
+                ];
+
+                // save data
+                if ($this->cmsModel->addAvailability($data)) {
+                    $redirect = "cms/availability?hall_id=" . $hall_id;
+                    redirect($redirect);
+                } else {
+                    die("Opslaan niet gelukt!");
+                }
+            } else {
+                // Load view to display errors
+                $this->view("cinema/addAvailability", $data);
+            }
+        }
+
+    }
+
+    // Read availability
+    public function availability() {
+
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("cms");
+        }
+
+        $hall_id = $_GET["hall_id"];
+        $hall = $this->cmsModel->getHall($hall_id);
+        $availability = $this->cmsModel->getAvailability($hall_id);
+
         $data = [
-            "title" => "Overzicht",
-            "cms" => $cms
+            "title" => "zaal bescikbaarheid",
+            "hall" => $hall,
+            "availability" => $availability
         ];
 
         $this->view("cms/bioscoop/availability", $data);
     }
 
-    public function availabilityForm() {
+    // Beschikbaarheid zaal verwijderen pagina
+    public function deleteAvailability() {
+        if((!isset($_GET["availability_id"])) || (empty($_GET["availability_id"]))) {
+            redirect("Cms/availability");
+        }
 
-        $user_id = $_SESSION["userid"];
-        $hall_id = $_GET["hall_id"];
+        $availabilty_id = $_GET["availability_id"];
+        $availabilty = $this->cmsModel->getAvailabilityById($availabilty_id);
+        $hall_id = $availabilty->hall_id;
         $hall = $this->cmsModel->getHall($hall_id);
+        $cinema_id = $hall->cinema_id;
+        $cinema = $this->cmsModel->getCinemaDetails($cinema_id);
+        $data = [
+            "title" => "Overzicht",
+            "availability" => $availabilty,
+            "cinema" => $cinema,
+            "hall" => $hall
+        ];
 
-        if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            $data = [
-                "hall_id" => $hall_id,
-                "hall" => $hall,
-                "date" => "",
-                "time" => "",
-                "date_error" => "",
-                "time_error" => "",
-            ];
-
-            $this->view("cms/bioscoop/availabilityForm", $data);
-        } else {
-
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $end_time = strtotime($_POST['time']) + 3600;
+        $this->view("cms/bioscoop/deleteAvailability", $data);
+    }
 
 
-            $data = [
-                "hall_id" => $hall_id,
-                "hall" => $hall,
-                "date" => trim($_POST['date']),
-                "begin_time" => trim($_POST['time']),
-                "end_time" => trim($end_time),
-                "date_error" => "",
-                "time_error" => ""
-            ];
 
-            if (strtotime($data['date']) == "0000-00-00") {
-                $date['date_error'] = "Vul een datum in!";
-            }
+    // Beschikbaarheid zaal verwijderen actie pagina
+    public function deleteAvailabilityConfirmed() {
+        if((!isset($_GET["availability_id"])) || (empty($_GET["availability_id"]))) {
+            redirect("Cms/zalen");
+        }
 
-            if (strtotime($data['begin_time']) == "00:00:00") {
-                $date['time_error'] = "Vul een tijd in!";
-            }
+        $availabilty_id = $_GET["availability_id"];
+        $availabilty = $this->cmsModel->getAvailability($hall_id);
+        $deleteAvailability = $this->cmsModel->deleteAvailability($availabilty_id);
 
-            if (strtotime($data['date']) == "0000-00-00" OR strtotime($data['begin_time']) == "00:00:00") {
-                if ($this->cmsModel->insertAvailability($data)) {
-                    redirect("cms/availability");
-                } else {
-                    die("opslaan niet gelukt");
-                }
-            } else {
-                $this->view("cms/bioscoop/availabilityForm", $data);
-            }
+        $authority = $_SESSION["authority"];
+
+        switch ($authority) {
+            case VERIFIED_CINEMA:
+                redirect("cms/zalen");
+            break;
+
+            default:
+                redirect("cms/index");
+            break;
         }
     }
 
-    public function availabilityCommit() {
-        if((!isset($_POST["date"])) || (empty($_POST["begin_time"]))) {
-            redirect("cms/availability");
-        }
 
-        $hall_id = $_POST["hall_id"];
-        $date = $_POST["date"];
-        $begin_time = $_POST["begin_time"];
-        $end_time = strtotime($begin_time) + 3600;
-        var_dump($hall_id);
-
-
-        $hall = $this->cmsModel->insertAvailability($hall_id, $begin_time, $end_time, $date);
-
-
-        $this->view("cms/bioscoop/availabilityCommit", $data);
-    }
 
 }
