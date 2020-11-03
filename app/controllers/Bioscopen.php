@@ -3,7 +3,7 @@
  * Bioscopen Controller
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 
 // Create bioscopen class
@@ -28,7 +28,7 @@ class Bioscopen extends Controller {
 
     // Cinema Details Page
     public function cinemaDetails() {
-    
+
         if((!isset($_GET["cinema_id"])) || (empty($_GET["cinema_id"]))) {
             redirect("bioscopen");
         }
@@ -38,11 +38,26 @@ class Bioscopen extends Controller {
         $cinema = $this->bioscoopModel->getCinemaDetails($cinema_id);
         $cinema_halls = $this->bioscoopModel->getHalls($cinema_id);
 
+        foreach ($cinema_halls as $hall) {
+
+            $hall_id = $hall->hall_id;
+            $tempAvailability = $this->bioscoopModel->getAvailability($hall_id);
+
+            foreach ($tempAvailability as $availability) {
+                $availability_id = $availability->availability_id;
+
+                $availabilityArray[$availability_id] = $this->bioscoopModel->getAvailabilityById($availability_id);
+            }
+
+
+        }
+
         $data = [
             "title" => $cinema->name,
             "cinema" => $cinema,
-            "cinema_halls" => $cinema_halls
-        ];
+            "cinema_halls" => $cinema_halls,
+            "availability" => $availability
+         ];
 
         $this->view("cinema/details", $data);
     }
@@ -50,7 +65,7 @@ class Bioscopen extends Controller {
 
     // overview page (logged in cinema not verified)
     public function overview() {
-        
+
         $user_id = $_SESSION["userid"];
         $authCheck = $this->bioscoopModel->getAuthority($user_id);
 
@@ -93,7 +108,7 @@ class Bioscopen extends Controller {
 
     // add cinema
     public function addCinema() {
-    
+
         if(!isset($_SESSION["userid"])) {
             redirect("index");
         }
@@ -159,7 +174,7 @@ class Bioscopen extends Controller {
                 "description_error" => "",
                 "verified_error" => ""
             ];
-            
+
             $this->view("cinema/addCinema", $data);
 
         } else {
@@ -184,7 +199,7 @@ class Bioscopen extends Controller {
 
             // Check if file already exists
             if (file_exists($target_file)) {
-                
+
                 $rename_filename = $filename;
                 $fileTypeToReplace = "/." . $image_file_type . "/";
                 $replace = "";
@@ -197,24 +212,24 @@ class Bioscopen extends Controller {
                 do {
                     $temp_rename_filename = $rename_filename . $count . $fileType;
                     $target_file = $target_dir . $temp_rename_filename;
-                    
+
                     if (!file_exists($target_file)) {
                         $unique = TRUE;
                     }
-                    
+
                     $count++;
 
                 } while (!$unique);
                 $filename = $temp_rename_filename;
 
-            }  
+            }
 
             // check there is only an PNG JPG JPEG or GIF type
             switch ($image_file_type) {
                 case 'jpg':
                     $data["images_error"] = "";
                 break;
-                
+
                 case 'jpeg':
                     $data["images_error"] = "";
                 break;
@@ -293,13 +308,13 @@ class Bioscopen extends Controller {
             }
 
             if (
-                (empty($data["cinema_id_error"])) && 
-                (empty($data["name_error"])) && 
-                (empty($data["address_error"])) && 
-                (empty($data["city_error"])) && 
-                (empty($data["zipcode_error"])) && 
-                (empty($data["province_error"])) && 
-                (empty($data["images_error"])) && 
+                (empty($data["cinema_id_error"])) &&
+                (empty($data["name_error"])) &&
+                (empty($data["address_error"])) &&
+                (empty($data["city_error"])) &&
+                (empty($data["zipcode_error"])) &&
+                (empty($data["province_error"])) &&
+                (empty($data["images_error"])) &&
                 (empty($data["description_error"]))) {
 
 
@@ -322,6 +337,6 @@ class Bioscopen extends Controller {
             }
         }
     }
-    
+
 
 }

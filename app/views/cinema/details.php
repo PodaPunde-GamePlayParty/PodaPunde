@@ -51,6 +51,8 @@ $cinema = $data["cinema"];
     <?php
     } ?>
   </div>
+
+  
 </div>
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>
