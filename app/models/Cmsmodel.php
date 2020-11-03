@@ -391,8 +391,6 @@ class Cmsmodel {
 		return $this->database->execute();
 	}
 
-}
-
 
 	// insert availability
 	public function addAvailability($data) {
@@ -408,7 +406,7 @@ class Cmsmodel {
 		$query .= ":begin_time, ";
 		$query .= ":end_time, ";
 		$query .= ":play_time) ";
-		
+
 		$this->database->prepare($query);
 		$this->database->bind(":hall_id", $data['hall_id']);
 		$this->database->bind(":date", $data['date']);
