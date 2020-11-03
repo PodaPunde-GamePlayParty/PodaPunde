@@ -472,6 +472,102 @@ class Cms extends Controller {
         }
     }
 
+
+    // add availability
+    public function addAvailability() {
+
+        $play_time = "00:00";
+        $play_time = date('H:i',strtotime($play_time . "+2 hours"));
+
+
+        if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
+            redirect("cms");
+        }
+
+        $hall_id = $_GET["hall_id"];
+
+        // Check for GET
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+
+            // prepare form
+            $data = [
+                "hall_id" => $hall_id,
+                "date" => "",
+                "begin_time" => "",
+                "hall_id_error" => "",
+                "date_error" => "",
+                "begin_time_error" => "",
+            ];
+
+            $this->view("cinema/addAvailability", $data);
+        } else {
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Get Data
+            $data = [
+                "hall_id" => $hall_id,
+                "date" => $_POST["date"],
+                "begin_time" => $_POST["begin_time"],
+                "hall_id_error" => "",
+                "date_error" => "",
+                "begin_time_error" => ""
+            ];
+
+            // Validate
+            if (empty($data['hall_id'])) {
+                $data['hall_id_error'] = "Er is een fout opgetreden!";
+            }
+
+            if (empty($data['date'])) {
+                $data['date_error'] = "Kies een datum!";
+            }
+
+            if (empty($data['begin_time'])) {
+                $data['begin_time_error'] = "Kies een tijd om te beginnen!";
+            }
+
+
+            // Check for errors
+            if(
+                (empty($data['hall_id_error'])) && 
+                (empty($data['date_error'])) && 
+                (empty($data['begin_time_error']))) {
+
+
+                $begin_time = $data["begin_time"];
+                $end_time = $begin_time;
+                $end_time = date('H:i',strtotime($end_time . "+2 hours"));
+                    
+                    
+                $hall_id = $hall_id;
+                $date = $data["date"];
+                $play_time = $play_time;
+
+                $data = [
+                    "hall_id" => $hall_id,
+                    "date" => $date,
+                    "begin_time" => $begin_time,
+                    "end_time" => $end_time,
+                    "play_time" => $play_time
+                ];
+
+                // save data
+                if ($this->cmsModel->addAvailability($data)) {
+                    $redirect = "cms/availability?hall_id=" . $hall_id;
+                    redirect($redirect);
+                } else {
+                    die("Opslaan niet gelukt!");
+                }
+            } else {
+                // Load view to display errors
+                $this->view("cinema/addAvailability", $data);
+            }
+        }
+
+    }
+
     // Read availability
     public function availability() {
 
@@ -480,11 +576,12 @@ class Cms extends Controller {
         }
 
         $hall_id = $_GET["hall_id"];
-
-        $availability = $this->cmsModel->getAvailability($hall_id);
+        $hall = $this->cmsModel->getHall($hall_id);
+        $availability = $this->cmsModel->getAvailabillity($hall_id);
 
         $data = [
             "title" => "zaal bescikbaarheid",
+            "hall" => $hall,
             "availability" => $availability
         ];
 
