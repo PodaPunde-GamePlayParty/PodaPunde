@@ -478,7 +478,9 @@ class Cms extends Controller {
     // add availability
     public function addAvailability() {
 
-        $play_time = "02:00"; // playtime is 2 hours
+        $play_time = "00:00";
+        $play_time = date('H:i',strtotime($play_time . "+2 hours"));
+
 
         if((!isset($_GET["hall_id"])) || (empty($_GET["hall_id"]))) {
             redirect("cms");
@@ -536,26 +538,20 @@ class Cms extends Controller {
                 (empty($data['begin_time_error']))) {
 
 
-
                 $begin_time = $data["begin_time"];
-                // $end_time = strtotime($begin_time) + "P2H";
+                $end_time = $begin_time;
+                $end_time = date('H:i',strtotime($end_time . "+2 hours"));
+                    
+                    
+                $hall_id = $hall_id;
+                $date = $data["date"];
+                $play_time = $play_time;
 
-                // $date = date('Y-m-d ', strtotime($date));
-
-                // $end_time = date('H.i.s', strtotime($end_time));
-                // $play_time = date('H.i.s', strtotime($play_time));
-
-                $end_time = strtotime($begin_time) + $play_time;
-
-                echo $end_time;
-
-                exit();
-                
                 $data = [
                     "hall_id" => $hall_id,
                     "date" => $date,
                     "begin_time" => $begin_time,
-                    "end_time" => $play_time,
+                    "end_time" => $end_time,
                     "play_time" => $play_time
                 ];
 

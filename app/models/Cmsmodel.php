@@ -376,16 +376,19 @@ class Cmsmodel {
 
 		$query = "INSERT INTO ";
 		$query .= "availability(hall_id, ";
+		$query .= "date, ";
 		$query .= "begin_time, ";
 		$query .= "end_time, ";
 		$query .= "play_time) ";
 		$query .= "VALUES(:hall_id, ";
+		$query .= ":date, ";
 		$query .= ":begin_time, ";
 		$query .= ":end_time, ";
 		$query .= ":play_time) ";
 		
 		$this->database->prepare($query);
 		$this->database->bind(":hall_id", $data['hall_id']);
+		$this->database->bind(":date", $data['date']);
 		$this->database->bind(":begin_time", $data['begin_time']);
 		$this->database->bind(":end_time", $data['end_time']);
 		$this->database->bind(":play_time", $data['play_time']);
