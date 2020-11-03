@@ -11,6 +11,7 @@
 include APPROOT."/views/fragments/header.php";
 
 $cinema = $data["cinema"];
+$availabilityArray = $data["availability"];
 
 ?>
 
@@ -28,7 +29,9 @@ $cinema = $data["cinema"];
     </div>
   </div>
 
-  <div class="row mt-lg-5">
+  <h3 class="mt-lg-5">Zalen</h3>
+
+  <div class="row">
     <?php
     foreach ($data["cinema_halls"] as $hall) { ?>
 
@@ -52,7 +55,31 @@ $cinema = $data["cinema"];
     } ?>
   </div>
 
-  
+  <h3>Beschikbaarheid</h3>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Datum</th>
+      <th scope="col">Begin tijd</th>
+      <th scope="col">Eind tijd</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php
+      foreach ($availabilityArray as $availability) { ?>
+
+          <tr>
+            <td><?php echo $availability->date; ?></td>
+            <td><?php echo $availability->begin_time; ?></td>
+            <td><?php echo $availability->end_time; ?></td>
+          </tr>
+
+      <?php } ?>
+
+  </tbody>
+</table>
+
 </div>
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>

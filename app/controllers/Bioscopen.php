@@ -56,7 +56,7 @@ class Bioscopen extends Controller {
             "title" => $cinema->name,
             "cinema" => $cinema,
             "cinema_halls" => $cinema_halls,
-            "availability" => $availability
+            "availability" => $availabilityArray
          ];
 
         $this->view("cinema/details", $data);
