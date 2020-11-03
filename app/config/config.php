@@ -3,7 +3,7 @@
  * Configuration file
  *
  * © 2020 Team PodaPunde
- * 
+ *
  */
 
 
