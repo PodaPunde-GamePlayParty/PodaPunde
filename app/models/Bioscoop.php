@@ -3,7 +3,7 @@
  * Database management for the products
  *
  * © 2020 Team PodaPunde
- *
+ * 
  */
 
 // Create class Bioscoop
@@ -98,7 +98,7 @@ class Bioscoop {
 		$description = $data["description"];
 		$verified = $data["verified"];
 
-
+						
 		$query = "INSERT INTO cinemas ";
 		$query .= "(user_id, ";
 		$query .= "name, ";
@@ -147,7 +147,7 @@ class Bioscoop {
 
 		$this->database->prepare($query);
 		$this->database->bind(":user_id", $user_id);
-
+	
 		if ($this->database->getRow()) {
 			return TRUE;
 		} else {
@@ -155,46 +155,8 @@ class Bioscoop {
 		}
 	}
 
-	// Get alll availabilities from hall
-	public function getAvailability($hall_id) {
 
-		$query = "SELECT * ";
-		$query .= "FROM availability ";
-		$query .= "WHERE hall_id = :hall_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
-		$availabilty = $this->database->getArray();
-
-		return $availabilty;
-	}
-
-	// get the halls that are asigned to the cinema
-	public function getHallByHallid($hall_id) {
-
-		$query  = "SELECT * ";
-		$query .= "FROM halls ";
-		$query .= "WHERE hall_id = :hall_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
-		return $this->database->getRow(); // Get single Row
-	}
-
-	// Get availability from Id
-	public function getAvailabilityById($availabilty_id) {
-
-		$query = "SELECT * ";
-		$query .= "FROM availability ";
-		$query .= "WHERE availability_id = :availability_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":availability_id", $availabilty_id);
-		$availabilty = $this->database->getRow();
-
-		return $availabilty;
-	}
-
-
+	
 
 }
+

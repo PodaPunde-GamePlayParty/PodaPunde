@@ -1,6 +1,6 @@
 <?php
 /*
- * Register form (cinema)
+ * Register form (user)
  *
  * © 2020 Team PodaPunde
  *
@@ -12,7 +12,7 @@
     <div class="container mt-lg-5 mt-2">
         <div class="row form-rows justify-content-center">
             <div class="col-lg-8 col-12">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST">
                     <div class="form-group">
                         <label for="name" class="font-weight-bold">Naam Bioscoop</label>
                         <input type="text" name="name" class="form-control form-control-lg
@@ -55,9 +55,9 @@
 
                     <div class="form-group">
                         <label for="images" class="font-weight-bold">Afbeeldingen</label>
-                        <input type="file" name="images" class="form-control form-control-lg
+                        <input type="text" name="images" class="form-control form-control-lg
                         <?php echo (!empty($data['images_error'])) ? "is-invalid" : ""; ?>
-                        " value="<?php echo $data['images'] ?>" accept="image/*">
+                        " value="<?php echo $data['images'] ?>">
                         <span class="invalid-feedback"><?php echo $data['images_error']; ?></span>
                     </div>
 
@@ -69,7 +69,7 @@
                         <span class="invalid-feedback"><?php echo $data['description_error']; ?></span>
                     </div>
                     
-                    <button type="submit" name="submit" class="btn btn-primary mt-2">Biosoop aanmaken</button>
+                    <button type="submit" class="btn btn-primary mt-2">Biosoop aanmaken</button>
                 </form>
             </div>
         </div>

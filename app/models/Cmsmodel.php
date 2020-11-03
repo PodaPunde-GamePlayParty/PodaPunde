@@ -130,6 +130,19 @@ class Cmsmodel {
 		return $this->database->getArray(); // Multiple Rows in array
 	}
 
+	public function insertAvailability($hall_id, $begin_time, $end_time, $date) {
+
+		$query  = "INSERT INTO availability ";
+		$query .= "(hall_id, begin_time, end_time, date) ";
+		$query .= "VALUES(:hall_id, :begin_time, :end_time, :date) ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":hall_id", $hall_id);
+		$this->database->bind(":begin_time", $begin_time);
+		$this->database->bind(":end_time", $end_time);
+		$this->database->bind(":date", $date);
+		return $this->database->execute();
+	}
 
 
 	// get user data
@@ -158,6 +171,8 @@ class Cmsmodel {
 		return $this->database->execute();
 	}
 
+
+
 	// insert hall
 	public function addHall($data) {
 
@@ -178,6 +193,8 @@ class Cmsmodel {
 			return FALSE;
 		}
 	}
+
+
 
 	// updates hall
 	public function updateHall($data) {
@@ -349,76 +366,6 @@ class Cmsmodel {
 			"user" => $updateUser,
 			"cinema" => $updateCinema
 		];
-	}
-
-	// Get alll availabilities from hall
-	public function getAvailability($hall_id) {
-
-		$query = "SELECT * ";
-		$query .= "FROM availability ";
-		$query .= "WHERE hall_id = :hall_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $hall_id);
-		$availabilty = $this->database->getArray();
-
-		return $availabilty;
-	}
-
-	// Get availability from Id
-	public function getAvailabilityById($availabilty_id) {
-
-		$query = "SELECT * ";
-		$query .= "FROM availability ";
-		$query .= "WHERE availability_id = :availability_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":availability_id", $availabilty_id);
-		$availabilty = $this->database->getRow();
-
-		return $availabilty;
-	}
-
-	// delete Availabillity
-	public function deleteAvailability($availabilty_id) {
-
-		$query  = "DELETE ";
-		$query .= "FROM availability ";
-		$query .= "WHERE availability_id = :availability_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":availability_id", $availabilty_id);
-		return $this->database->execute();
-	}
-
-
-	// insert availability
-	public function addAvailability($data) {
-
-		$query = "INSERT INTO ";
-		$query .= "availability(hall_id, ";
-		$query .= "date, ";
-		$query .= "begin_time, ";
-		$query .= "end_time, ";
-		$query .= "play_time) ";
-		$query .= "VALUES(:hall_id, ";
-		$query .= ":date, ";
-		$query .= ":begin_time, ";
-		$query .= ":end_time, ";
-		$query .= ":play_time) ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $data['hall_id']);
-		$this->database->bind(":date", $data['date']);
-		$this->database->bind(":begin_time", $data['begin_time']);
-		$this->database->bind(":end_time", $data['end_time']);
-		$this->database->bind(":play_time", $data['play_time']);
-
-		if ($this->database->execute()) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
 	}
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 nov 2020 om 09:27
+-- Gegenereerd op: 26 okt 2020 om 10:37
 -- Serverversie: 10.1.38-MariaDB
 -- PHP-versie: 7.3.3
 
@@ -34,16 +34,8 @@ CREATE TABLE `availability` (
   `date` date NOT NULL,
   `begin_time` time NOT NULL,
   `end_time` time NOT NULL,
-  `play_time` time NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Gegevens worden geëxporteerd voor tabel `availability`
---
-
-INSERT INTO `availability` (`availability_id`, `hall_id`, `date`, `begin_time`, `end_time`, `play_time`, `creation_date`) VALUES
-(20, 1, '2020-11-05', '12:23:00', '14:23:00', '02:00:00', '2020-11-03 09:26:15');
 
 -- --------------------------------------------------------
 
@@ -72,9 +64,7 @@ INSERT INTO `cinemas` (`cinema_id`, `user_id`, `name`, `address`, `city`, `zipco
 (1, 4, 'Kinepolis Jaarbeurs', 'Jaarbeursboulevard 300', 'Utrecht', '3521BC', 'Utrecht', 'kinepolis_jaarbeurs_utrecht.jpg', 'Met Kinepolis Jaarbeurs (14 zalen, 3.010 stoelen) heeft Utrecht eindelijk een moderne megabioscoop in de binnenstad: de grootste bioscoop van Utrecht, en een van de grootste bioscopen van Nederland. Kinepolis Jaarbeurs biedt elke filmbezoeker \"the ultimate cinema experience\": ruime en comfortabele stoelen, royale beenruimte, en beeld en geluid van het allerhoogste niveau. Alle zalen zijn voorzien van laserprojectie. Voor een nog intensere bioscoopervaring kijk je een film in Laser ULTRA, met haarscherp laserbeeld en het ruimtelijke geluid van Dolby Atmos. Kinepolis Jaarbeurs ligt op slechts een paar minuten loopafstand van het Centraal Station van Utrecht, tegen de Jaarbeurshallen aan. Een hapje eten of borrelen voor of na de film? Dat kan bij de naastgelegen foodcourt Speys.', 'TRUE'),
 (2, 5, 'Kinepolis Almere', 'Forum 16', 'Almere', '1315TH', 'Flevoland', 'kinepolis_almere.jpg', 'Kinepolis Almere is sinds 2004 gevestigd in het levendige centrum van Almere. Het ontwerp van het imposante gebouw is van de bekroonde architect Rem Koolhaas. De megabioscoop telt 8 zalen met in totaal 2137 comfortabele stoelen. Bij binnenkomst is de trap die diagonaal door het gebouw loopt, de eerste blikvanger. Kinepolis Almere is sinds november 2017 verbouwd om meer aan te sluiten bij de look-and-feel van Kinepolis. Dit betekent dat alle zetels zijn vernieuwd,  dat er automatische ticket machines (ATMs) op de trap zijn geplaatst en er een volledige nieuwe shop met een ruimer assortiment is gekomen.', 'TRUE'),
 (3, 6, 'Kinepolis Breda', 'Bavelseparklaan 4', 'Breda', '4817ZX', 'Brabant', 'kinepolis_breda.jpg', 'Kinepolis Breda op het Breepark is de plek waar een filmbezoek een ware beleving wordt. Alle 10 de zalen hebben luxe bioscoopstoelen met extra brede armleuningen en royale beenruimte. Voor nog meer comfort zijn er speciale Cosy Seats te boeken. Kinepolis Breda is een volledig laserprojectie-bioscoop, wat betekent dat de beeldkwaliteit in elke zaal superscherp is. De grootste zaal is uitgerust met Kinepolis Laser ULTRA, een exclusieve combinatie van spectaculair laserbeeld en het ruimtelijke geluid van Dolby Atmos. Parkeren is GRATIS.', 'TRUE'),
-(4, 7, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg', 'Kinepolis Groningen telt tien moderne bioscoopzalen en bedient door de uitstekende bereikbaarheid pal naast het NS station en met ruime parkeervoorzieningen een breed publiek uit zowel de stad als ook de provincie Groningen. Kinepolis Groningen biedt haar klanten maximale gastgerichtheid door vriendelijke, goed geinformeerde en professioneel getrainde medewerkers, perfect beeld en geluid en optimaal comfort, waardoor het bioscoopbezoek tot een ware belevenis wordt gemaakt.', 'TRUE'),
-(5, 8, 'test1Cinema', 'test1Cinema', 'test1Cinema', 'test1C', 'test1Cinema', 'test1Cinema', 'test1Cinema', 'TRUE'),
-(25, 9, 'unverifiedCinema', 'unverifiedCinema', 'unverifiedCinema', 'unveri', 'unverifiedCinema', 'showcase.jpg', 'test1Cinema', 'FALSE');
+(4, 7, 'Kinepolis Groningen', 'Boumaboulevard 53', 'Groningen', '9723ZS', 'Groningen', 'kinepolis_groningen.jpeg', 'Kinepolis Groningen telt tien moderne bioscoopzalen en bedient door de uitstekende bereikbaarheid pal naast het NS station en met ruime parkeervoorzieningen een breed publiek uit zowel de stad als ook de provincie Groningen. Kinepolis Groningen biedt haar klanten maximale gastgerichtheid door vriendelijke, goed geinformeerde en professioneel getrainde medewerkers, perfect beeld en geluid en optimaal comfort, waardoor het bioscoopbezoek tot een ware belevenis wordt gemaakt.', 'TRUE');
 
 -- --------------------------------------------------------
 
@@ -363,9 +353,7 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstname`, `p
 (4, 'kinepolisutrecht', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'jaarbeursutrecht@kinepolis.nl', 'Kinepolis', 'NULL', 'Jaarbeurs Utrecht', 2, '2020-10-15 14:07:45'),
 (5, 'kinepolisalmere', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'almere@kinepolis.nl', 'Kinepolis', 'NULL', 'almere', 2, '2020-10-15 14:10:24'),
 (6, 'kinepolisbreda', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'breda@kinepolis.nl', 'Kinepolis', 'NULL', 'Breda', 2, '2020-10-15 15:41:03'),
-(7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', 'NULL', 'groningen', 2, '2020-10-15 15:42:03'),
-(8, 'test1Cinema', 'c04cabdc83ab20d5a304aaf04145a8a37cabf837', 'test1Cinema@test1Cinema.nl', 'test1Cinema', 'NULL', 'test1Cinema', 2, '2020-10-26 10:38:50'),
-(9, 'unverifiedCinema', '7f7a6231a5b6a973540048c2985811d21dee6e8f', 'unverifiedCinema@unverifiedCinema.nl', 'unverifiedCinema', 'NULL', 'unverifiedCinema', 1, '2020-10-26 10:55:56');
+(7, 'kinepolisgroningen', '1b1f41d618e4f868e1c3499f5576e23a466683ea', 'groningen@kinepolis.nl', 'Kinepolis', 'NULL', 'groningen', 2, '2020-10-15 15:42:03');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -451,13 +439,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `availability`
 --
 ALTER TABLE `availability`
-  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `availability_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `cinemas`
 --
 ALTER TABLE `cinemas`
-  MODIFY `cinema_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cinema_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT voor een tabel `customers`
@@ -487,7 +475,7 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

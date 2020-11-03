@@ -66,15 +66,6 @@ General is:
         background-color: var(--main)!important;
     }
 
-/* Homepage Part */
-    /* Carousel Part */
-    @media only screen and (max-width: 400px) {
-      #homepageCarousel {
-        height: 200px!important;
-      }
-    }
-
-
 /* Bioscoop overview (logged out) Page */
     /* size of cart */
     #cardSize {

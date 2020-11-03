@@ -7,7 +7,7 @@
  */
 ?>
 
-<?php include APPROOT."/views/fragments/header.php";
+<?php include APPROOT."/views/fragments/header.php"; 
 
 if(isset($_SESSION["authority"])) {
 
@@ -16,11 +16,11 @@ if(isset($_SESSION["authority"])) {
     case UN_VERIFIED_CINEMA:
       redirect("bioscopen/overview");
     break;
-
+    
     case VERIFIED_CINEMA:
       redirect("cms/index");
     break;
-
+    
     case CONTENT_MANAGER:
       redirect("cms/index");
     break;
@@ -36,13 +36,13 @@ if(isset($_SESSION["authority"])) {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img id="homepageCarousel" class="d-block w-100" src="<?php echo URLROOT; ?>/public/graph/theatre.jpg" alt="First slide" width="1100" height="500">
+      <img class="d-block w-100" src="<?php echo URLROOT; ?>/public/graph/theatre.jpg" alt="First slide" width="1100" height="500">
     </div>
     <div class="carousel-item">
-      <img id="homepageCarousel" class="d-block w-100" src="<?php echo URLROOT; ?>/public/graph/gaming.jpg" alt="Second slide" width="1100" height="500">
+      <img class="d-block w-100" src="<?php echo URLROOT; ?>/public/graph/gaming.jpg" alt="Second slide" width="1100" height="500">
     </div>
     <div class="carousel-item">
-      <img id="homepageCarousel" class="d-block w-100" src="<?php echo URLROOT; ?>/public/graph/xboxgames.jpg" alt="Second slide" width="1100" height="500">
+      <img class="d-block w-100" src="<?php echo URLROOT; ?>/public/graph/xboxgames.jpg" alt="Second slide" width="1100" height="500">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,13 +55,14 @@ if(isset($_SESSION["authority"])) {
   </a>
 </div>
 
-<div class="container mt-3">
+<div class="container">
   <div class="justify-content-center">
     <div class="media mt-lg-5">
       <div class="media-body">
         <h5 class="mt-0 mb-1">Komen jullie gamen?</h5>
         Breng jouw spel naar het volgende niveau op het grote scherm! Met een privé-theater dat speciaal voor jou en je crew is gereserveerd, heb je nog nooit eerder zo gespeeld. Maak er een toernooi van!
       </div>
+    <img class="ml-3 img-thumbnail" src="<?php echo URLROOT; ?>/public/graph/xbox.jpg" width="200px">
   </div>
   </div>
 </div>

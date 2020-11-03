@@ -34,25 +34,5 @@ class Pages extends Controller {
 		$this->view("pages/aboutUs", $data);
 	}
 
-	public function privacypolicy() {
-
-		$data = [
-			"title" => "Privacybeleid",
-			"text" => "Over GamePlayParty"
-		];
-
-		$this->view("pages/privacypolicy", $data);
-	}
-
-	public function cookiepolicy() {
-
-		$data = [
-			"title" => "Cookiebeleid",
-			"text" => "Over GamePlayParty"
-		];
-
-		$this->view("pages/cookiepolicy", $data);
-	}
-
 }
 ?>

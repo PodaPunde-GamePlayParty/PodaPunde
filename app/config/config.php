@@ -3,7 +3,7 @@
  * Configuration file
  *
  * © 2020 Team PodaPunde
- *
+ * 
  */
 
 
@@ -21,7 +21,6 @@ define ("APPVERSION","0.0.1");
 define("APPROOT", dirname(dirname(__FILE__)));
 define("URLROOT", "http://localhost/projecten/gameplayparty/PodaPunde");
 define("IMAGEROOT", "http://localhost/projecten/gameplayparty/PodaPunde/public/graph/");
-define("UPLOAD_IMAGE", dirname(dirname(dirname(__FILE__))) . "./public/graph/");
 
 // Authorities
 define ("VISITOR", "0");

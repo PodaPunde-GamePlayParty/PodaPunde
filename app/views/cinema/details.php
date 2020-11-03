@@ -3,7 +3,7 @@
  * Overview Page (Cinama account)
  *
  * © 2020 Team PodaPunde
- *
+ * 
  */
 ?>
 
@@ -11,7 +11,6 @@
 include APPROOT."/views/fragments/header.php";
 
 $cinema = $data["cinema"];
-$availabilityArray = $data["availability"];
 
 ?>
 
@@ -29,9 +28,7 @@ $availabilityArray = $data["availability"];
     </div>
   </div>
 
-  <h3 class="mt-lg-5">Zalen</h3>
-
-  <div class="row">
+  <div class="row mt-lg-5">
     <?php
     foreach ($data["cinema_halls"] as $hall) { ?>
 
@@ -47,39 +44,17 @@ $availabilityArray = $data["availability"];
               <p id="BoldStyle"><i class="fas fa-expand-alt"></i> <?php echo $hall->screen_size; ?></p>
               <p id="BoldStyle"><i class="fas fa-wrench"></i> <?php echo $hall->version; ?></p>
             </div>
-
+            
+            <div id="alignmentCenter">
+              <a href="#" class="form-control btn btn-light">Zaal bekijken</a>
+            </div>
+          
           </div>
         </div>
       </div>
     <?php
     } ?>
   </div>
-
-  <h3>Beschikbaarheid</h3>
-
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Datum</th>
-      <th scope="col">Begin tijd</th>
-      <th scope="col">Eind tijd</th>
-    </tr>
-  </thead>
-  <tbody>
-      <?php
-      foreach ($availabilityArray as $availability) { ?>
-
-          <tr>
-            <td><?php echo $availability->date; ?></td>
-            <td><?php echo $availability->begin_time; ?></td>
-            <td><?php echo $availability->end_time; ?></td>
-          </tr>
-
-      <?php } ?>
-
-  </tbody>
-</table>
-
 </div>
 
 <?php include APPROOT."/views/fragments/footer.php"; ?>
