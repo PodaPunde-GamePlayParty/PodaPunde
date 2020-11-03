@@ -158,6 +158,18 @@ class Cmsmodel {
 		return $this->database->execute();
 	}
 
+	// delete Availabillity
+	public function deleteAvailability($availabilty_id) {
+
+		$query  = "DELETE ";
+		$query .= "FROM availability ";
+		$query .= "WHERE availability_id = :availability_id ";
+
+		$this->database->prepare($query);
+		$this->database->bind(":availability_id", $availabilty_id);
+		return $this->database->execute();
+	}
+
 	// insert hall
 	public function addHall($data) {
 
@@ -363,62 +375,6 @@ class Cmsmodel {
 		$availabilty = $this->database->getArray();
 
 		return $availabilty;
-	}
-
-	// Get availability from Id
-	public function getAvailabilityById($availabilty_id) {
-
-		$query = "SELECT * ";
-		$query .= "FROM availability ";
-		$query .= "WHERE availability_id = :availability_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":availability_id", $availabilty_id);
-		$availabilty = $this->database->getRow();
-
-		return $availabilty;
-	}
-
-	// delete Availabillity
-	public function deleteAvailability($availabilty_id) {
-
-		$query  = "DELETE ";
-		$query .= "FROM availability ";
-		$query .= "WHERE availability_id = :availability_id ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":availability_id", $availabilty_id);
-		return $this->database->execute();
-	}
-
-
-	// insert availability
-	public function addAvailability($data) {
-
-		$query = "INSERT INTO ";
-		$query .= "availability(hall_id, ";
-		$query .= "date, ";
-		$query .= "begin_time, ";
-		$query .= "end_time, ";
-		$query .= "play_time) ";
-		$query .= "VALUES(:hall_id, ";
-		$query .= ":date, ";
-		$query .= ":begin_time, ";
-		$query .= ":end_time, ";
-		$query .= ":play_time) ";
-
-		$this->database->prepare($query);
-		$this->database->bind(":hall_id", $data['hall_id']);
-		$this->database->bind(":date", $data['date']);
-		$this->database->bind(":begin_time", $data['begin_time']);
-		$this->database->bind(":end_time", $data['end_time']);
-		$this->database->bind(":play_time", $data['play_time']);
-
-		if ($this->database->execute()) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
 	}
 
 }

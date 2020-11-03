@@ -57,17 +57,23 @@ $cms = $data["cms"];
 
 
                   <div class="row">
-                      <div class="col-6 text-center">
+                      <div class="col-4 text-center">
                           <a href="<?php echo URLROOT;?>/cms/updateHalls?hall_id=<?php echo $halls->hall_id; ?>"
                                class=""><i class="fas fa-edit text-dark"></i>
                           </a>
                       </div>
-                      <div class="col-6 text-center">
+                      <div class="col-4 text-center">
                           <a href="<?php echo URLROOT;?>/cms/deleteHall?hall_id=<?php echo $halls->hall_id; ?>"
                                class=""><i class="fas fa-trash-alt text-dark"></i>
                           </a>
                       </div>
+                      <div class="col-4 text-center">
+                            <a href="<?php echo URLROOT; ?>/cms/availability?hall_id=<?php echo $halls->hall_id; ?>" class="">
+                                <i class="far fa-calendar-alt text-dark"></i>
+                            </a>
+                      </div>
                   </div>
+
 
                 </div>
               </div>
