@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="begin_time" class="font-weight-bold">Begin Tijd: </label>
+                        <label for="begin_time" class="font-weight-bold">Begin Tijd</label>
                         <input type="time" name="begin_time" class="form-control form-control-lg
                         <?php echo (!empty($data['begin_time_error'])) ? "is-invalid" : ""; ?>
                         " value="<?php echo $data['begin_time'] ?>">
@@ -31,7 +31,7 @@
 
                     
                     
-                    <button type="submit" name="submit" class="btn btn-primary mt-2">Beschikbaarheid aanmaken</button>
+                    <button type="submit" name="submit" class="btn btn-primary mt-2">Biosoop aanmaken</button>
                 </form>
             </div>
         </div>
