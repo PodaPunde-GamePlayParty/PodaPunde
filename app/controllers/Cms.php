@@ -491,6 +491,10 @@ class Cms extends Controller {
             break;
         }
 
+        $hall_id = $_GET["hall_id"];
+        $hall = $this->cmsModel->getHall($hall_id);
+        $availability = $this->cmsModel->getAvailability($hall_id);
+
         $data = [
             "title" => "Overzicht",
             "cms" => $cms
